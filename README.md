@@ -13,4 +13,8 @@
 >> a. php artisan key:generate
 >> b. php artisan migrate
 >> c. php artisan db:seed
->> d. 
+>> d. tinggal "php artisan serve" wes
+
+** Ohiya
+terpenting pastikan fork kalian up to date, tutorial fork up to date
+https://gist.github.com/JeffCost/3843711
