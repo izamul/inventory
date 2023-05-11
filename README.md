@@ -7,7 +7,7 @@
 > 3. Semangat wes, aturan lain menyusul
 
 
-** Setup yang perlu dilakukan setelah melakukan clone
+* Setup yang perlu dilakukan setelah melakukan clone
 > 1. Untuk mendapatkan vendor file run "composer install" on your terminal sir
 > 2. Untuk men-setup Anda .env, silakan gandakan .env.example file Anda dan ganti nama file duplikat menjadi .env
 > 3. Lihat isi file .env, pastikan nama database, dan password serta lainnya udah sesuai dengan local db kalian
