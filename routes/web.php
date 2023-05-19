@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PegawaiController;
+use App\Models\Pegawai;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,9 +15,14 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
 
+
+Route::resource('', PegawaiController::class);
+
+
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', function () {
-    return view('layouts.master');
-});
+// Route::get('/', function () {
+//     return view('layouts.master');
+// });

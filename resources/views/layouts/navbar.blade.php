@@ -11,12 +11,18 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-user"></i>
+                            <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" v-pre> {{ Auth::user()->namaPegawai }} <span></span></a>
                         {{-- <span class="badge badge-warning navbar-badge">15</span> --}}
-                    </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">Akun</span>
+                    <?php
+                    $pangkat = "";
+                    if (Auth::user()->level==1){
+                        $pangkat = "Manager";
+                    }else{
+                        $pangkat = "Pegawai";
+                    }
+                    ?>
+                        <span class="dropdown-item dropdown-header">{{ $pangkat  }}</span>
                         <div class="dropdown-divider"></div>
                         <form action="{{ route('logout')}}" method="post">
                             @csrf
