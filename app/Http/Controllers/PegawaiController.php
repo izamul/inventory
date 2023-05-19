@@ -19,10 +19,11 @@ class PegawaiController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
-        return view('layouts.master');
+        $pegawais = Pegawai::all();
+        return view('layouts.master',['pegawais'=>$pegawais]);
     }
 
     /**

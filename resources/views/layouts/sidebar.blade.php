@@ -17,9 +17,7 @@
                         <li class="nav-item menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-user-alt"></i>
-                                <p>
-                                    Pegawai
-                                </p>
+                                <p>Pegawai</p>
                             </a>
                             <!-- /.sidebar-menu -->
             </div>
