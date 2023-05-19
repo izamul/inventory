@@ -19,3 +19,4 @@ class Pemasok extends Model
     ];
 
 }
+    
