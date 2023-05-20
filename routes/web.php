@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PegawaiController;
 use App\Models\Pegawai;
+use App\Http\Controllers\KategoriController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,3 +32,5 @@ Route::resource('pegawai', PegawaiController::class);
 // Route::get('/', function () {
 //     return view('layouts.master');
 // });
+
+Route::resource('kategori', KategoriController::class);

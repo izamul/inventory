@@ -19,7 +19,13 @@
                                 <i class="nav-icon fas fa-user-alt"></i>
                                 <p>Pegawai</p>
                             </a>
-                            <!-- /.sidebar-menu -->
+                            <a href="{{ route ('kategori.index') }}" class="nav-link active">
+                                <i class="nav-icon fas fa-user-alt"></i>
+                                <p>
+                                    Kategori
+                                </p>
+                            </a>
+                <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
         </aside>
