@@ -23,7 +23,7 @@ class PegawaiController extends Controller
     public function index()
     {
         $pegawais = Pegawai::all();
-        return view('layouts.master',['pegawais'=>$pegawais]);
+        return view('layouts.pegawai.master',['pegawais'=>$pegawais]);
     }
 
     /**
