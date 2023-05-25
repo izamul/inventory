@@ -15,23 +15,20 @@
                         <table class="table table-striped">
                             <a class="btn btn-success right" href="{{ route('pemasok.create') }}"
                                 style="margin-left:23cm; margin-bottom:5px;"> Tambah Data Pemasok</a>
-                            <h2 style="text-align: left;">Pemasok</h2>
+                            <h2 style="text-align: left;">Pemasok</h2></a>
                             <br>
                             {{-- <a class="btn btn-success right" href="{{ route('pemasok.create') }}" style="margin-left:23cm; margin-bottom:5px;"> Tambah Data Pemasok</a> --}}
-                            <br>
-                            <form class="form-left my-2" method="get" action="{{ route('search') }}">
-                                <div class="form-group w-80 mb-3">
+                            {{-- <br> --}}
+                            <form class="form-right my-2" method="get" action="{{ route('search') }}">
+                                <a class="form-group w-80 mb-3">
                                     <input type="text" name="search" class="formcontrol w-50 d-inline"
                                         id="search" placeholder="Masukkan Nama">
                                     <button type="submit" class="btn btn-primary mb1">Cari</button>
-                                    <a class="btn btn-success right" href="{{ route('pemasok.index') }}"
-                                        style="margin-left:165px"> Show All
-                                        Pemasok</a>
                                     <tr>
                                         <th>ID</th>
                                         <th>Nama</th>
                                         <th>Alamat</th>
-                                        <th>No Tlp</th>
+                                        <th>No Telepon</th>
                                         <th width="220px">Action</th>
                                     </tr>
                                     @foreach ($pemasok as $masok)
@@ -58,6 +55,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                </a>
                         </table>
                         {!! $pemasok->withQueryString()->links('pagination::bootstrap-5') !!}
                     </div>
@@ -71,3 +69,6 @@
         <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
+
+        {{-- <a class="btn btn-success right" href="{{ route('pemasok.index') }}"
+        style="margin-left:165px"> Show All Pemasok</a> --}}
