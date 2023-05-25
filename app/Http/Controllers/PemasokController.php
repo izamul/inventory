@@ -129,8 +129,7 @@ class PemasokController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->search;
-        $pemasok = Pemasok::where('namaPemasok', 'like', '%' . $keyword . '%')->paginate(1);
-        // $pemasok = Pemasok::where('alamatPemasok', 'like', '%' . $keyword . '%')->paginate(1);
+        $pemasok = Pemasok::where('namaPemasok', 'alamatPemasok', '%' . $keyword . '%')->paginate(1);
         return view('layouts.pemasok.master', compact('pemasok'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
     // public function search(Request $request)

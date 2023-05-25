@@ -17,36 +17,45 @@
                             <table class="table table-striped">
                                 <h2 style="text-align: center;">Tabel Kategori</h2>
                                 <br>
-                                <a class="btn btn-success right" href="{{ route('kategori.create') }}" style="margin-left:23cm; margin-bottom:5px;"> Tambah Kategori</a>
-                                <br>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nama</th>
-                                    <th width="220px">Action</th>
-                                </tr>
-                                @foreach ($kategori as $gori)
-                                <tr>
-                                    <td>{{ $gori->idKategori }}</td>
-                                    <td>{{ $gori->namaKategori }}</td>
-                                    <td>
-                                        <form action="{{ route('kategori.destroy',$gori->idKategori) }}" method="POST">
+                                    <a class="btn btn-success right" href="{{ route('kategori.create') }}"
+                                        style="margin-left:23cm; margin-bottom:5px;"> Tambah Kategori</a>
+                                    <form class="form-left my-2" method="get" action="{{ route('searchKategori') }}">
+                                        <div class="form-group w-80 mb-3">
+                                            <input type="text" name="searchKategori" class="form-control w-50 d-inline"
+                                                id="searchKategori" placeholder="Masukkan Nama">
+                                            <button type="submit" class="btn btn-primary mb-1">Cari</button>
+                                        </div>
+                                        <br>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nama</th>
+                                            <th width="220px">Action</th>
+                                        </tr>
+                                        @foreach ($kategori as $gori)
+                                        <tr>
+                                            <td>{{ $gori->idKategori }}</td>
+                                            <td>{{ $gori->namaKategori }}</td>
+                                            <td>
+                                                <form action="{{ route('kategori.destroy',$gori->idKategori) }}"
+                                                    method="POST">
 
-                                            <a class="btn btn-info"
-                                                href="{{ route('kategori.show',$gori->idKategori) }}">Show</a>
+                                                    <a class="btn btn-info"
+                                                        href="{{ route('kategori.show',$gori->idKategori) }}">Show</a>
 
-                                            <a class="btn btn-primary"
-                                                href="{{ route('kategori.edit',$gori->idKategori) }}">Edit</a>
+                                                    <a class="btn btn-primary"
+                                                        href="{{ route('kategori.edit',$gori->idKategori) }}">Edit</a>
 
-                                            @csrf
+                                                    @csrf
 
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        @endforeach
                             </table>
-                            {!! $kategori->withQueryString()->links('pagination::bootstrap-5') !!}                        </div>
+                            {!! $kategori->withQueryString()->links('pagination::bootstrap-5') !!}
+                        </div>
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
             </div>

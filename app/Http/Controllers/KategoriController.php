@@ -110,4 +110,12 @@ class KategoriController extends Controller
     
         return redirect()->route('kategori.index')->with(['message'=> 'ID Salah!!']);
     }
+
+    //Untuk Search Bar
+    public function searchKategori(Request $request)
+    {
+        $keyword = $request->searchKategori;
+        $kategori = Kategori::where('namaKategori', 'like', "%" . $keyword . "%")->paginate(1);
+        return view('layouts.kategori.master', compact('kategori'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
 }
