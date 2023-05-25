@@ -130,6 +130,6 @@ class PemasokController extends Controller
     {
         $keyword = $request->search;
         $pemasok = Pemasok::where('namaPemasok', 'alamatPemasok', '%' . $keyword . '%')->paginate(1);
-        return view('layouts.pemasok.content', compact('pemasok'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('layouts.pemasok.master', compact('pemasok'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }
