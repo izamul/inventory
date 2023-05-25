@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PegawaiController;
 use App\Models\Pegawai;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\PemasokController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +26,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+// Route::post('/login', 'Auth\LoginController@login');
+
+
 Route::get('/home',[HomeController::class,"index"])->name('index');
+Route::get('/login',[LoginController::class, "showLoginForm"])->name('login');
 
 Route::resource('pegawai', PegawaiController::class);
 
