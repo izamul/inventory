@@ -20,13 +20,13 @@
                                 <p>Pegawai</p>
                             </a>
                             <a href="{{ route ('kategori.index') }}" class="nav-link active">
-                                <i class="nav-icon fas fa-user-alt"></i>
+                                <i class="nav-icon fas fa-cubes"></i>
                                 <p>
                                     Kategori
                                 </p>
                             </a>
                             <a href="{{ route('pemasok.index') }}" class="nav-link active">
-                                <i class="nav-icon fas fa-user-alt"></i>
+                                <i class="nav-icon fas fa-truck"></i>
                                 <p>Pemasok</p>
                             </a>
                 <!-- /.sidebar-menu -->
