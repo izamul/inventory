@@ -17,13 +17,14 @@
                             <table class="table table-striped">
                                 <h2 style="text-align: center;">Tabel Kategori</h2>
                                 <br>
-                                <a class="btn btn-success right" href="{{ route('kategori.create') }}"
-                                    style="margin-left:23cm; margin-bottom:5px;"> Tambah Kategori</a>
-                                <form class="form-left my-2" method="get" action="{{ route('search') }}">
-                                    <div class="form-group w-80 mb-3">
-                                        <input type="text" name="search" class="form-control w-50 d-inline" id="search"
-                                            placeholder="Masukkan Nama">
-                                        <button type="submit" class="btn btn-primary mb-1">Cari</button>
+                                    <a class="btn btn-success right" href="{{ route('kategori.create') }}"
+                                        style="margin-left:23cm; margin-bottom:5px;"> Tambah Kategori</a>
+                                    <form class="form-left my-2" method="get" action="{{ route('searchKategori') }}">
+                                        <div class="form-group w-80 mb-3">
+                                            <input type="text" name="searchKategori" class="form-control w-50 d-inline"
+                                                id="searchKategori" placeholder="Masukkan Nama">
+                                            <button type="submit" class="btn btn-primary mb-1">Cari</button>
+                                        </div>
                                         <br>
                                         <tr>
                                             <th>ID</th>

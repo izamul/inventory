@@ -42,7 +42,7 @@ Route::resource('pegawai', PegawaiController::class);
 // });
 
 Route::resource('kategori', KategoriController::class);
-Route::get('/search',[KategoriController::class, 'search'])->name('search');
+Route::get('/searchKategori',[KategoriController::class, 'searchKategori'])->name('searchKategori');
 
 Route::resource('pemasok', PemasokController::class);
 Route::get('/search',[PemasokController::class, 'search'])->name('search');

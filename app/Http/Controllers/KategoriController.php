@@ -112,9 +112,9 @@ class KategoriController extends Controller
     }
 
     //Untuk Search Bar
-    public function search(Request $request)
+    public function searchKategori(Request $request)
     {
-        $keyword = $request->search;
+        $keyword = $request->searchKategori;
         $kategori = Kategori::where('namaKategori', 'like', "%" . $keyword . "%")->paginate(1);
         return view('layouts.kategori.master', compact('kategori'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
