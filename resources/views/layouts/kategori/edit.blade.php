@@ -24,17 +24,17 @@
                     </ul>
                 </div>
                 @endif
-                <form method="post" action="{{ route('kategori.update', $Kategori->idKategori) }}" id="myForm">
+                <form method="post" action="{{ route('kategori.update', $kategori->idKategori) }}" id="myForm">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
                         <label for="idKategori">Id Kategori</label>
-                        <input type="text" name="idKategori" class="form-control" id="idKategori" value="{{ $Kategori->idKategori }}"
+                        <input type="text" name="idKategori" class="form-control" id="idKategori" value="{{ $kategori->idKategori }}"
                             aria-describedby="idKategori">
                     </div>
                     <div class="form-group">
                         <label for="namaKategori">Nama Kategori</label>
-                        <input type="text" name="namaKategori" class="form-control" id="namaKategori" value="{{ $Kategori->namaKategori }}"
+                        <input type="text" name="namaKategori" class="form-control" id="namaKategori" value="{{ $kategori->namaKategori }}"
                             aria-describedby="namaKategori">
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <a href="{{ route('kategori.index') }}" class="btn btn-danger" role="button" aria-disabled="true" style="margin-left:5px">Kembali</a>

@@ -25,6 +25,10 @@
                                     Kategori
                                 </p>
                             </a>
+                            <a href="{{ route('pemasok.index') }}" class="nav-link active">
+                                <i class="nav-icon fas fa-user-alt"></i>
+                                <p>Pemasok</p>
+                            </a>
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->

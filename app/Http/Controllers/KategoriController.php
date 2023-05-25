@@ -16,7 +16,7 @@ class KategoriController extends Controller
     {
         $kategori = Kategori::paginate(5); // Mengambil semua isi tabel
         $posts = Kategori::orderBy('idKategori', 'desc')->paginate(5);
-        return view('layouts.master', compact('kategori'))
+        return view('layouts.kategori.master', compact('kategori'))
         ->with('i', (request()->input('page', 1) - 1) * 5); 
     }
 
@@ -27,7 +27,7 @@ class KategoriController extends Controller
      */
     public function create(Request $request)
     {
-        return view('create');
+        return view('layouts.kategori.create');
     }
 
     /**
@@ -58,7 +58,7 @@ class KategoriController extends Controller
     public function show($idKategori)
     {
         $kategori = Kategori::find($idKategori);
-            return view('detail', compact('kategori'));
+            return view('layouts.kategori.detail', compact('kategori'));
     }
 
     /**
@@ -70,7 +70,7 @@ class KategoriController extends Controller
     public function edit($idKategori)
     {
         $kategori = Kategori::find($idKategori);
-            return view('edit', compact('kategori'));
+            return view('layouts.kategori.edit', compact('kategori'));
     }
 
     /**

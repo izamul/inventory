@@ -10,13 +10,13 @@
     <div class="row justify-content-center align-items-center">
         <div class="card" style="width: 24rem;">
             <div class="card-header">
-                Edit Kategori
+                Tambah Kategori
             </div>
             <div class="card-body">
                 @if ($errors->any())
                 <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your i
-                    nput.<br><br>
+                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+
                     <ul>
                         @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -24,20 +24,18 @@
                     </ul>
                 </div>
                 @endif
-                <form method="post" action="{{ route('kategori.update', $Kategori->idKategori) }}" id="myForm">
+
+                <form method="post" action="{{ route('kategori.store') }}" id="myForm">
                     @csrf
-                    @method('PUT')
                     <div class="form-group">
                         <label for="idKategori">Id Kategori</label>
-                        <input type="text" name="idKategori" class="form-control" id="idKategori" value="{{ $Kategori->idKategori }}"
-                            aria-describedby="idKategori">
+                        <input type="text" name="idKategori" class="form-control" id="idKategori" aria-describedby="idKategori">
                     </div>
                     <div class="form-group">
                         <label for="namaKategori">Nama Kategori</label>
-                        <input type="text" name="namaKategori" class="form-control" id="namaKategori" value="{{ $Kategori->namaKategori }}"
-                            aria-describedby="namaKategori">
+                        <input type="namaKategori" name="namaKategori" class="form-control" id="namaKategori" aria-describedby="namaKategori">
+                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <a href="{{ route('kategori.index') }}" class="btn btn-danger" role="button" aria-disabled="true" style="margin-left:5px">Kembali</a>
                 </form>
             </div>
         </div>
