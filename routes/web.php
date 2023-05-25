@@ -6,6 +6,7 @@ use App\Http\Controllers\PegawaiController;
 use App\Models\Pegawai;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\PemasokController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,3 +42,6 @@ Route::resource('pegawai', PegawaiController::class);
 // });
 
 Route::resource('kategori', KategoriController::class);
+
+Route::resource('pemasok', PemasokController::class);
+Route::get('/search',[PemasokController::class, 'search'])->name('search');
