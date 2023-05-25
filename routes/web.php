@@ -30,7 +30,7 @@ Route::get('/', function () {
 // Route::post('/login', 'Auth\LoginController@login');
 
 
-Route::get('/home',[HomeController::class,"index"])->name('index');
+Route::get('/home',[HomeController::class,"index"])->name('home');
 Route::get('/login',[LoginController::class, "showLoginForm"])->name('login');
 
 Route::resource('pegawai', PegawaiController::class);
