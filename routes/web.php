@@ -34,7 +34,9 @@ Route::get('/home',[HomeController::class,"index"])->name('home');
 Route::get('/login',[LoginController::class, "showLoginForm"])->name('login');
 
 
-Route::resource('pegawai', PegawaiController::class);
+Route::group(['middleware' => 'level:1'], function () {
+    Route::resource('pegawai', PegawaiController::class);
+});
 
 
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
