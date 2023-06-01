@@ -47,7 +47,7 @@
                         <label for="telpPemasok">No Telepon</label>
                         <input type="text" name="telpPemasok" class="form-control" id="telpPemasok" value="{{ $pemasok->telpPemasok }}"
                             aria-describedby="telpPemasok">
-                            <br>
+                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <a href="{{ route('pemasok.index') }}" class="btn btn-danger" role="button" aria-disabled="true" style="margin-left:5px">Kembali</a>
                 </form>
