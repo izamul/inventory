@@ -36,6 +36,7 @@
                         <label for="namaKategori">Nama Kategori</label>
                         <input type="text" name="namaKategori" class="form-control" id="namaKategori" value="{{ $kategori->namaKategori }}"
                             aria-describedby="namaKategori">
+                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <a href="{{ route('kategori.index') }}" class="btn btn-danger" role="button" aria-disabled="true" style="margin-left:5px">Kembali</a>
                 </form>

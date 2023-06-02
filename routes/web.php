@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 // Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 // Route::post('/login', 'Auth\LoginController@login');
@@ -33,7 +33,10 @@ Route::get('/', function () {
 Route::get('/home',[HomeController::class,"index"])->name('home');
 Route::get('/login',[LoginController::class, "showLoginForm"])->name('login');
 
-Route::resource('pegawai', PegawaiController::class);
+
+Route::group(['middleware' => 'level:1'], function () {
+    Route::resource('pegawai', PegawaiController::class);
+});
 
 
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -42,6 +45,8 @@ Route::resource('pegawai', PegawaiController::class);
 // });
 
 Route::resource('kategori', KategoriController::class);
+Route::get('/searchKategori',[KategoriController::class, 'searchKategori'])->name('searchKategori');
 
 Route::resource('pemasok', PemasokController::class);
-Route::get('/search',[PemasokController::class, 'search'])->name('search');
+Route::get('/searchPemasok',[PemasokController::class, 'search'])->name('search');
+

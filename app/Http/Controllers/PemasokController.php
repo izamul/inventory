@@ -12,11 +12,17 @@ class PemasokController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $pemasok = Pemasok::paginate(5);
-        $posts = Pemasok::orderBy('idPemasok', 'desc')->paginate(5);
-        return view('layouts.pemasok.master', compact('pemasok'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $pemasok = Pemasok::paginate(4);
+        $posts = Pemasok::orderBy('idPemasok', 'desc')->paginate(4);
+        return view('layouts.pemasok.master', compact('pemasok'))->with('i', (request()->input('page', 1) - 1) * 4);
     }
 
     /**
@@ -60,7 +66,7 @@ class PemasokController extends Controller
      * @param  \App\Models\Pemasok  $pemasok
      * @return \Illuminate\Http\Response
      */
-    public function show(Pemasok $idPemasok)
+    public function show($idPemasok)
     {
         $pemasok = Pemasok::find($idPemasok);
         return view('layouts.pemasok.detail', compact('pemasok'));
@@ -72,7 +78,7 @@ class PemasokController extends Controller
      * @param  \App\Models\Pemasok  $pemasok
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pemasok $idPemasok)
+    public function edit($idPemasok)
     {
         $pemasok = Pemasok::find($idPemasok);
         return view('layouts.pemasok.edit', ['pemasok' => $pemasok]);
@@ -88,16 +94,16 @@ class PemasokController extends Controller
     public function update(Request $request, $idPemasok)
     {
         $request->validate([
-            'idSupplier' => 'required',
-            'namaSupplier' => 'required',
+            'idPemasok' => 'required',
+            'namaPemasok' => 'required',
             'alamatPemasok' => 'required',
             'telpPemasok' => 'required',
         ]);
         $pemasok = Pemasok::where('idPemasok', $idPemasok)->first();
-        $pemasok->idPemasok = $request->get('idSupplier');
-        $pemasok->namaPemasok = $request->get('namaSupplier');
+        $pemasok->idPemasok = $request->get('idPemasok');
+        $pemasok->namaPemasok = $request->get('namaPemasok');
         $pemasok->alamatPemasok = $request->get('alamatPemasok');
-        $pemasok->telpPemasok = $request->get('alamatPemasok');
+        $pemasok->telpPemasok = $request->get('telpPemasok');
         $pemasok->save();
         return redirect()
             ->route('pemasok.index')
@@ -130,6 +136,19 @@ class PemasokController extends Controller
     {
         $keyword = $request->search;
         $pemasok = Pemasok::where('namaPemasok', 'alamatPemasok', '%' . $keyword . '%')->paginate(1);
-        return view('layouts.pemasok.content', compact('pemasok'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('layouts.pemasok.master', compact('pemasok'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
+    // public function search(Request $request)
+    // {
+    //     $query = $request->input('query');
+
+    //     $results = Pemasok::where(function ($queryBuilder) use ($query) {
+    //         $queryBuilder
+    //             ->where('namaPemasok', 'LIKE', "%$query%")
+    //             ->orWhere('alamatPemasok', 'LIKE', "%$query%")
+    //             ->orWhere('telpPemasok', 'LIKE', "%$query%");
+    //     })->get();
+
+    //     return view('layouts.pemasok.master', compact('results'));
+    // }
 }

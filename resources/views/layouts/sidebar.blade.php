@@ -13,12 +13,18 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+                with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
-                            <a href="{{ route('pegawai.index') }}" class="nav-link active">
+                            <?php
+                            if (Auth::user()->level==1){
+                            ?>
+                                <a href="{{ route('pegawai.index') }}" class="nav-link active">
                                 <i class="nav-icon fas fa-user-alt"></i>
                                 <p>Pegawai</p>
-                            </a>
+                                </a>
+                                <?php
+                            }   
+                            ?>
                             <a href="{{ route ('kategori.index') }}" class="nav-link active">
                                 <i class="nav-icon fas fa-cubes"></i>
                                 <p>

@@ -12,12 +12,18 @@ class KategoriController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $kategori = Kategori::paginate(5); // Mengambil semua isi tabel
         $posts = Kategori::orderBy('idKategori', 'desc')->paginate(5);
-        return view('layouts.kategori.master', compact('kategori'))
-        ->with('i', (request()->input('page', 1) - 1) * 5); 
+        return view('layouts.kategori.master', compact('kategori'))->with('i', (request()->input('page', 1) - 1) * 5); 
     }
 
     /**
@@ -46,7 +52,7 @@ class KategoriController extends Controller
         $kategori->idKategori=$request->get('idKategori');
         $kategori->namaKategori=$request->get('namaKategori');
         $kategori->save();
-        return redirect()->route('kategori.index')->with('success', 'Mahasiswa Berhasil Ditambahkan');
+        return redirect()->route('kategori.index')->with('success', 'Kategori Berhasil Ditambahkan');
     }
 
     /**
@@ -109,5 +115,13 @@ class KategoriController extends Controller
         }
     
         return redirect()->route('kategori.index')->with(['message'=> 'ID Salah!!']);
+    }
+
+    //Untuk Search Bar
+    public function searchKategori(Request $request)
+    {
+        $keyword = $request->searchKategori;
+        $kategori = Kategori::where('namaKategori', 'like', "%" . $keyword . "%")->paginate(1);
+        return view('layouts.kategori.master', compact('kategori'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }

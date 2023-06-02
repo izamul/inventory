@@ -37,6 +37,17 @@
                         <label for="namaPemasok">Nama Pemasok</label>
                         <input type="text" name="namaPemasok" class="form-control" id="namaPemasok" value="{{ $pemasok->namaPemasok }}"
                             aria-describedby="namaPemasok">
+                    </div>
+                    <div class="form-group">
+                        <label for="alamatPemasok">Alamat Pemasok</label>
+                        <input type="text" name="alamatPemasok" class="form-control" id="alamatPemasok" value="{{ $pemasok->alamatPemasok }}"
+                            aria-describedby="alamatPemasok">
+                    </div>
+                    <div class="form-group">
+                        <label for="telpPemasok">No Telepon</label>
+                        <input type="text" name="telpPemasok" class="form-control" id="telpPemasok" value="{{ $pemasok->telpPemasok }}"
+                            aria-describedby="telpPemasok">
+                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <a href="{{ route('pemasok.index') }}" class="btn btn-danger" role="button" aria-disabled="true" style="margin-left:5px">Kembali</a>
                 </form>

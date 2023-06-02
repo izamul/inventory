@@ -22,8 +22,9 @@ class PegawaiController extends Controller
 
     public function index()
     {
-        $pegawais = Pegawai::all();
-        return view('layouts.pegawai.master',['pegawais'=>$pegawais]);
+        $pegawai = Pegawai::paginate(4);
+        $posts = Pegawai::orderBy('idPegawai', 'desc')->paginate(4);
+        return view('layouts.pegawai.master', compact('pegawai'))->with('i', (request()->input('page', 1) - 1) * 4);
     }
 
     /**
@@ -33,7 +34,7 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        //
+        return view('layouts.pegawai.create');
     }
 
     /**
@@ -44,7 +45,24 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'idPegawai' => 'required',
+            'namaPegawai' => 'required',
+            'alamatPegawai' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            ]);
+        $pegawai = new Pegawai;
+        $pegawai->idPegawai=$request->get('idPegawai');
+        $pegawai->namaPegawai=$request->get('namaPegawai');
+        $pegawai->alamatPegawai=$request->get('alamatPegawai');
+        $pegawai->telpPegawai=$request->get('telpPegawai');
+        $pegawai->email=$request->get('email');
+        $pegawai->password=$request->get('password');
+        $pegawai->fotoPegawai='tes';
+        $pegawai->level=1;
+        $pegawai->save();
+        return redirect()->route('pegawai.index')->with('success', 'Pegawai Berhasil Ditambahkan');
     }
 
     /**
@@ -53,9 +71,10 @@ class PegawaiController extends Controller
      * @param  \App\Models\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function show(Pegawai $pegawai)
+    public function show($idPegawai)
     {
-        //
+        $pegawai = Pegawai::find($idPegawai);
+        return view('layouts.pegawai.detail', compact('pegawai'));
     }
 
     /**
@@ -64,9 +83,10 @@ class PegawaiController extends Controller
      * @param  \App\Models\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pegawai $pegawai)
+    public function edit($idPegawai)
     {
-        //
+        $pegawai = Pegawai::find($idPegawai);
+        return view('layouts.pegawai.edit', compact('pegawai'));
     }
 
     /**
@@ -76,9 +96,26 @@ class PegawaiController extends Controller
      * @param  \App\Models\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pegawai $pegawai)
+    public function update(Request $request,$idPegawai)
     {
-        //
+        $request->validate([
+            'idPegawai' => 'required',
+            'namaPegawai' => 'required',
+            'alamatPegawai' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            ]);
+        $pegawai = Pegawai::where('idPegawai', $idPegawai)->first();
+        $pegawai->idPegawai=$request->get('idPegawai');
+        $pegawai->namaPegawai=$request->get('namaPegawai');
+        $pegawai->alamatPegawai=$request->get('alamatPegawai');
+        $pegawai->telpPegawai=$request->get('telpPegawai');
+        $pegawai->email=$request->get('email');
+        $pegawai->password=$request->get('password');
+        $pegawai->fotoPegawai='tes';
+        $pegawai->level=1;
+        $pegawai->save();
+        return redirect()->route('pegawai.index')->with('success', 'Pegawai Berhasil Diedit');
     }
 
     /**
@@ -87,8 +124,15 @@ class PegawaiController extends Controller
      * @param  \App\Models\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pegawai $pegawai)
+    public function destroy($idPegawai)
     {
-        //
+        $pegawai = Pegawai::where('idKategori',$idPegawai)->first();
+
+        if ($pegawai != null) {
+            $pegawai->delete();
+            return redirect()->route('pegawai.index')->with('success', 'Pegawai Berhasil Dihapus');
+        }
+    
+        return redirect()->route('pegawai.index')->with(['message'=> 'ID Salah!!']);
     }
 }

@@ -48,7 +48,7 @@
             </ul>
             @guest
             @if (Route::has('login'))
-            <a href="{{ route('login') }}" class="btn btn-lg btn-dark bg-gradient order-0">Login</a>
+            <a href="{{ route('home') }}" class="btn btn-lg btn-dark bg-gradient order-0">Login</a>
             @endif
             @else
             <a class="nav-link" href="{{ route('home') }}" role="button" aria-haspopup="true" aria-expanded="false" v-pre> {{ Auth::user()->namaPegawai }} </a>
