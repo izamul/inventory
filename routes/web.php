@@ -7,6 +7,7 @@ use App\Models\Pegawai;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\PemasokController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,6 +33,7 @@ Route::get('/', function () {
 
 Route::get('/home',[HomeController::class,"index"])->name('home');
 Route::get('/login',[LoginController::class, "showLoginForm"])->name('login');
+Route::post('/profile/{id}', [ProfileController::class, 'show'])->name('profile');
 
 
 Route::group(['middleware' => 'level:1'], function () {

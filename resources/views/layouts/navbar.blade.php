@@ -24,6 +24,12 @@
                     ?>
                         <span class="dropdown-item dropdown-header">{{ $pangkat  }}</span>
                         <div class="dropdown-divider"></div>
+                        <form action="{{ route('profile', Auth::user()->idPegawai)}}" method="post">
+                            @csrf
+                            <button type="submit" class="dropdown-item">
+                            <i class="fas fa-user mr-2"></i> Profile
+                            </button>
+                        </form>    
                         <form action="{{ route('logout')}}" method="post">
                             @csrf
                             <button type="submit" class="dropdown-item">
