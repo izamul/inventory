@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pemasok;
+use Illuminate\Support\Facades\Storage;
 
 class PemasokController extends Controller
 {
@@ -43,17 +44,23 @@ class PemasokController extends Controller
      */
     public function store(Request $request)
     {
+        // if ($request->file('image')) {
+             $image_name = $request->file('fotoPemasok')->store('images', 'public');
+        // }
         $request->validate([
             'idPemasok' => 'required',
             'namaPemasok' => 'required',
             'alamatPemasok' => 'required',
             'telpPemasok' => 'required',
+            'fotoPemasok' => 'required',
         ]);
         $pemasok = new Pemasok();
         $pemasok->idPemasok = $request->get('idPemasok');
         $pemasok->namaPemasok = $request->get('namaPemasok');
         $pemasok->alamatPemasok = $request->get('alamatPemasok');
         $pemasok->telpPemasok = $request->get('telpPemasok');
+        $pemasok->fotoPemasok= $image_name;
+        // $image_name;
         $pemasok->save();
         return redirect()
             ->route('pemasok.index')
@@ -98,17 +105,29 @@ class PemasokController extends Controller
             'namaPemasok' => 'required',
             'alamatPemasok' => 'required',
             'telpPemasok' => 'required',
+            'fotoPemasok' => 'required',
         ]);
+        $pemasok = Pemasok::find($idPemasok);
+
+        if ($pemasok->fotoPemasok && file_exists(storage_path('app/public/' . $pemasok->fotoPemasok))) {
+            Storage::delete('public/' . $pemasok->fotoPemasok);
+        }
+        $image_name = $request->file('fotoPemasok')->store('images', 'public');
+
         $pemasok = Pemasok::where('idPemasok', $idPemasok)->first();
         $pemasok->idPemasok = $request->get('idPemasok');
         $pemasok->namaPemasok = $request->get('namaPemasok');
         $pemasok->alamatPemasok = $request->get('alamatPemasok');
         $pemasok->telpPemasok = $request->get('telpPemasok');
+        $pemasok->fotoPemasok = $image_name;
         $pemasok->save();
+        
         return redirect()
             ->route('pemasok.index')
             ->with('success', 'Pemasok Berhasil Di Update');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
