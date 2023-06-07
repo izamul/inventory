@@ -14,7 +14,7 @@
                     <div class="container">
                         <table class="table table-striped">
                             <a class="btn btn-success right" href="{{ route('pegawai.create') }}"
-                                style="margin-left:23cm; margin-bottom:5px;"> Tambah Data Pegawai</a>
+                                style="margin-left:20cm; margin-bottom:5px;"> Tambah Data Pegawai</a>
                             <h2 style="text-align: left;">Pegawai</h2></a>
                             <br>
                             {{-- <a class="btn btn-success right" href="{{ route('Pegawai.create') }}" style="margin-left:23cm; margin-bottom:5px;"> Tambah Data Pegawai</a> --}}

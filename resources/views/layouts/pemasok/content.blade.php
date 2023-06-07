@@ -14,7 +14,7 @@
                     <div class="container">
                         <table class="table table-striped">
                             <a class="btn btn-success right" href="{{ route('pemasok.create') }}"
-                                style="margin-left:23cm; margin-bottom:5px;"> Tambah Data Pemasok</a>
+                                style="margin-left:20cm; margin-bottom:5px;"> Tambah Data Pemasok</a>
                             <h2 style="text-align: left;">Pemasok</h2></a>
                             <br>
                             {{-- <a class="btn btn-success right" href="{{ route('pemasok.create') }}" style="margin-left:23cm; margin-bottom:5px;"> Tambah Data Pemasok</a> --}}
