@@ -19,11 +19,11 @@
                             <br>
                             {{-- <a class="btn btn-success right" href="{{ route('Pegawai.create') }}" style="margin-left:23cm; margin-bottom:5px;"> Tambah Data Pegawai</a> --}}
                             {{-- <br> --}}
-                            <form class="form-right my-2" method="get" action="{{ route('search') }}">
+                            <form class="form-right my-2" method="get" action="{{ route('searchPegawai') }}">
                                 <a class="form-group w-80 mb-3">
                                     <div class="tombol-cari mb-4">
                                         <input type="text" name="searchPegawai" class="formcontrol w-50 d-inline p-2 "
-                                        id="searchPegawai" placeholder="Masukkan Nama">
+                                        id="searchPegawai" placeholder="Masukkan Nama Pegawai">
                                         <button type="submit" class="btn btn-primary mb1 px-3 py-2">Cari</button>
                                     </div>
                                     <tr>

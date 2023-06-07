@@ -19,11 +19,11 @@
                             <br>
                             {{-- <a class="btn btn-success right" href="{{ route('Kategori.create') }}" style="margin-left:23cm; margin-bottom:5px;"> Tambah Data Kategori</a> --}}
                             {{-- <br> --}}
-                            <form class="form-right my-2" method="get" action="{{ route('search') }}">
+                            <form class="form-right my-2" method="get" action="{{ route('searchKategori') }}">
                                 <a class="form-group w-80 mb-3">
                                     <div class="tombol-cari mb-4">
                                         <input type="text" name="searchKategori" class="formcontrol w-50 d-inline p-2 "
-                                        id="searchKategori" placeholder="Masukkan Nama">
+                                        id="searchKategori" placeholder="Masukkan Nama Kategori">
                                         <button type="submit" class="btn btn-primary mb1 px-3 py-2">Cari</button>
                                     </div>
                                     <tr>

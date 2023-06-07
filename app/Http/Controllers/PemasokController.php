@@ -132,11 +132,13 @@ class PemasokController extends Controller
             ->with(['message' => 'ID Salah!!']);
     }
 
-    public function search(Request $request)
+    public function searchPemasok(Request $request)
     {
         $keyword = $request->search;
-        $pemasok = Pemasok::where('namaPemasok', 'alamatPemasok', '%' . $keyword . '%')->paginate(1);
-        return view('layouts.pemasok.master', compact('pemasok'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $pattern = str_replace(' ', '[ ]', $keyword); // Replace spaces with '[ ]' pattern
+
+        $pemasok = Pemasok::where('namaPemasok', 'like', '%' . $keyword . '%')
+                            ->orWhere('alamatPemasok', 'like', '%' . $keyword . '%')->paginate(5);
     }
     // public function search(Request $request)
     // {
