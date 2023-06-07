@@ -16,7 +16,7 @@
                                 style="margin-left:20cm; margin-bottom:5px;"> Tambah Data Kategori</a>
                             <h2 style="text-align: left;">Kategori</h2></a>
                             <br>
-                            <form class="form-right my-2" method="get" action="{{ route('searchKategori') }}">
+                            <form class="form-right my-2" method="GET" action="{{ route('searchKategori') }}">
                                 <div class="tombol-cari mb-4">
                                     <input type="text" name="searchKategori" class="formcontrol w-50 d-inline p-2"
                                         id="searchKategori" placeholder="Masukkan Nama Kategori">

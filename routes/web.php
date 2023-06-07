@@ -52,7 +52,6 @@ Route::get('/searchKategori',[KategoriController::class, 'searchKategori'])->nam
 Route::resource('pemasok', PemasokController::class);
 Route::get('/searchPemasok',[PemasokController::class, 'searchPemasok'])->name('searchPemasok');
 
-
 Route::resource('pegawai', PegawaiController::class);
 Route::get('/searchPegawai',[PegawaiController::class, 'searchPegawai'])->name('searchPegawai');
 
