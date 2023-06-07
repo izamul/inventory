@@ -40,6 +40,7 @@
                                         <th>Nama</th>
                                         <th>Alamat</th>
                                         <th>No Telepon</th>
+                                        <th>Foto Pemasok</th>
                                         <th width="220px">Action</th>
                                     </tr>
                                 </thead>
@@ -50,6 +51,7 @@
                                             <td>{{ $masok->namaPemasok }}</td>
                                             <td>{{ $masok->alamatPemasok }}</td>
                                             <td>{{ $masok->telpPemasok }}</td>
+                                            <td><img width="100px" src="{{ asset('storage/' . $masok->fotoPemasok)}}"></td>
                                             <td>
                                                 <form action="{{ route('pemasok.destroy', $masok->idPemasok) }}" method="POST">
                                                     <a class="btn btn-info" href="{{ route('pemasok.show', $masok->idPemasok) }}">Show</a>
