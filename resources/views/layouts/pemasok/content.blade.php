@@ -1,31 +1,40 @@
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-left">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Pemasok</li>
-                        </div><!-- /.col -->
-                        </ol>
-                    </div><!-- /.col -->
-                    <div class="container">
-                        <table class="table table-striped">
-                            <a class="btn btn-success right" href="{{ route('pemasok.create') }}"
-                                style="margin-left:20cm; margin-bottom:5px;"> Tambah Data Pemasok</a>
-                            <h2 style="text-align: left;">Pemasok</h2></a>
-                            <br>
-                            {{-- <a class="btn btn-success right" href="{{ route('pemasok.create') }}" style="margin-left:23cm; margin-bottom:5px;"> Tambah Data Pemasok</a> --}}
-                            {{-- <br> --}}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-left">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Pemasok</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Pemasok</h3>
+                            <a href="{{ route('pemasok.create') }}" class="btn btn-success float-right">Tambah Data Pemasok</a>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
                             <form class="form-right my-2" method="get" action="{{ route('searchPemasok') }}">
-                                <a class="form-group w-80 mb-3">
-                                    <div class="tombol-cari mb-4">
-                                        <input type="text" name="searchPemasok" class="formcontrol w-50 d-inline p-2 "
-                                        id="searchPemasok" placeholder="Masukkan Nama / Alamat Pemasok">
-                                        <button type="submit" class="btn btn-primary mb1 px-3 py-2">Cari</button>
+                                <div class="input-group">
+                                    <input type="text" name="searchPemasok" class="form-control" placeholder="Masukkan Nama / Alamat Pemasok">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-primary">Cari</button>
                                     </div>
+                                </div>
+                            </form>
+                            <table class="table table-striped mt-3">
+                                <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th>Nama</th>
@@ -33,6 +42,8 @@
                                         <th>No Telepon</th>
                                         <th width="220px">Action</th>
                                     </tr>
+                                </thead>
+                                <tbody>
                                     @foreach ($pemasok as $masok)
                                         <tr>
                                             <td>{{ $masok->idPemasok }}</td>
@@ -40,37 +51,32 @@
                                             <td>{{ $masok->alamatPemasok }}</td>
                                             <td>{{ $masok->telpPemasok }}</td>
                                             <td>
-                                                <form action="{{ route('pemasok.destroy', $masok->idPemasok) }}"
-                                                    method="POST">
-
-                                                    <a class="btn btn-info"
-                                                        href="{{ route('pemasok.show', $masok->idPemasok) }}">Show</a>
-
-                                                    <a class="btn btn-primary"
-                                                        href="{{ route('pemasok.edit', $masok->idPemasok) }}">Edit</a>
-
+                                                <form action="{{ route('pemasok.destroy', $masok->idPemasok) }}" method="POST">
+                                                    <a class="btn btn-info" href="{{ route('pemasok.show', $masok->idPemasok) }}">Show</a>
+                                                    <a class="btn btn-primary" href="{{ route('pemasok.edit', $masok->idPemasok) }}">Edit</a>
                                                     @csrf
-
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger">Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
                                     @endforeach
-                                </a>
-                        </table>
-                        {!! $pemasok->withQueryString()->links('pagination::bootstrap-5') !!}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer clearfix">
+                            {!! $pemasok->withQueryString()->links('pagination::bootstrap-5') !!}
+                        </div>
                     </div>
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
         </div>
-        <!-- /.content-header -->
-
-        </div><!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
-
-        {{-- <a class="btn btn-success right" href="{{ route('pemasok.index') }}"
-        style="margin-left:165px"> Show All Pemasok</a> --}}
+        <!-- /.container -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
