@@ -135,22 +135,11 @@ class PemasokController extends Controller
     public function searchPemasok(Request $request)
     {
         $keyword = $request->search;
-        $pattern = str_replace(' ', '[ ]', $keyword); // Replace spaces with '[ ]' pattern
+        $pemasok = Pemasok::where(function ($query) use ($keyword) {
+            $query->where('namaPemasok', 'like', '%' . $keyword . '%')
+                ->orWhere('alamatPemasok', 'like', '%' . $keyword . '%');
+        })->paginate(5);
 
-        $pemasok = Pemasok::where('namaPemasok', 'like', '%' . $keyword . '%')
-                            ->orWhere('alamatPemasok', 'like', '%' . $keyword . '%')->paginate(5);
+        return view('layouts.pemasok.master', compact('pemasok'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
-    // public function search(Request $request)
-    // {
-    //     $query = $request->input('query');
-
-    //     $results = Pemasok::where(function ($queryBuilder) use ($query) {
-    //         $queryBuilder
-    //             ->where('namaPemasok', 'LIKE', "%$query%")
-    //             ->orWhere('alamatPemasok', 'LIKE', "%$query%")
-    //             ->orWhere('telpPemasok', 'LIKE', "%$query%");
-    //     })->get();
-
-    //     return view('layouts.pemasok.master', compact('results'));
-    // }
 }
