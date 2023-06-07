@@ -14,7 +14,7 @@
                     <div class="container">
                         <table class="table table-striped">
                             <a class="btn btn-success right" href="{{ route('kategori.create') }}"
-                                style="margin-left:23cm; margin-bottom:5px;"> Tambah Data Kategori</a>
+                                style="margin-left:20cm; margin-bottom:5px;"> Tambah Data Kategori</a>
                             <h2 style="text-align: left;">Kategori</h2></a>
                             <br>
                             {{-- <a class="btn btn-success right" href="{{ route('Kategori.create') }}" style="margin-left:23cm; margin-bottom:5px;"> Tambah Data Kategori</a> --}}
@@ -39,7 +39,7 @@
                                                 <form action="{{ route('kategori.destroy', $ktg->idKategori) }}"
                                                     method="POST">
 
-                                                    <a class="btn btn-info"
+                                                    <a class="btn~ btn-info"
                                                         href="{{ route('kategori.show', $ktg->idKategori) }}">Show</a>
 
                                                     <a class="btn btn-primary"
