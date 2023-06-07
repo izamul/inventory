@@ -16,7 +16,8 @@ class Pemasok extends Model
         'idPemasok',
         'namaPemasok',
         'alamatPemasok',
-        'telpPemasok'
+        'telpPemasok',
+        'fotoPemasok'
     ];
 
 }
