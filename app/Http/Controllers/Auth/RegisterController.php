@@ -53,6 +53,9 @@ class RegisterController extends Controller
             'namaPegawai' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'alamatPegawai' => ['required', 'string', 'max:255'],
+            'telpPegawai' => ['required', 'string', 'max:13'],
+            'level' => ['required', 'string', 'max:10'],
         ]);
     }
 
@@ -68,6 +71,9 @@ class RegisterController extends Controller
             'namaPegawai' => $data['namaPegawai'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'alamatPegawai' => $data['alamatPegawai'],
+            'telpPegawai' => $data['telpPegawai'],
+            'level' => $data['level'],
         ]);
     }
 }
