@@ -45,16 +45,17 @@
                         </div>
                         <div class="form-group">
                             <label for="fotoPemasok">Foto Pemasok</label>
-                            <input type="file" class="form-control" required="required" name="fotoPemasok" value="">
-                            @if ($pemasok->fotoPemasok)
-                            <div class="mt-2">
-                                <img src="{{ asset('storage/'.$pemasok->fotoPemasok) }}" alt="Foto Pemasok" style="max-height: 150px;">
+                            <div class="d-flex flex-column align-items-start">
+                                <img src="{{ asset('storage/' . $pemasok->fotoPemasok) }}" alt="Foto Pegawai" width="100px" class="mr-3">
+                                <div class="custom-file mt-4">
+                                    <input type="file" name="fotoPemasok" class="custom-file-input" id="fotoPemasok">
+                                    <label class="custom-file-label" for="fotoPegawai">Pilih Foto</label>
+                                </div>
                             </div>
-                            @endif
                         </div>
                         <div class="d-flex justify-content-between">
-                            <button type="submit" class="btn btn-success">Submit</button>
                             <a href="{{ route('pemasok.index') }}" class="btn btn-danger" role="button" aria-disabled="true">Kembali</a>
+                            <button type="submit" class="btn btn-success">Submit</button>
                         </div>
                     </form>
                 </div>

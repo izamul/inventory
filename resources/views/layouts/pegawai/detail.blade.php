@@ -20,6 +20,7 @@
                         <li class="list-group-item"><b>Email pegawai:</b> {{ $pegawai->email }}</li>
                         <li class="list-group-item"><b>Alamat pegawai:</b> {{ $pegawai->alamatPegawai }}</li>
                         <li class="list-group-item"><b>No Telepon pegawai:</b> {{ $pegawai->telpPegawai }}</li>
+                        <li class="list-group-item"><b>Foto Pegawai: </b><img width="100px" src="{{ asset('storage/' . $pegawai->fotoPegawai)}}"></li>
                     </ul>
                 </div>
                 <a class="btn btn-success mt-3" href="{{ route('pegawai.index') }}">Kembali</a>

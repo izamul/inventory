@@ -6,7 +6,7 @@
 
 @include('layouts.footer')
 
-<div class="container mt-5">
+<div class="container mt-3">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow">
@@ -24,7 +24,7 @@
                         </ul>
                     </div>
                     @endif
-                    <form method="post" action="{{ route('pegawai.update', $pegawai->idPegawai) }}" id="myForm">
+                    <form method="post" action="{{ route('pegawai.update', $pegawai->idPegawai) }}" id="myForm" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
@@ -49,11 +49,21 @@
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" name="password" class="form-control" id="password" value="{{ $pegawai->password }}">
+                            <input type="password" name="password" class="form-control" id="password" value="*********">
+                        </div>
+                        <div class="form-group">
+                            <label for="fotoPegawai">Foto Pegawai</label>
+                            <div class="d-flex flex-column align-items-start">
+                                <img src="{{ asset('storage/' . $pegawai->fotoPegawai) }}" alt="Foto Pegawai" width="100px" class="mr-3">
+                                <div class="custom-file mt-4">
+                                    <input type="file" name="fotoPegawai" class="custom-file-input" id="fotoPegawai">
+                                    <label class="custom-file-label" for="fotoPegawai">Pilih Foto</label>
+                                </div>
+                            </div>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <button type="submit" class="btn btn-success">Submit</button>
                             <a href="{{ route('pegawai.index') }}" class="btn btn-danger">Kembali</a>
+                            <button type="submit" class="btn btn-success">Submit</button>
                         </div>
                     </form>
                 </div>
