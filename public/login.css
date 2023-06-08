@@ -1,61 +1,119 @@
-.gradient-custom-2 {
-    /* fallback for old browsers */
-    background: #fccb90;
+/* login.css */
 
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-}
-
-@media (min-width: 768px) {
-    .gradient-form {
-        height: 100vh !important;
-    }
-}
-
-@media (min-width: 769px) {
-    .gradient-custom-2 {
-        border-top-right-radius: .3rem;
-        border-bottom-right-radius: .3rem;
-    }
-}
-
-.header-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.img-kanan {
-    background-image: url('AdminLTE/dist/img/SAHABAT TANI.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.logo-atas {
+/* Style for the body or main container */
+body {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Style for the gradient form section */
+  .gradient-form {
+    background-color: #f8f9fa; /* Set your desired background color */
+  }
+  
+  /* Style for the card container */
+  .card {
+    background-color: #fff; /* Set your desired background color */
+    border-radius: 0.5rem; /* Add desired border radius */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Add desired box shadow */
+  }
+  
+  /* Style for the header logo */
+  .header-logo {
+    margin-bottom: 2rem; /* Add desired margin */
+  }
+  
+  .container-logo {
+    /* Add styles for the container of the logo */
+  }
+  
+  .logo-atas {
     max-height: 80px;
     max-width: 100%;
-}
-
-.btn-back {
+    border-radius: 50%;
+  }
+  
+  /* Style for the form labels */
+  .form-label {
+    font-weight: 500; /* Add desired font weight */
+  }
+  
+  /* Style for the form inputs */
+  .form-control {
+    border-radius: 0.5rem; /* Add desired border radius */
+  }
+  
+  /* Style for the invalid form inputs */
+  .is-invalid {
+    border-color: #dc3545; /* Add desired color for invalid input */
+  }
+  
+  /* Style for the remember me checkbox and label */
+  .form-check-input {
+    /* Add styles for the checkbox input */
+  }
+  
+  .form-check-label {
+    /* Add styles for the checkbox label */
+  }
+  
+  /* Style for the login button */
+  .btn-primary {
+    background-color: #4e73df; /* Add desired background color */
+    border-color: #4e73df; /* Add desired border color */
+  }
+  
+  /* Style for the back button */
+  .btn-back {
     display: inline-block;
     padding: 5px 15px;
     background-color: #ee7724;
     border-radius: 5px;
-    color: white ;
+    color: white;
     font-size: 0.8rem;
     text-decoration: none;
     margin-bottom: 10px;
-}
-
-
-
-.btn-back:hover{
+  }
+  
+  .btn-back:hover {
     background-color: #eee;
     transition: 0.3s ease-out;
     color: black;
-}
+  }
+  
+  /* Additional styles */
+  .gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fccb90;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+  }
+  
+  @media (min-width: 768px) {
+    .gradient-form {
+      height: 100vh !important;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .gradient-custom-2 {
+      border-top-right-radius: 0.3rem;
+      border-bottom-right-radius: 0.3rem;
+    }
+  }
+  
+  .header-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .img-kanan {
+    background-image: url('AdminLTE/dist/img/SAHABAT TANI.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  

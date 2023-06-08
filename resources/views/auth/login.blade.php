@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.css" rel="stylesheet" />
 </head>
 
-<section class="h-100 gradient-form" style="background-color: #eee;">
+<section class="h-100 gradient-form" style="background-color: #f8f9fa;">
 
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -16,14 +16,14 @@
                 <a href="{{ route('welcome') }}" class="btn-back">
                     Kembali
                 </a>
-                <div class="card rounded-5 text-black">
+                <div class="card rounded-5 text-black shadow">
                     <div class="row g-10" height="50%">
                         <div class="col-lg-6" height="50%" width="50%">
                             <div class="card-body p-md-5 mx-md-4">
                                 <div class="text-center header-logo">
                                     <div class="container-logo">
                                         <img src="{{ asset('AdminLTE/dist') }}/img/Group 1.png" alt="Logo"
-                                            class="logo-atas">
+                                            class="logo-atas" style="width: 80px; border-radius: 50%;">
                                     </div>
 
                                     <h4 class="mt-1 mb-5 pb-1">SAHABAT TANI</h4>
@@ -66,7 +66,7 @@
                                                 {{ __('Remember Me') }}
                                             </label>
                                         </div>
-                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mt-2"
+                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mt-4"
                                             type="submit">{{ __('Login') }}</button>
                                     </div>
                                 </form>
@@ -80,6 +80,7 @@
                 </div>
             </div>
         </div>
-        <!-- MDB -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.js"></script>
+    </div>
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.js"></script>
 </section>

@@ -1,13 +1,12 @@
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-white elevation-4">
-            <!-- Brand Logo -->
-            <a href="{{ route('home') }}" class="brand-link">
-                <img src="{{asset('AdminLTE/dist')}}/img/Group 1.png" alt="Group Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-heavy text-dark">Sahabat Tani</span>
-            </a>
+<aside class="main-sidebar sidebar-white elevation-4">
+    <!-- Brand Logo -->
+    <a href="{{ route('home') }}" class="brand-link">
+        <img src="{{ asset('AdminLTE/dist/img/Group 1.png') }}" alt="Group Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-bold text-dark">Sahabat Tani</span>
+    </a>
 
-            <!-- Sidebar -->
-            <div class="sidebar">
+    <!-- Sidebar -->
+    <div class="sidebar">
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">

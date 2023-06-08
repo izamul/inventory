@@ -7,17 +7,15 @@
 @include('layouts.footer')
 
 <div class="container mt-5">
-
     <div class="row justify-content-center align-items-center">
-        <div class="card" style="width: 24rem;">
-            <div class="card-header">
+        <div class="card shadow-lg" style="width: 24rem;">
+            <div class="card-header bg-primary text-white">
                 Tambah Data Pegawai
             </div>
             <div class="card-body">
                 @if ($errors->any())
                 <div class="alert alert-danger">
                     <strong>Whoops!</strong> There were some problems with your input.<br><br>
-
                     <ul>
                         @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -50,9 +48,12 @@
                     </div>
                     <div class="form-group">
                         <label for="password">Password Akun</label>
-                        <input type="telpPegawai" name="password" class="form-control" id="password" aria-describedby="password">
+                        <input type="password" name="password" class="form-control" id="password" aria-describedby="password">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                        <a href="{{ route('pegawai.index') }}" class="btn btn-danger" role="button" aria-disabled="true">Kembali</a>
+                    </div>
                 </form>
             </div>
         </div>

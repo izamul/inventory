@@ -27,8 +27,8 @@
                         <form action="{{ route('profile', Auth::user()->idPegawai)}}" method="post">
                             @csrf
                             <button type="submit" class="dropdown-item">
-                            <i class="fas fa-user mr-2"></i> Profile
-                            </button>
+                                <i class="fas fa-info-circle mr-2"></i> Detail Profile
+                            </button>                            
                         </form>    
                         <form action="{{ route('logout')}}" method="post">
                             @csrf
