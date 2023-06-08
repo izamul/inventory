@@ -38,7 +38,9 @@ Route::post('/profile/{id}', [ProfileController::class, 'show'])->name('profile'
 
 Route::group(['middleware' => 'level:1'], function () {
     Route::resource('pegawai', PegawaiController::class);
+    Route::get('/searchPegawai',[PegawaiController::class, 'searchPegawai'])->name('searchPegawai');
 });
+
 
 
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -52,6 +54,4 @@ Route::get('/searchKategori',[KategoriController::class, 'searchKategori'])->nam
 Route::resource('pemasok', PemasokController::class);
 Route::get('/searchPemasok',[PemasokController::class, 'searchPemasok'])->name('searchPemasok');
 
-Route::resource('pegawai', PegawaiController::class);
-Route::get('/searchPegawai',[PegawaiController::class, 'searchPegawai'])->name('searchPegawai');
 
