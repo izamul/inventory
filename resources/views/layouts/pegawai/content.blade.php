@@ -1,9 +1,9 @@
     <!-- Main content -->
-    <section class="content">
+    <section class="content-wrapper">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card">
+                    <div class="card mt-3">
                         <div class="card-header">
                             <h3 class="card-title">Pegawai</h3>
                             <a href="{{ route('pegawai.create') }}" class="btn btn-success float-right">Tambah Data Pegawai</a>
