@@ -19,6 +19,7 @@
                     <li class="list-group-item"><b>Nama Pemasok: </b>{{ $pemasok->namaPemasok }}</li>
                     <li class="list-group-item"><b>Alamat Pemasok : </b>{{ $pemasok->alamatPemasok }}</li>
                     <li class="list-group-item"><b>No Telepon Pemasok : </b>{{ $pemasok->telpPemasok }}</li>
+                    <li class="list-group-item"><b>Foto Pemasok : </b><img width="100px" src="{{ asset('storage/' . $pemasok->fotoPemasok)}}"></li>
                 </ul>
             </div>
             <a class="btn btn-success mt-3" href="{{ route('pemasok.index') }}">Kembali</a>

@@ -26,7 +26,7 @@
                 </div>
                 @endif
 
-                <form method="post" action="{{ route('pemasok.store') }}" id="myForm">
+                <form method="post" action="{{ route('pemasok.store') }}" id="myForm" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="idPemasok">Id Pemasok</label>
@@ -43,6 +43,10 @@
                     <div class="form-group">
                         <label for="telpPemasok">No Telepon</label>
                         <input type="telpPemasok" name="telpPemasok" class="form-control" id="telpPemasok" aria-describedby="telpPemasok">
+                    </div>
+                    <div class="form-group">
+                        <label for="fotoPemasok">Foto Pemasok</label>
+                        <input type="file" class="form-control" required="required" id="fotoPemasok" name="fotoPemasok" aria-describedby="fotoPemasok">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

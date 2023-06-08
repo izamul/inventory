@@ -136,11 +136,15 @@ class PegawaiController extends Controller
         return redirect()->route('pegawai.index')->with(['message'=> 'ID Salah!!']);
     }
 
-    //Untuk Search Bar
+
+    
     public function searchPegawai(Request $request)
     {
-        $keyword = $request->searchKategori;
-        $pegawai = Pegawai::where('namaPegawai', 'like', "%" . $keyword . "%")->paginate(5);
+        $keyword = $request->search;
+        $pattern = str_replace(' ', '[ ]', $keyword); // Replace spaces with '[ ]' pattern
+
+        $pegawai = Pegawai::where('namaPegawai', 'like', '%' . $keyword . '%')
+                            ->orWhere('alamatPegawai', 'like', '%' . $keyword . '%')->paginate(5);
         return view('layouts.pegawai.master', compact('pegawai'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
