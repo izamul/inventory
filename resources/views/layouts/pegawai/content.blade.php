@@ -18,7 +18,7 @@
                         <br>
                         <form class="form-right my-2" method="get" action="{{ route('searchPegawai') }}">
                             <div class="tombol-cari mb-4">
-                                <input type="text" name="searchPegawai" class="form-control w-50 d-inline p-2"
+                                <input type="text" name="search" class="form-control w-50 d-inline p-2"
                                     id="searchPegawai" placeholder="Masukkan Nama Pegawai">
                                 <button type="submit" class="btn btn-primary mb1 px-3 py-2">Cari</button>
                             </div>
