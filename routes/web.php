@@ -8,6 +8,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\PemasokController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BarangController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,5 +54,8 @@ Route::get('/searchKategori',[KategoriController::class, 'searchKategori'])->nam
 
 Route::resource('pemasok', PemasokController::class);
 Route::get('/searchPemasok',[PemasokController::class, 'searchPemasok'])->name('searchPemasok');
+
+Route::resource('barang', BarangController::class);
+Route::get('/searchBarang',[BarangController::class, 'searchBarang'])->name('searchBarang');
 
 

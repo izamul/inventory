@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Barang;
 
 class Pemasok extends Model
 {
@@ -20,5 +21,8 @@ class Pemasok extends Model
         'fotoPemasok'
     ];
 
-}
+    public function barang(){
+        return $this->hasMany(Barang::class);
+    }
+}   
     

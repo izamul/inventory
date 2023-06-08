@@ -35,6 +35,10 @@
                                 <i class="nav-icon fas fa-truck"></i>
                                 <p>Pemasok</p>
                             </a>
+                            <a href="{{ route('barang.index') }}" class="nav-link active">
+                                <i class="nav-icon fas fa-truck"></i>
+                                <p>Barang</p>
+                            </a>
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
