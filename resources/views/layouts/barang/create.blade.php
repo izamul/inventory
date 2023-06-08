@@ -25,7 +25,7 @@
                 </div>
                 @endif
 
-                <form method="post" action="{{ route('barang.store') }}" id="myForm">
+                <form method="post" action="{{ route('barang.store') }}" id="myForm" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="namaBarang">Nama Barang</label>
@@ -59,7 +59,17 @@
                             @endforeach
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="form-group">
+                        <label for="fotoBarang">Foto Barang</label>
+                        <div class="custom-file">
+                            <input type="file" name="fotoBarang" class="custom-file-input" id="fotoBarang">
+                            <label class="custom-file-label" for="fotoPegawai">Pilih Foto</label>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ route('barang.index') }}" class="btn btn-danger">Kembali</a>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
                 </form>
             </div>
         </div>
