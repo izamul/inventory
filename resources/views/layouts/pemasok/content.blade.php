@@ -46,7 +46,7 @@
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <!-- <button type="submit" class="btn btn-danger">Delete</button>-->
 
                                                     <a class="btn btn-info"
                                                         href="{{ route('pemasok.show', $masok->idPemasok) }}">Show</a>
@@ -54,8 +54,28 @@
                                                     <a class="btn btn-primary"
                                                         href="{{ route('pemasok.edit', $masok->idPemasok) }}">Edit</a>
 
-                                                    
-
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteConfirmation{{ $masok->idPemasok }}">Delete</button>
+                                                
+                                                <!-- Modal -->
+                                            <div class="modal fade" id="deleteConfirmation{{ $masok->idPemasok }}" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationLabel{{ $masok->idPemasok }}" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="deleteConfirmationLabel{{ $masok->idPemasok }}">Konfirmasi Hapus</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Apakah Anda yakin ingin menghapus Pemasok ini?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                                     
                                                 </form>
                                             </td>
