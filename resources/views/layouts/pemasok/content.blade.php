@@ -23,7 +23,7 @@
                                 <a class="form-group w-80 mb-3">
                                     <div class="tombol-cari mb-4">
                                         <input type="text" name="search" class="formcontrol w-50 d-inline p-2 "
-                                        id="searchPemasok" placeholder="Masukkan Nama / Alamat Pemasok">
+                                            id="searchPemasok" placeholder="Masukkan Nama / Alamat Pemasok">
                                         <button type="submit" class="btn btn-primary mb1 px-3 py-2">Cari</button>
                                     </div>
                                     <tr>
@@ -40,23 +40,21 @@
                                             <td>{{ $masok->namaPemasok }}</td>
                                             <td>{{ $masok->alamatPemasok }}</td>
                                             <td>{{ $masok->telpPemasok }}</td>
-                                            <td><img width="100px" src="{{ asset('storage/' . $masok->fotoPemasok)}}"></td>
+                                            <td><img width="100px" src="{{ asset('storage/' . $masok->fotoPemasok) }}">
+                                            </td>
                                             <td>
                                                 <form action="{{ route('pemasok.destroy', $masok->idPemasok) }}"
                                                     method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
-
                                                     <a class="btn btn-info"
                                                         href="{{ route('pemasok.show', $masok->idPemasok) }}">Show</a>
 
                                                     <a class="btn btn-primary"
                                                         href="{{ route('pemasok.edit', $masok->idPemasok) }}">Edit</a>
 
-                                                    
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
 
-                                                    
                                                 </form>
                                             </td>
                                         </tr>
