@@ -18,7 +18,7 @@
                         <li class="list-group-item"><b>No Telepon pegawai:</b> {{ $pegawai->telpPegawai }}</li>
                     </ul>
                 </div>
-                <a class="btn btn-success mt-3" href="{{ route('pegawai.index') }}">Kembali</a>
+                <a class="btn btn-success mt-3" href="{{ route('home') }}">Kembali</a>
             </div>
         </div>
     </div>
