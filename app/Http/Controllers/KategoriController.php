@@ -107,14 +107,21 @@ class KategoriController extends Controller
      */
     public function destroy($idKategori)
     {
-        $kategori =Kategori::where('idKategori',$idKategori)->first();
+        $kategori = Kategori::find($idKategori);
 
         if ($kategori != null) {
+            // Periksa apakah terdapat data barang yang terkait dengan kategori
+            if ($kategori->barang()->count() > 0) {
+                return response()->view('deletefail', [], 403);
+            }
+
+            // Hapus kategori jika tidak terdapat data barang terkait
             $kategori->delete();
+
             return redirect()->route('kategori.index')->with('success', 'Kategori Berhasil Dihapus');
         }
-    
-        return redirect()->route('kategori.index')->with(['message'=> 'ID Salah!!']);
+
+        return redirect()->route('kategori.index')->with(['message' => 'ID Salah!!']);
     }
 
     //Untuk Search Bar

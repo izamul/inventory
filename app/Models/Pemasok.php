@@ -21,8 +21,10 @@ class Pemasok extends Model
         'fotoPemasok'
     ];
 
-    public function barang(){
-        return $this->hasMany(Barang::class);
+    public function barang()
+    {
+        return $this->hasMany(Barang::class, 'pemasok_id', 'idPemasok');
     }
+    
 }   
     

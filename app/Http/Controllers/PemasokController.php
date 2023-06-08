@@ -44,22 +44,20 @@ class PemasokController extends Controller
      */
     public function store(Request $request)
     {
-        // if ($request->file('image')) {
-             $image_name = $request->file('fotoPemasok')->store('images', 'public');
-        // }
         $request->validate([
             'idPemasok' => 'required',
             'namaPemasok' => 'required',
             'alamatPemasok' => 'required',
             'telpPemasok' => 'required',
-            'fotoPemasok' => 'required',
+            'fotoPemasok' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+        $image_name = $request->file('fotoPemasok')->store('images', 'public');
         $pemasok = new Pemasok();
         $pemasok->idPemasok = $request->get('idPemasok');
         $pemasok->namaPemasok = $request->get('namaPemasok');
         $pemasok->alamatPemasok = $request->get('alamatPemasok');
         $pemasok->telpPemasok = $request->get('telpPemasok');
-        $pemasok->fotoPemasok= $image_name;
+        $pemasok->fotoPemasok = $image_name;
         // $image_name;
         $pemasok->save();
         return redirect()
@@ -105,7 +103,7 @@ class PemasokController extends Controller
             'namaPemasok' => 'required',
             'alamatPemasok' => 'required',
             'telpPemasok' => 'required',
-            'fotoPemasok' => 'required',
+            'fotoPemasok' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         $pemasok = Pemasok::find($idPemasok);
 
@@ -121,7 +119,7 @@ class PemasokController extends Controller
         $pemasok->telpPemasok = $request->get('telpPemasok');
         $pemasok->fotoPemasok = $image_name;
         $pemasok->save();
-        
+
         return redirect()
             ->route('pemasok.index')
             ->with('success', 'Pemasok Berhasil Di Update');
@@ -137,19 +135,29 @@ class PemasokController extends Controller
      */
     public function destroy($idPemasok)
     {
-        $pemasok = Pemasok::where('idPemasok', $idPemasok)->first();
-
+        $pemasok = Pemasok::find($idPemasok);
+    
         if ($pemasok != null) {
+            // Periksa apakah terdapat data barang yang terkait dengan pemasok
+            if ($pemasok->barang()->count() > 0) {
+                return response()->view('deletefail', [], 403);
+            }
+    
+            // Hapus pemasok jika tidak terdapat data barang terkait
             $pemasok->delete();
+    
             return redirect()
                 ->route('pemasok.index')
                 ->with('success', 'Pemasok Berhasil Dihapus');
         }
-
+    
         return redirect()
             ->route('pemasok.index')
             ->with(['message' => 'ID Salah!!']);
     }
+    
+    
+    
 
     public function searchPemasok(Request $request)
     {

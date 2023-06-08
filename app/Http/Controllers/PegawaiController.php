@@ -6,6 +6,7 @@ use App\Models\Pegawai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class PegawaiController extends Controller
 {
@@ -51,16 +52,19 @@ class PegawaiController extends Controller
             'alamatPegawai' => 'required',
             'email' => 'required',
             'password' => 'required',
-            ]);
+            'fotoPegawai' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+
+        ]);
+        $image_name = $request->file('fotoPegawai')->store('images', 'public');
         $pegawai = new Pegawai;
-        $pegawai->idPegawai=$request->get('idPegawai');
-        $pegawai->namaPegawai=$request->get('namaPegawai');
-        $pegawai->alamatPegawai=$request->get('alamatPegawai');
-        $pegawai->telpPegawai=$request->get('telpPegawai');
-        $pegawai->email=$request->get('email');
-        $pegawai->password=$request->get('password');
-        $pegawai->fotoPegawai='tes';
-        $pegawai->level=1;
+        $pegawai->idPegawai = $request->get('idPegawai');
+        $pegawai->namaPegawai = $request->get('namaPegawai');
+        $pegawai->alamatPegawai = $request->get('alamatPegawai');
+        $pegawai->telpPegawai = $request->get('telpPegawai');
+        $pegawai->email = $request->get('email');
+        $pegawai->password = $request->get('password');
+        $pegawai->fotoPegawai = $image_name;
+        $pegawai->level = 2;
         $pegawai->save();
         return redirect()->route('pegawai.index')->with('success', 'Pegawai Berhasil Ditambahkan');
     }
@@ -96,24 +100,32 @@ class PegawaiController extends Controller
      * @param  \App\Models\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$idPegawai)
+    public function update(Request $request, $idPegawai)
     {
+
         $request->validate([
             'idPegawai' => 'required',
             'namaPegawai' => 'required',
             'alamatPegawai' => 'required',
             'email' => 'required',
             'password' => 'required',
-            ]);
+            'fotoPegawai' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        $pegawai = Pegawai::find($idPegawai);
+
+        if ($pegawai->fotoPegawai && file_exists(storage_path('app/public/' . $pegawai->fotoPegawai))) {
+            Storage::delete('public/' . $pegawai->fotoPegawai);
+        }
+        $image_name = $request->file('fotoPegawai')->store('images', 'public');
         $pegawai = Pegawai::where('idPegawai', $idPegawai)->first();
-        $pegawai->idPegawai=$request->get('idPegawai');
-        $pegawai->namaPegawai=$request->get('namaPegawai');
-        $pegawai->alamatPegawai=$request->get('alamatPegawai');
-        $pegawai->telpPegawai=$request->get('telpPegawai');
-        $pegawai->email=$request->get('email');
-        $pegawai->password=$request->get('password');
-        $pegawai->fotoPegawai='tes';
-        $pegawai->level=1;
+        $pegawai->idPegawai = $request->get('idPegawai');
+        $pegawai->namaPegawai = $request->get('namaPegawai');
+        $pegawai->alamatPegawai = $request->get('alamatPegawai');
+        $pegawai->telpPegawai = $request->get('telpPegawai');
+        $pegawai->email = $request->get('email');
+        $pegawai->password = $request->get('password');
+        $pegawai->fotoPegawai = $image_name;
+        $pegawai->level = 2;
         $pegawai->save();
         return redirect()->route('pegawai.index')->with('success', 'Pegawai Berhasil Diedit');
     }
@@ -126,26 +138,27 @@ class PegawaiController extends Controller
      */
     public function destroy($idPegawai)
     {
-        $pegawai = Pegawai::where('idKategori',$idPegawai)->first();
+        $pegawai = Pegawai::where('idPegawai', $idPegawai)->first();
 
         if ($pegawai != null) {
             $pegawai->delete();
             return redirect()->route('pegawai.index')->with('success', 'Pegawai Berhasil Dihapus');
         }
-    
-        return redirect()->route('pegawai.index')->with(['message'=> 'ID Salah!!']);
+
+        return redirect()->route('pegawai.index')->with(['message' => 'ID Salah!!']);
     }
 
 
-    
+
     public function searchPegawai(Request $request)
     {
-        $keyword = $request->search;
-        $pattern = str_replace(' ', '[ ]', $keyword); // Replace spaces with '[ ]' pattern
+        // $keyword = $request->searchKategori;
+        // $kategori = Kategori::where('namaKategori', 'like', "%" . $keyword . "%")->paginate(5);
+        // return view('layouts.kategori.master', compact('kategori'))->with('i', (request()->input('page', 1) - 1) * 5);
 
+        $keyword = $request->searchPegawai;
         $pegawai = Pegawai::where('namaPegawai', 'like', '%' . $keyword . '%')
-                            ->orWhere('alamatPegawai', 'like', '%' . $keyword . '%')->paginate(5);
+            ->orWhere('alamatPegawai', 'like', '%' . $keyword . '%')->paginate(5);
         return view('layouts.pegawai.master', compact('pegawai'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
-
 }
