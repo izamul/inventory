@@ -19,8 +19,9 @@ class CheckUserLevel
         if (auth()->check() && auth()->user()->level === 1) {
             return $next($request);
         }
-        
-        abort(403, 'Unauthorized');
+    
+        return response()->view('unauthorized', [], 403);
     }
+    
     
 }
