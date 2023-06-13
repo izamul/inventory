@@ -70,7 +70,7 @@
           <div class="row align-items-center min-vh-75 min-vh-lg-100">
             <div class="col-md-7 col-lg-6 col-xxl-5 py-6 text-sm-start text-center">
               <h1 class="mt-6 mb-sm-4 fw-semi-bold lh-sm fs-4 fs-lg-5 fs-xl-6">Selamat Datang Di<br class="d-block d-lg-block" />Kios Sahabat Tani</h1>
-              <p class="mb-4 fs-1">Kami mengundang Anda untuk menjelajahi, mengeksplorasi produk dan layanan kami, serta menghubungi tim kami jika Anda memiliki pertanyaan atau ingin berdiskusi tentang kebutuhan pertanian Anda. Bersama-sama, mari kita menciptakan masa depan pertanian yang berkelanjutan dan menguntungkan untuk semua pihak.</p>
+              <p class="mb-4 fs-1">"Bersama Sahabat Tani, Tanam Harapan, Panen Sukses"</p>
             </div>
           </div>
         </div>

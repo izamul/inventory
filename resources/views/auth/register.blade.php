@@ -5,13 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header bg-primary text-white">{{ __('Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="row mb-3">
+                        <div class="mb-3 row">
                             <label for="idPegawai" class="col-md-4 col-form-label text-md-end">{{ __('ID Pegawai') }}</label>
 
                             <div class="col-md-6">
@@ -26,7 +26,7 @@
                         </div>
 
 
-                        <div class="row mb-3">
+                        <div class="mb-3 row">
                             <label for="namaPegawai" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
@@ -40,7 +40,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="mb-3 row">
                             <label for="alamatPegawai" class="col-md-4 col-form-label text-md-end">{{ __('Alamat Pegawai') }}</label>
 
                             <div class="col-md-6">
@@ -54,8 +54,8 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="telpPegawai" class="col-md-4 col-form-label text-md-end">{{ __(' Nomor Telepon Pegawai') }}</label>
+                        <div class="mb-3 row">
+                            <label for="telpPegawai" class="col-md-4 col-form-label text-md-end">{{ __('Nomor Telepon Pegawai') }}</label>
 
                             <div class="col-md-6">
                                 <input id="telpPegawai" type="telpPegawai" class="form-control @error('telpPegawai') is-invalid @enderror" name="telpPegawai" value="{{ old('telpPegawai') }}" required autocomplete="telpPegawai">
@@ -68,7 +68,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="mb-3 row">
                             <label for="level" class="col-md-4 col-form-label text-md-end">{{ __('Tingkatan Level') }}</label>
 
                             <div class="col-md-6">
@@ -82,7 +82,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="mb-3 row">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
@@ -96,7 +96,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="mb-3 row">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -110,7 +110,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="mb-3 row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
@@ -118,7 +118,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-0">
+                        <div class="mb-0 row">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
