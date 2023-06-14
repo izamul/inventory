@@ -74,7 +74,7 @@
                                 class="mr-3">
                             <div class="custom-file mt-4">
                                 <input type="file" name="fotoBarang" class="custom-file-input" id="fotoBarang">
-                                <label class="custom-file-label" for="fotoPegawai">Pilih Foto</label>
+                                <label class="custom-file-label" for="fotoBarang">Pilih Foto</label>
                             </div>
                         </div>
                     </div>

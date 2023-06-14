@@ -104,10 +104,16 @@ class PemasokController extends Controller
             'fotoPemasok' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         $pemasok = Pemasok::find($idPemasok);
-
-        if ($pemasok->fotoPemasok && file_exists(storage_path('app/public/' . $pemasok->fotoPemasok))) {
-            Storage::delete('public/' . $pemasok->fotoPemasok);
+        
+        if ($request->hasFile('fotoPemasok')) {
+            if ($pemasok->fotoPemasok && file_exists(storage_path('app/public/' . $pemasok->fotoPemasok))) {
+                Storage::delete('public/' . $pemasok->fotoPemasok);
+            }
+            $image_name = $request->file('fotoPemasok')->store('images', 'public');
+        } else {
+            $image_name = $pemasok->fotoPemasok;
         }
+        
         $image_name = $request->file('fotoPemasok')->store('images', 'public');
         $pemasok = Pemasok::where('idPemasok', $idPemasok)->first();
         $pemasok->namaPemasok = $request->get('namaPemasok');

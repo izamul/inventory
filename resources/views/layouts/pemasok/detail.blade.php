@@ -4,7 +4,6 @@
 
 @include('layouts.sidebar')
 
-@include('layouts.footer')
 
 <div class="container mt-5">
 
@@ -27,3 +26,5 @@
         </div>
     </div>
 </div>
+
+@include('layouts.footer')

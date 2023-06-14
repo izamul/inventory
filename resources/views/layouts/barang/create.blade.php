@@ -4,7 +4,7 @@
 
 @include('layouts.sidebar')
 
-@include('layouts.footer')
+
 <div class="container mt-5">
 
     <div class="row justify-content-center align-items-center">
@@ -76,9 +76,12 @@
     </div>
 </div>
 
+@include('layouts.footer')
+
 <script>
     $('#fotoBarang').on('change', function() {
         var fileName = $(this).val().split('\\').pop();
         $(this).next('.custom-file-label').html(fileName);
     });
 </script>
+

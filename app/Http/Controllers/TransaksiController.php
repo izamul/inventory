@@ -31,11 +31,12 @@ class TransaksiController extends Controller
         $status = ($type === 'data-keluar') ? 'out' : 'in';
         return view('layouts.transaksi.create', compact('barang', 'status'));
     }
-    
-    
+
+
 
     public function store(Request $request)
     {
+
         $request->validate([
             'tanggal' => 'required',
             'status' => 'required',
@@ -45,27 +46,14 @@ class TransaksiController extends Controller
             'pencatat' => 'required',
         ]);
 
-        $barang = Barang::find($request->namaBarang);
+        $transaksi = new Transaksi();
+        $transaksi->tanggal = $request->get('tanggal');
+        $transaksi->status = $request->get('status');
+        $transaksi->totalHarga = $request->get('totalHarga');
+        $transaksi->jumlah = $request->get('jumlah');
+        $transaksi->pencatat = $request->get('pencatat');
 
-        if (!$barang) {
-            return redirect()->back()->with('error', 'Barang tidak ditemukan.');
-        }
-
-        if ($request->jumlah > $barang->jumlah) {
-            return redirect()->back()->with('error', 'Jumlah melebihi stok barang yang tersedia.');
-        }
-
-        $transaksi = new Transaksi([
-            'tanggal' => $request->tanggal,
-            'status' => $request->status,
-            'totalHarga' => $request->totalHarga,
-            'jumlah' => $request->jumlah,
-            'pencatat' => $request->pencatat,
-        ]);
-
-        $barang->jumlah -= $request->jumlah;
-        $barang->save();
-
+        $barang = Barang::findOrFail($request->get('namaBarang'));
         $transaksi->barang()->associate($barang);
         $transaksi->save();
 
@@ -108,4 +96,25 @@ class TransaksiController extends Controller
 
         return view('layouts.transaksi.inout', ['transaksi' => $transaksiKeluar]);
     }
+
+    public function searchTransaksi(Request $request)
+    {
+        $keyword = $request->searchTransaksi;
+        $transaksi = Transaksi::whereHas('barang', function ($query) use ($keyword) {
+            $query->where('namaBarang', 'like', '%' . $keyword . '%');
+        })->paginate(5);
+
+        return view('layouts.transaksi.master', compact('transaksi'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+    public function searchTransaksiData(Request $request)
+{
+    $keyword = $request->searchTransaksi;
+    $transaksi = Transaksi::whereHas('barang', function ($query) use ($keyword) {
+        $query->where('namaBarang', 'like', '%' . $keyword . '%');
+    })->paginate(5);
+
+    return view('layouts.transaksi.inout', compact('transaksi'))->with('i', (request()->input('page', 1) - 1) * 5);
+}
+
 }

@@ -78,10 +78,16 @@ class BarangController extends Controller
             'fotoBarang' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         $barang = Barang::findOrFail($idBarang);
-        if ($barang->fotoBarang && file_exists(storage_path('app/public/' . $barang->fotoBarang))) {
-            Storage::delete('public/' . $barang->fotoBarang);
-        }       
-        $image_name = $request->file('fotoPegawai')->store('images', 'public');
+        if ($request->hasFile('fotoBarang')) {
+            if ($barang->fotoBarang && file_exists(storage_path('app/public/' . $barang->fotoBarang))) {
+                Storage::delete('public/' . $barang->fotoBarang);
+            }
+            $image_name = $request->file('fotoBarang')->store('images', 'public');
+        } else {
+            $image_name = $barang->fotoBarang;
+        }
+
+
         $barang->namaBarang = $request->get('namaBarang');
         $barang->satuan = $request->get('satuan');
         $barang->harga = $request->get('harga');
@@ -110,5 +116,13 @@ class BarangController extends Controller
         $barang = Barang::findOrFail($idBarang);
         $barang->delete();
         return redirect()->route('barang.index')->with('success', 'Barang Berhasil Dihapus');
+    }
+
+    public function searchBarang(Request $request)
+    {
+        $keyword = $request->searchBarang;
+        $barang = Barang::where('namaBarang', 'like', '%' . $keyword . '%')->paginate(5);
+
+        return view('layouts.barang.master', compact('barang'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }
