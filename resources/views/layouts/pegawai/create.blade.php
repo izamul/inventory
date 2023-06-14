@@ -27,24 +27,26 @@
                 <form method="post" action="{{ route('pegawai.store') }}" id="myForm" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="idPegawai">Id Pegawai</label>
-                        <input type="text" name="idPegawai" class="form-control" id="idPegawai"
-                            aria-describedby="idPegawai">
-                    </div>
-                    <div class="form-group">
                         <label for="namaPegawai">Nama Pegawai</label>
-                        <input type="namaPegawai" name="namaPegawai" class="form-control" id="namaPegawai"
+                        <input type="text" name="namaPegawai" class="form-control" id="namaPegawai"
                             aria-describedby="namaPegawai">
                     </div>
                     <div class="form-group">
                         <label for="alamatPegawai">Alamat</label>
-                        <input type="alamatPegawai" name="alamatPegawai" class="form-control" id="alamatPegawai"
+                        <input type="text" name="alamatPegawai" class="form-control" id="alamatPegawai"
                             aria-describedby="alamatPegawai">
                     </div>
                     <div class="form-group">
                         <label for="telpPegawai">No Telepon</label>
-                        <input type="telpPegawai" name="telpPegawai" class="form-control" id="telpPegawai"
+                        <input type="number" name="telpPegawai" class="form-control" id="telpPegawai"
                             aria-describedby="telpPegawai">
+                    </div>
+                    <div class="form-group">
+                        <label for="level">Level</label>
+                        <select name="level" class="form-control" id="level">
+                            <option value="1">Manager</option>
+                            <option value="2">Pegawai</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -73,3 +75,10 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('#fotoPegawai').on('change', function() {
+        var fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').html(fileName);
+    });
+</script>

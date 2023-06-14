@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pemasok;
+use App\Models\Transaksi;
 use Illuminate\Support\Facades\Storage;
 
 class PemasokController extends Controller
@@ -45,7 +46,6 @@ class PemasokController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'idPemasok' => 'required',
             'namaPemasok' => 'required',
             'alamatPemasok' => 'required',
             'telpPemasok' => 'required',
@@ -53,7 +53,6 @@ class PemasokController extends Controller
         ]);
         $image_name = $request->file('fotoPemasok')->store('images', 'public');
         $pemasok = new Pemasok();
-        $pemasok->idPemasok = $request->get('idPemasok');
         $pemasok->namaPemasok = $request->get('namaPemasok');
         $pemasok->alamatPemasok = $request->get('alamatPemasok');
         $pemasok->telpPemasok = $request->get('telpPemasok');
@@ -99,7 +98,6 @@ class PemasokController extends Controller
     public function update(Request $request, $idPemasok)
     {
         $request->validate([
-            'idPemasok' => 'required',
             'namaPemasok' => 'required',
             'alamatPemasok' => 'required',
             'telpPemasok' => 'required',
@@ -111,9 +109,7 @@ class PemasokController extends Controller
             Storage::delete('public/' . $pemasok->fotoPemasok);
         }
         $image_name = $request->file('fotoPemasok')->store('images', 'public');
-
         $pemasok = Pemasok::where('idPemasok', $idPemasok)->first();
-        $pemasok->idPemasok = $request->get('idPemasok');
         $pemasok->namaPemasok = $request->get('namaPemasok');
         $pemasok->alamatPemasok = $request->get('alamatPemasok');
         $pemasok->telpPemasok = $request->get('telpPemasok');
@@ -162,10 +158,7 @@ class PemasokController extends Controller
     public function searchPemasok(Request $request)
     {
         $keyword = $request->search;
-        $pemasok = Pemasok::where(function ($query) use ($keyword) {
-            $query->where('namaPemasok', 'like', '%' . $keyword . '%')
-                ->orWhere('alamatPemasok', 'like', '%' . $keyword . '%');
-        })->paginate(5);
+        $pemasok = Pemasok::where('namaPemasok', 'like', '%' . $keyword . '%')->paginate(5);
 
         return view('layouts.pemasok.master', compact('pemasok'))->with('i', (request()->input('page', 1) - 1) * 5);
     }

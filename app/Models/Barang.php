@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Kategori;
 use App\Models\Pemasok;
+use App\Models\Transaksi;
 
 class Barang extends Model
 {
@@ -15,7 +16,6 @@ class Barang extends Model
     public $primaryKey = 'idBarang';
 
     protected $fillable = [
-        'idBarang',
         'namaBarang',
         'satuan',
         'stock',
@@ -34,5 +34,11 @@ class Barang extends Model
     {
         return $this->belongsTo(Kategori::class, 'kategori_id', 'idKategori');
     }
+    public function transaksi()
+    {
+        return $this->belongsToMany(Pegawai::class, 'transaksi', 'barang_id', 'pegawai_id')
+            ->withPivot('keterangan', 'tanggal', 'status', 'totalHarga', 'jumlah');
+    }
     
+
 }
