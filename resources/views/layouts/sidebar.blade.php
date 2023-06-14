@@ -38,6 +38,10 @@
                                 <i class="nav-icon fas fa-box"></i>
                                 <p>Barang</p>
                             </a>
+                            <a href="{{ route('transaksi.index') }}" class="nav-link active">
+                                <i class="nav-icon fas fa-dollar-sign"></i>
+                                <p>Transaksi</p>
+                            </a>
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->

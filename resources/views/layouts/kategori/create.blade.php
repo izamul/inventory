@@ -27,10 +27,6 @@
                     <form method="post" action="{{ route('kategori.store') }}" id="myForm">
                         @csrf
                         <div class="form-group">
-                            <label for="idKategori">Id Kategori</label>
-                            <input type="text" name="idKategori" class="form-control" id="idKategori">
-                        </div>
-                        <div class="form-group">
                             <label for="namaKategori">Nama Kategori</label>
                             <input type="text" name="namaKategori" class="form-control" id="namaKategori">
                         </div>

@@ -40,7 +40,6 @@
                         <table class="table table-striped mt-3">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Nama</th>
                                     <th>Alamat</th>
                                     <th>No Telepon</th>
@@ -51,7 +50,6 @@
                             <tbody>
                                 @foreach ($pegawai as $pgw)
                                     <tr>
-                                        <td>{{ $pgw->idPegawai }}</td>
                                         <td>{{ $pgw->namaPegawai }}</td>
                                         <td>{{ $pgw->alamatPegawai }}</td>
                                         <td>{{ $pgw->telpPegawai }}</td>

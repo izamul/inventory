@@ -36,7 +36,6 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Nama</th>
                                         <th>Alamat</th>
                                         <th>No Telepon</th>
@@ -47,7 +46,6 @@
                                 <tbody>
                                     @foreach ($pemasok as $masok)
                                         <tr>
-                                            <td>{{ $masok->idPemasok }}</td>
                                             <td>{{ $masok->namaPemasok }}</td>
                                             <td>{{ $masok->alamatPemasok }}</td>
                                             <td>{{ $masok->telpPemasok }}</td>

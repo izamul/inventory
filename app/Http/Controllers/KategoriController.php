@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kategori;
+use App\Models\Transaksi;
 
 class KategoriController extends Controller
 {
@@ -45,11 +46,9 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'idKategori' => 'required',
             'namaKategori' => 'required',
             ]);
         $kategori = new Kategori;
-        $kategori->idKategori=$request->get('idKategori');
         $kategori->namaKategori=$request->get('namaKategori');
         $kategori->save();
         return redirect()->route('kategori.index')->with('success', 'Kategori Berhasil Ditambahkan');
@@ -89,11 +88,9 @@ class KategoriController extends Controller
     public function update(Request $request, $idKategori)
     {
         $request->validate([
-            'idKategori' => 'required',
             'namaKategori' => 'required',
             ]);
         $kategori = Kategori::where('idKategori', $idKategori)->first();
-        $kategori->idKategori=$request->get('idKategori');
         $kategori->namaKategori=$request->get('namaKategori');
         $kategori->save();
         return redirect()->route('kategori.index')->with('success', 'Kategori Berhasil DiUpdate');

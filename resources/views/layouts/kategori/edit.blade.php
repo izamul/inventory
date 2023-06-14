@@ -28,16 +28,12 @@
                         @csrf
                         @method('PUT')
                         <div class="form-group">
-                            <label for="idKategori">Id Kategori</label>
-                            <input type="text" name="idKategori" class="form-control" id="idKategori" value="{{ $kategori->idKategori }}">
-                        </div>
-                        <div class="form-group">
                             <label for="namaKategori">Nama Kategori</label>
                             <input type="text" name="namaKategori" class="form-control" id="namaKategori" value="{{ $kategori->namaKategori }}">
                         </div>
                         <div class="d-flex justify-content-between">
-                            <button type="submit" class="btn btn-success">Submit</button>
                             <a href="{{ route('kategori.index') }}" class="btn btn-danger" role="button" aria-disabled="true">Kembali</a>
+                            <button type="submit" class="btn btn-success">Submit</button>
                         </div>
                     </form>
                 </div>

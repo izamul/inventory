@@ -44,7 +44,7 @@
                             <label for="alamatPegawai" class="col-md-4 col-form-label text-md-end">{{ __('Alamat Pegawai') }}</label>
 
                             <div class="col-md-6">
-                                <input id="alamatPegawai" type="alamatPegawai" class="form-control @error('alamatPegawai') is-invalid @enderror" name="alamatPegawai" value="{{ old('alamatPegawai') }}" required autocomplete="alamatPegawai">
+                                <input id="alamatPegawai" type="text" class="form-control @error('alamatPegawai') is-invalid @enderror" name="alamatPegawai" value="{{ old('alamatPegawai') }}" required autocomplete="alamatPegawai">
 
                                 @error('alamatPegawai')
                                     <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
                             <label for="telpPegawai" class="col-md-4 col-form-label text-md-end">{{ __(' Nomor Telepon Pegawai') }}</label>
 
                             <div class="col-md-6">
-                                <input id="telpPegawai" type="telpPegawai" class="form-control @error('telpPegawai') is-invalid @enderror" name="telpPegawai" value="{{ old('telpPegawai') }}" required autocomplete="telpPegawai">
+                                <input id="telpPegawai" type="number" class="form-control @error('telpPegawai') is-invalid @enderror" name="telpPegawai" value="{{ old('telpPegawai') }}" required autocomplete="telpPegawai">
 
                                 @error('telpPegawai')
                                     <span class="invalid-feedback" role="alert">

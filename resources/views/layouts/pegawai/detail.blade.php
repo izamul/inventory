@@ -15,7 +15,6 @@
                 </div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><b>Id pegawai:</b> {{ $pegawai->idPegawai }}</li>
                         <li class="list-group-item"><b>Nama pegawai:</b> {{ $pegawai->namaPegawai }}</li>
                         <li class="list-group-item"><b>Email pegawai:</b> {{ $pegawai->email }}</li>
                         <li class="list-group-item"><b>Alamat pegawai:</b> {{ $pegawai->alamatPegawai }}</li>

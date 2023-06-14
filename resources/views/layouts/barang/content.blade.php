@@ -41,7 +41,6 @@
                             <table class="table table-striped mt-3">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Nama</th>
                                         <th>Satuan</th>
                                         <th>Stock</th>
@@ -55,7 +54,6 @@
                                 <tbody>
                                     @foreach ($barang as $brg)
                                         <tr>
-                                            <td>{{ $brg->idBarang }}</td>
                                             <td>{{ $brg->namaBarang }}</td>
                                             <td>{{ $brg->satuan }}</td>
                                             <td>{{ $brg->stock }}</td>
