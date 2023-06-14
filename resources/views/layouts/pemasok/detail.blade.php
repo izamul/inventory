@@ -4,24 +4,55 @@
 
 @include('layouts.sidebar')
 
+<style>
+    .list-group-item {
+        display: flex;
+        align-items: center;
+    }
 
-<div class="container mt-5">
+    .list-group-item b {
+        min-width: 180px;
+        margin-right: 10px;
+    }
 
-    <div class="row justify-content-center align-items-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header bg-primary text-white">
-                    Detail Pemasok
+    .card {
+        margin-top: 4rem;
+    }
+
+    .card-footer {
+        display: flex;
+        justify-content: flex-end;
+    }
+</style>
+
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        Detail Pemasok
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><b>Nama Pemasok</b> : {{ $pemasok->namaPemasok }}</li>
+                            <li class="list-group-item"><b>Alamat Pemasok</b> : {{ $pemasok->alamatPemasok }}</li>
+                            <li class="list-group-item"><b>No Telepon Pemasok</b> : {{ $pemasok->telpPemasok }}</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <div class="ml-auto">
+                            <a class="btn btn-success" href="{{ route('pemasok.index') }}">Kembali</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><b>Nama Pemasok: </b>{{ $pemasok->namaPemasok }}</li>
-                        <li class="list-group-item"><b>Alamat Pemasok : </b>{{ $pemasok->alamatPemasok }}</li>
-                        <li class="list-group-item"><b>No Telepon Pemasok : </b>{{ $pemasok->telpPemasok }}</li>
-                        <li class="list-group-item"><b>Foto Pemasok : </b><img width="100px" src="{{ asset('storage/' . $pemasok->fotoPemasok)}}"></li>
-                    </ul>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="img-fluid" src="{{ asset('storage/' . $pemasok->fotoPemasok)}}" alt="Foto Pemasok">
+                    </div>
                 </div>
-                <a class="btn btn-success mt-3" href="{{ route('pemasok.index') }}">Kembali</a>
             </div>
         </div>
     </div>

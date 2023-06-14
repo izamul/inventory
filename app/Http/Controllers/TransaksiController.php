@@ -36,7 +36,7 @@ class TransaksiController extends Controller
 
     public function store(Request $request)
     {
-
+    
         $request->validate([
             'tanggal' => 'required',
             'status' => 'required',
@@ -45,20 +45,30 @@ class TransaksiController extends Controller
             'totalHarga' => 'required|numeric',
             'pencatat' => 'required',
         ]);
-
+    
         $transaksi = new Transaksi();
         $transaksi->tanggal = $request->get('tanggal');
         $transaksi->status = $request->get('status');
         $transaksi->totalHarga = $request->get('totalHarga');
         $transaksi->jumlah = $request->get('jumlah');
         $transaksi->pencatat = $request->get('pencatat');
-
+    
         $barang = Barang::findOrFail($request->get('namaBarang'));
         $transaksi->barang()->associate($barang);
         $transaksi->save();
-
+    
+        // If the status is out, then reduce the stock of the barang by the jumlah
+        if ($transaksi->status === 'out') {
+            $barang->stock -= $transaksi->jumlah;
+            $barang->save();
+        }else{
+            $barang->stock += $transaksi->jumlah;
+            $barang->save();
+        }
+    
         return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil ditambahkan.');
     }
+    
 
     public function show($idTransaksi)
     {

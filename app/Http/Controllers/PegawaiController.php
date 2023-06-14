@@ -24,9 +24,9 @@ class PegawaiController extends Controller
 
     public function index()
     {
-        $pegawai = Pegawai::paginate(4);
-        $posts = Pegawai::orderBy('idPegawai', 'desc')->paginate(4);
-        return view('layouts.pegawai.master', compact('pegawai'))->with('i', (request()->input('page', 1) - 1) * 4);
+        $pegawai = Pegawai::paginate(5);
+        $posts = Pegawai::orderBy('idPegawai', 'desc')->paginate(5);
+        return view('layouts.pegawai.master', compact('pegawai'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**

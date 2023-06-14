@@ -87,7 +87,6 @@
                                                 <td>
                                                     <div class="btn-group" role="group">
                                                         <a class="btn btn-info btn-sm" href="{{ route('transaksi.show', $trx->idTransaksi) }}">Show</a>
-                                                        <a class="btn btn-primary btn-sm" href="{{ route('transaksi.edit', $trx->idTransaksi) }}">Edit</a>
                                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteConfirmation{{ $trx->idTransaksi }}">Delete</button>
                                                     </div>
                                                     <!-- Modal -->

@@ -19,20 +19,16 @@
         display: flex;
         justify-content: flex-end;
     }
+
+    .card {
+        margin-top: 4rem;
+    }
 </style>
 
 {{-- konten --}}
-<div class="container mt-5 mb-5">
-    <div class="row">
-        <div class="col-md-9">
+<div class="content-wrapper">
+        <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <img width="235px" src="{{ asset('storage/' . $pegawai->fotoPegawai)}}" alt="Foto Pegawai">
-                        </div>
-                    </div>
-                </div>
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header bg-primary text-white">
@@ -53,9 +49,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <img class="img-fluid" src="{{ asset('storage/' . $pegawai->fotoPegawai)}}" alt="Foto Pegawai">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 </div>
+
 {{-- konten --}}
 @include('layouts.footer')
