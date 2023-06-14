@@ -28,10 +28,6 @@
                         @csrf
                         @method('PUT')
                         <div class="form-group">
-                            <label for="idPegawai">ID Pegawai</label>
-                            <input type="text" name="idPegawai" class="form-control" id="idPegawai" value="{{ $pegawai->idPegawai }}">
-                        </div>
-                        <div class="form-group">
                             <label for="namaPegawai">Nama Pegawai</label>
                             <input type="text" name="namaPegawai" class="form-control" id="namaPegawai" value="{{ $pegawai->namaPegawai }}">
                         </div>
@@ -44,12 +40,19 @@
                             <input type="text" name="telpPegawai" class="form-control" id="telpPegawai" value="{{ $pegawai->telpPegawai }}">
                         </div>
                         <div class="form-group">
+                            <label for="level">Level</label>
+                            <select name="level" class="form-control" id="level">
+                                <option value="1">Manager</option>
+                                <option value="2">Pegawai</option>
+                            </select>
+                        </div>                        
+                        <div class="form-group">
                             <label for="email">Email</label>
                             <input type="text" name="email" class="form-control" id="email" value="{{ $pegawai->email }}">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" name="password" class="form-control" id="password" value="*********">
+                            <input type="password" name="password" class="form-control" id="password" value="">
                         </div>
                         <div class="form-group">
                             <label for="fotoPegawai">Foto Pegawai</label>
@@ -71,3 +74,10 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('#fotoPegawai').on('change', function() {
+        var fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').html(fileName);
+    });
+</script>

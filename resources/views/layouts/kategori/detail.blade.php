@@ -15,7 +15,6 @@
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
-                        <li class="list-group-item"><b>Id Kategori:</b> {{$kategori->idKategori}}</li>
                         <li class="list-group-item"><b>Nama Kategori:</b> {{$kategori->namaKategori}}</li>
                     </ul>
                 </div>

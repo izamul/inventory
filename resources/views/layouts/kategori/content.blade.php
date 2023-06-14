@@ -38,7 +38,6 @@
                             <table class="table table-striped mt-3">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Nama</th>
                                         <th width="220px">Action</th>
                                     </tr>
@@ -46,7 +45,6 @@
                                 <tbody>
                                     @foreach ($kategori as $ktg)
                                         <tr>
-                                            <td>{{ $ktg->idKategori }}</td>
                                             <td>{{ $ktg->namaKategori }}</td>
                                             <td>
                                                 <form action="{{ route('kategori.destroy', $ktg->idKategori) }}" method="POST">

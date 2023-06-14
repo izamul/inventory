@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
                 'alamatPegawai' => 'Dinoyo, Malang',
                 'telpPegawai' => '089516824205',
                 'fotoPegawai' => 'tes',
-                'level' => 1,
+                'level' => 2,
                 'Email' => 'endar@gmail.com',
                 'password' => Hash::make('endar123')
             ],
@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
                 'alamatPegawai' => 'Lowokwaru, Malang',
                 'telpPegawai' => '087873083096',
                 'fotoPegawai' => 'tes',
-                'level' => 1,
+                'level' => 2,
                 'Email' => 'naresh@gmail.com',
                 'password' => Hash::make('naresh123')
             ],
@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
                 'alamatPegawai' => 'Klojen, Malang',
                 'telpPegawai' => '08983586416',
                 'fotoPegawai' => 'tes',
-                'level' => 1,
+                'level' => 2,
                 'Email' => 'hakan@gmail.com',
                 'password' => Hash::make('alif123')
             ],
@@ -58,7 +58,7 @@ class UserSeeder extends Seeder
                 'alamatPegawai' => 'Lowokwaru, Malang',
                 'telpPegawai' => '08888090576',
                 'fotoPegawai' => 'tes',
-                'level' => 1,
+                'level' => 2,
                 'Email' => 'dimit@gmail.com',
                 'password' => Hash::make('dimit123')
             ]

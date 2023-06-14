@@ -28,11 +28,6 @@
                         enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="idPemasok">ID Pemasok</label>
-                            <input type="text" name="idPemasok" class="form-control" id="idPemasok"
-                                aria-describedby="idPemasok">
-                        </div>
-                        <div class="form-group">
                             <label for="namaPemasok">Nama Pemasok</label>
                             <input type="text" name="namaPemasok" class="form-control" id="namaPemasok"
                                 aria-describedby="namaPemasok">
@@ -65,3 +60,10 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('#fotoPemasok').on('change', function() {
+        var fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').html(fileName);
+    });
+</script>

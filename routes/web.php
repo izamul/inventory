@@ -9,6 +9,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\PemasokController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -58,4 +59,9 @@ Route::get('/searchPemasok',[PemasokController::class, 'searchPemasok'])->name('
 Route::resource('barang', BarangController::class);
 Route::get('/searchBarang',[BarangController::class, 'searchBarang'])->name('searchBarang');
 
+Route::resource('transaksi', TransaksiController::class);
+Route::get('/transaksi/create/{type?}', [TransaksiController::class, 'create'])->name('transaksi.create');
+Route::get('/searchTransaksi',[TransaksiController::class, 'searchTransaksi'])->name('searchTransaksi');
 
+Route::get('/data-masuk', [TransaksiController::class, 'dataMasuk'])->name('dataMasuk');
+Route::get('/data-keluar', [TransaksiController::class, 'dataKeluar'])->name('dataKeluar');

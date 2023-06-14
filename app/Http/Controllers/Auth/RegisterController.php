@@ -56,6 +56,7 @@ class RegisterController extends Controller
             'alamatPegawai' => ['required', 'string', 'max:255'],
             'telpPegawai' => ['required', 'string', 'max:13'],
             'level' => ['required', 'string', 'max:10'],
+            'fotoPegawai' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -74,6 +75,7 @@ class RegisterController extends Controller
             'alamatPegawai' => $data['alamatPegawai'],
             'telpPegawai' => $data['telpPegawai'],
             'level' => $data['level'],
+            'fotoPegawai' => '-',
         ]);
     }
 }

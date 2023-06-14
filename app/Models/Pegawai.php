@@ -13,7 +13,6 @@ class Pegawai extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = "users";
     protected $primaryKey = 'idPegawai';
-    public $incrementing  = false;
     public $timestamps = false;
     
     
