@@ -4,5 +4,5 @@
 
 @include('layouts.sidebar')
 
-
+@include('layouts.transaksi.content')
 @include('layouts.footer')

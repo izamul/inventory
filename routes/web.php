@@ -62,6 +62,8 @@ Route::get('/searchBarang',[BarangController::class, 'searchBarang'])->name('sea
 Route::resource('transaksi', TransaksiController::class);
 Route::get('/transaksi/create/{type?}', [TransaksiController::class, 'create'])->name('transaksi.create');
 Route::get('/searchTransaksi',[TransaksiController::class, 'searchTransaksi'])->name('searchTransaksi');
+Route::get('/searchTransaksiData',[TransaksiController::class, 'searchTransaksiData'])->name('searchTransaksiData');
+
 
 Route::get('/data-masuk', [TransaksiController::class, 'dataMasuk'])->name('dataMasuk');
 Route::get('/data-keluar', [TransaksiController::class, 'dataKeluar'])->name('dataKeluar');

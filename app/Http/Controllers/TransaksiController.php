@@ -18,7 +18,7 @@ class TransaksiController extends Controller
     public function index()
     {
         $transaksi = Transaksi::with('barang')
-            ->orderBy('idTransaksi', 'asc')
+            ->orderBy('tanggal', 'asc')
             ->paginate(5);
 
         return view('layouts.transaksi.master', compact('transaksi'))
@@ -31,11 +31,12 @@ class TransaksiController extends Controller
         $status = ($type === 'data-keluar') ? 'out' : 'in';
         return view('layouts.transaksi.create', compact('barang', 'status'));
     }
-    
-    
+
+
 
     public function store(Request $request)
     {
+    
         $request->validate([
             'tanggal' => 'required',
             'status' => 'required',
@@ -44,33 +45,30 @@ class TransaksiController extends Controller
             'totalHarga' => 'required|numeric',
             'pencatat' => 'required',
         ]);
-
-        $barang = Barang::find($request->namaBarang);
-
-        if (!$barang) {
-            return redirect()->back()->with('error', 'Barang tidak ditemukan.');
-        }
-
-        if ($request->jumlah > $barang->jumlah) {
-            return redirect()->back()->with('error', 'Jumlah melebihi stok barang yang tersedia.');
-        }
-
-        $transaksi = new Transaksi([
-            'tanggal' => $request->tanggal,
-            'status' => $request->status,
-            'totalHarga' => $request->totalHarga,
-            'jumlah' => $request->jumlah,
-            'pencatat' => $request->pencatat,
-        ]);
-
-        $barang->jumlah -= $request->jumlah;
-        $barang->save();
-
+    
+        $transaksi = new Transaksi();
+        $transaksi->tanggal = $request->get('tanggal');
+        $transaksi->status = $request->get('status');
+        $transaksi->totalHarga = $request->get('totalHarga');
+        $transaksi->jumlah = $request->get('jumlah');
+        $transaksi->pencatat = $request->get('pencatat');
+    
+        $barang = Barang::findOrFail($request->get('namaBarang'));
         $transaksi->barang()->associate($barang);
         $transaksi->save();
-
+    
+        // If the status is out, then reduce the stock of the barang by the jumlah
+        if ($transaksi->status === 'out') {
+            $barang->stock -= $transaksi->jumlah;
+            $barang->save();
+        }else{
+            $barang->stock += $transaksi->jumlah;
+            $barang->save();
+        }
+    
         return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil ditambahkan.');
     }
+    
 
     public function show($idTransaksi)
     {
@@ -108,4 +106,25 @@ class TransaksiController extends Controller
 
         return view('layouts.transaksi.inout', ['transaksi' => $transaksiKeluar]);
     }
+
+    public function searchTransaksi(Request $request)
+    {
+        $keyword = $request->searchTransaksi;
+        $transaksi = Transaksi::whereHas('barang', function ($query) use ($keyword) {
+            $query->where('namaBarang', 'like', '%' . $keyword . '%');
+        })->paginate(5);
+
+        return view('layouts.transaksi.master', compact('transaksi'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+    public function searchTransaksiData(Request $request)
+{
+    $keyword = $request->searchTransaksi;
+    $transaksi = Transaksi::whereHas('barang', function ($query) use ($keyword) {
+        $query->where('namaBarang', 'like', '%' . $keyword . '%');
+    })->paginate(5);
+
+    return view('layouts.transaksi.inout', compact('transaksi'))->with('i', (request()->input('page', 1) - 1) * 5);
+}
+
 }

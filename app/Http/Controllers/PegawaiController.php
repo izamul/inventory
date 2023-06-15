@@ -24,9 +24,9 @@ class PegawaiController extends Controller
 
     public function index()
     {
-        $pegawai = Pegawai::paginate(4);
-        $posts = Pegawai::orderBy('idPegawai', 'desc')->paginate(4);
-        return view('layouts.pegawai.master', compact('pegawai'))->with('i', (request()->input('page', 1) - 1) * 4);
+        $pegawai = Pegawai::paginate(5);
+        $posts = Pegawai::orderBy('idPegawai', 'desc')->paginate(5);
+        return view('layouts.pegawai.master', compact('pegawai'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -106,24 +106,22 @@ class PegawaiController extends Controller
             'alamatPegawai' => 'required',
             'email' => 'required',
             'level' => 'required',
-            'password' => 'required',
             'fotoPegawai' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-    
+
         $pegawai = Pegawai::find($idPegawai);
         $pegawai->namaPegawai = $request->get('namaPegawai');
         $pegawai->alamatPegawai = $request->get('alamatPegawai');
         $pegawai->telpPegawai = $request->get('telpPegawai');
         $pegawai->email = $request->get('email');
-        $pegawai->password = Hash::make($request->get('password'));
         $pegawai->level = $request->get('level');
-    
+
         if ($request->hasFile('fotoPegawai')) {
             // Menghapus foto lama jika ada
             if ($pegawai->fotoPegawai && file_exists(storage_path('app/public/' . $pegawai->fotoPegawai))) {
                 Storage::delete('public/' . $pegawai->fotoPegawai);
             }
-        
+
             $image_name = $request->file('fotoPegawai')->store('images', 'public');
             $pegawai->fotoPegawai = $image_name;
         } elseif ($pegawai->fotoPegawai) {
@@ -131,13 +129,18 @@ class PegawaiController extends Controller
             $image_name = $pegawai->fotoPegawai;
             $pegawai->fotoPegawai = $image_name;
         }
-        
-    
+
+        $password = $request->get('password');
+        if (!empty($password)) {
+            $pegawai->password = Hash::make($password);
+        }
+
         $pegawai->save();
-    
+
         return redirect()->route('pegawai.index')->with('success', 'Pegawai Berhasil Diedit');
     }
-    
+
+
 
     /**
      * Remove the specified resource from storage.
