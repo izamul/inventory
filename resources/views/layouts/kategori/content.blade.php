@@ -22,7 +22,10 @@
                     <div class="card mt">
                         <div class="card-header">
                             <h3 class="card-title">Kategori</h3>
-                            <a href="{{ route('kategori.create') }}" class="btn btn-success float-right">Tambah Data Kategori</a>
+                            <div class="float-right">
+                                <a href="{{ route('kategori.create') }}" class="btn btn-success">Tambah Data Kategori</a>
+                                <a href="{{ route('cetakKategori') }}" class="btn btn-warning">Cetak PDF</a>
+                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
