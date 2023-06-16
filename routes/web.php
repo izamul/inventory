@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PegawaiController;
@@ -62,6 +63,14 @@ Route::get('/searchBarang',[BarangController::class, 'searchBarang'])->name('sea
 Route::resource('transaksi', TransaksiController::class);
 Route::get('/transaksi/create/{type?}', [TransaksiController::class, 'create'])->name('transaksi.create');
 Route::get('/searchTransaksi',[TransaksiController::class, 'searchTransaksi'])->name('searchTransaksi');
+Route::get('/searchTransaksiData',[TransaksiController::class, 'searchTransaksiData'])->name('searchTransaksiData');
+
 
 Route::get('/data-masuk', [TransaksiController::class, 'dataMasuk'])->name('dataMasuk');
 Route::get('/data-keluar', [TransaksiController::class, 'dataKeluar'])->name('dataKeluar');
+
+Route::get('/cetak-pdf-pegawai', [PdfController::class, 'cetakPegawai'])->name('cetakPegawai');
+
+Route::get('/cetak-pdf-pemasok', [PdfController::class, 'cetakPemasok'])->name('cetakPemasok');
+
+Route::get('/cetak-pdf-barang', [PdfController::class, 'cetakBarang'])->name('cetakBarang');

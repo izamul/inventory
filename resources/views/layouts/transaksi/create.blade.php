@@ -4,120 +4,146 @@
 
 @include('layouts.sidebar')
 
-@include('layouts.footer')
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
-                    Tambah Data Transaksi
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 mt-4">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        Tambah Data Transaksi
+                    </div>
+                    <div class="card-body">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form method="post" action="{{ route('transaksi.store') }}" id="myForm">
+                            @csrf
+                            <div class="form-group row">
+                                <label for="status" class="col-md-4 col-form-label">Status</label>
+                                <div class="col-md-8">
+                                    <input type="text" name="status" class="form-control" id="status"
+                                        value="{{ $status }}" readonly style="display: none;">
+                                    <input type="text" name="statusDump" class="form-control" id="statusDump"
+                                        value="{{ $status === 'out' ? 'Data Keluar' : 'Data Masuk' }}" readonly>
+                                </div>
+                            </div>
+    
+                            <div class="form-group row">
+                                <label for="pencatat" class="col-md-4 col-form-label">Pencatat</label>
+                                <div class="col-md-8">
+                                    <input type="text" name="pencatat" class="form-control" id="pencatat"
+                                        value="{{ auth()->user()->namaPegawai }}" readonly>
+                                </div>
+                            </div>
+    
+                            <div class="form-group row">
+                                <label for="namaBarang" class="col-md-4 col-form-label">Nama Barang</label>
+                                <div class="col-md-8">
+                                    <select name="namaBarang" class="form-control" id="namaBarang">
+                                        @foreach ($barang as $brg)
+                                            <option value="{{ $brg->idBarang }}" data-stok="{{ $brg->stock }}">
+                                                {{ $brg->namaBarang }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <div class="form-group row">
+                                <label for="tanggal" class="col-md-4 col-form-label">Tanggal</label>
+                                <div class="col-md-8">
+                                    <input type="date" name="tanggal" class="form-control" id="tanggal">
+                                </div>
+                            </div>
+    
+                            <div class="form-group row">
+                                <label for="jumlah" class="col-md-4 col-form-label">Jumlah</label>
+                                <div class="col-md-8">
+                                    <input type="number" name="jumlah" class="form-control" id="jumlah" max=""
+                                        min="1">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="totalHarga" class="col-md-4 col-form-label">Total Harga</label>
+                                <div class="col-md-8">
+                                    <input type="number" name="totalHarga" class="form-control" id="totalHarga" style="display: none">
+                                    <input type="text" name="totalHargaDump" class="form-control" id="totalHargaDump" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-8 offset-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="checklist" id="checklist">
+                                        <label class="form-check-label" for="checklist">
+                                            Data Tidak Dapat Diubah
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <a href="{{ route('transaksi.index') }}" class="btn btn-danger" role="button"
+                                    aria-disabled="true">Kembali</a>
+                                    <button type="submit" class="btn btn-success" id="submitBtn" disabled>Tambah Data</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="card-body">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                    <form method="post" action="{{ route('transaksi.store') }}" id="myForm"
-                        enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group">
-                            <label for="tanggal">Tanggal</label>
-                            <input type="date" name="tanggal" class="form-control" id="tanggal">
-                        </div>
-                        <div class="form-group">
-                            <label for="status">Status</label>
-                            <input type="text" name="status" class="form-control" id="status" value="out"
-                                readonly style="display: none;">
-                            <input type="text" name="statusDump" class="form-control" id="statusDump"
-                                value="Transaksi Keluar" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="namaBarang">Nama Barang</label>
-                            <select name="namaBarang" class="form-control" id="namaBarang">
-                                @foreach ($barang as $brg)
-                                    <option value="{{ $brg->idBarang }}" data-stok="{{ $brg->stock }}">
-                                        {{ $brg->namaBarang }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="jumlah">Jumlah</label>
-                            <input type="number" name="jumlah" class="form-control" id="jumlah" max="">
-                        </div>
-                        <div class="form-group">
-                            <label for="totalHarga">Total Harga</label>
-                            <input type="number" name="totalHarga" class="form-control" id="totalHarga" readonly
-                                style="display: none">
-                            <input type="text" name="totalHarga" class="form-control" id="totalHargaDump" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="pencatat">Pencatat</label>
-                            <input type="text" name="pencatat" class="form-control" id="pencatat"
-                                value="{{ auth()->user()->namaPegawai }}" aria-describedby="pencatat" readonly>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <a href="{{ route('transaksi.index') }}" class="btn btn-danger" role="button"
-                                aria-disabled="true">Kembali</a>
-                            <button type="submit" class="btn btn-success">Submit</button>
-                        </div>
-                    </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div id="myModal" class="modal" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Peringatan</h4>
+                    <button type="button" class="close" id="closeModalBtn">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Jumlah yang dimasukkan melebihi stok tersedia.
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning closeModalBtn">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <!-- Modal untuk nilai kurang dari 1 -->
+    <div id="errorModal" class="modal" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Peringatan</h4>
+                    <button type="button" class="close" id="closeErrorModalBtn">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Jumlah yang dimasukkan harus lebih dari atau sama dengan 1.
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" id="closeErrorModal">Tutup</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<!-- Modal -->
-<div id="myModal" class="modal" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Peringatan</h4>
-                <button type="button" class="close" id="closeModalBtn">&times;</button>
-            </div>
-            <!-- Modal body -->
-            <div class="modal-body">
-                Jumlah yang dimasukkan melebihi stok tersedia.
-            </div>
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-warning closeModalBtn">Tutup</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal -->
-<div id="confirmModal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Konfirmasi</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Apakah Anda yakin ingin menambahkan data transaksi?</br>
-                <span style="color: red; font-weight:bold;">Data yang sudah dimasukkan tidak dapat dilakukan
-                    perubahan/edit</span>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-success" id="submitBtn">Submit</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 
 <script>
@@ -126,6 +152,8 @@
     var modalDialog = document.getElementById("myModal");
     var totalHargaInput = document.getElementById("totalHarga");
     var totalHargaInputDump = document.getElementById("totalHargaDump");
+    var status = "{{ $status }}";
+    var errorModal = document.getElementById("errorModal");
 
     var barang = @json($barang);
 
@@ -156,7 +184,17 @@
         for (var i = 0; i < barang.length; i++) {
             if (barang[i].idBarang == selectedBarangId) {
                 var maxStock = barang[i].stock;
-                if (parseInt(this.value) > maxStock) {
+
+                if (parseInt(this.value) < 1) {
+                    errorModal.style.display =
+                        "block"; // Tampilkan modal pesan kesalahan jika nilai kurang dari 1
+                    this.value = 1; // Ubah nilai menjadi 1 jika nilai kurang dari 1
+                } else {
+                    errorModal.style.display = "none"; // Sembunyikan modal pesan kesalahan jika nilai valid
+                }
+
+                // Tambahkan kondisi untuk membatasi jumlah jika status adalah "out" (keluar)
+                if (status === "out" && parseInt(this.value) > maxStock) {
                     this.value = maxStock;
                     modalDialog.style.display = "block"; // Tampilkan dialog box
                 }
@@ -166,7 +204,8 @@
                 var jumlah = parseInt(jumlahInput.value);
                 var totalHarga = hargaBarang * jumlah;
                 totalHargaInput.value = totalHarga;
-                totalHargaInputDump.value = "Rp" + totalHarga.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                totalHargaInput.value = parseInt(totalHargaInput.value);
+                totalHargaInputDump.value = "Rp " + totalHarga.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                 break;
             }
         }
@@ -179,37 +218,39 @@
         });
     }
 
-    function validateForm() {
-        var inputs = document.querySelectorAll('form input[type="text"], form input[type="number"], form select');
-        var isFormValid = true;
+    // Mengaktifkan tombol submit jika checkbox dicentang
+    var checklist = document.getElementById('checklist');
+    var submitBtn = document.getElementById('submitBtn');
 
-        for (var i = 0; i < inputs.length; i++) {
-            if (inputs[i].value === "") {
-                isFormValid = false;
-                break;
-            }
-        }
+    checklist.addEventListener('change', function() {
+        submitBtn.disabled = !checklist.checked;
+    });
 
-        return isFormValid;
+
+    var closeErrorModalBtn = document.getElementById("closeErrorModalBtn");
+    closeErrorModalBtn.addEventListener("click", function() {
+        errorModal.style.display = "none"; // Sembunyikan modal pesan kesalahan
+    });
+
+    var closeErrorModal = document.getElementById("closeErrorModal");
+    closeErrorModal.addEventListener("click", function() {
+        errorModal.style.display = "none"; // Sembunyikan modal pesan kesalahan
+    });
+
+    var closeModalBtns = document.getElementsByClassName("closeModalBtn");
+    for (var i = 0; i < closeModalBtns.length; i++) {
+        closeModalBtns[i].addEventListener("click", function() {
+            modalDialog.style.display = "none"; // Sembunyikan dialog box
+        });
     }
 
-    // Mengatur event listener pada tombol "Submit"
-    $('#submitBtn').click(function() {
-        if (validateForm()) {
-            $('#confirmModal').modal('show'); // Tampilkan dialog konfirmasi jika formulir valid
-        } else {
-            alert(
-            "Harap isi semua data sebelum melakukan submit!"); // Tampilkan pesan kesalahan jika formulir tidak valid
-        }
+    $('#closeModalBtn').click(function() {
+        modalDialog.style.display = "none"; // Sembunyikan dialog box
     });
 
-
-    // ...
-
-    // Menampilkan dialog box konfirmasi sebelum submit
-    $('form').submit(function(event) {
-        event.preventDefault(); // Menghentikan aksi submit default
-
-        $('#confirmModal').modal('show');
+    $('#closeErrorModalBtn').click(function() {
+        errorModal.style.display = "none"; // Sembunyikan modal pesan kesalahan
     });
 </script>
+
+@include('layouts.footer')

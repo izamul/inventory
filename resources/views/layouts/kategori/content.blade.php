@@ -1,4 +1,3 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -7,7 +6,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">kategori</li>
+                        <li class="breadcrumb-item active">Kategori</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -35,51 +34,54 @@
                                     </div>
                                 </div>
                             </form>
-                            <table class="table table-striped mt-3">
-                                <thead>
-                                    <tr>
-                                        <th>Nama</th>
-                                        <th width="220px">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($kategori as $ktg)
+                            <div class="table-responsive">
+                                <table class="table table-striped mt-3">
+                                    <thead>
                                         <tr>
-                                            <td>{{ $ktg->namaKategori }}</td>
-                                            <td>
-                                                <form action="{{ route('kategori.destroy', $ktg->idKategori) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <a class="btn btn-info" href="{{ route('kategori.show', $ktg->idKategori) }}">Show</a>
-                                                    <a class="btn btn-primary" href="{{ route('kategori.edit', $ktg->idKategori) }}">Edit</a>
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteConfirmation{{ $ktg->idKategori }}">Delete</button>
-
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="deleteConfirmation{{ $ktg->idKategori }}" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationLabel{{ $ktg->idKategori }}" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="deleteConfirmationLabel{{ $ktg->idKategori }}">Konfirmasi Hapus</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    Apakah Anda yakin ingin menghapus kategori ini?
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                            <th>Nama</th>
+                                            <th width="220px">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($kategori as $ktg)
+                                            <tr>
+                                                <td>{{ $ktg->namaKategori }}</td>
+                                                <td>
+                                                    <form action="{{ route('kategori.destroy', $ktg->idKategori) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <div class="btn-group" role="group">
+                                                            <a class="btn btn-info btn-sm" href="{{ route('kategori.show', $ktg->idKategori) }}">Show</a>
+                                                            <a class="btn btn-primary btn-sm" href="{{ route('kategori.edit', $ktg->idKategori) }}">Edit</a>
+                                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteConfirmation{{ $ktg->idKategori }}">Delete</button>
+                                                        </div>
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="deleteConfirmation{{ $ktg->idKategori }}" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationLabel{{ $ktg->idKategori }}" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="deleteConfirmationLabel{{ $ktg->idKategori }}">Konfirmasi Hapus</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Apakah Anda yakin ingin menghapus kategori ini?
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
