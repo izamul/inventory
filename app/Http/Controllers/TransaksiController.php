@@ -78,7 +78,23 @@ class TransaksiController extends Controller
 
     public function destroy($idTransaksi)
     {
-        //
+        $transaksi = Transaksi::findOrFail($idTransaksi);
+
+        if (!$transaksi) {
+            return redirect()->back()->with('error', 'Transaksi tidak ditemukan.');
+        }
+
+        if ($transaksi->status === 'out') {
+            $transaksi->barang->stock += $transaksi->jumlah;
+        } else {
+            $transaksi->barang->stock -= $transaksi->jumlah;
+        }
+    
+        $transaksi->barang->save();
+    
+        $transaksi->delete();
+
+        return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil dihapus.');
     }
 
     public function dataMasuk()
