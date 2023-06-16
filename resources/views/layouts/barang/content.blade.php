@@ -22,7 +22,10 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Barang</h3>
-                            <a href="{{ route('barang.create') }}" class="btn btn-success float-right">Tambah Data Barang</a>
+                            <div class="float-right">
+                                <a href="{{ route('barang.create') }}" class="btn btn-success">Tambah Data Barang</a>
+                                <a href="{{ route('cetakBarang') }}" class="btn btn-warning">Cetak PDF</a>
+                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -104,5 +107,5 @@
         </div>
         <!-- /.container -->
     </section>
-    <!-- /.content -->
+    <!-- /.content -->
 </div>
