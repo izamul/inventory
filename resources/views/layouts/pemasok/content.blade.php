@@ -21,14 +21,18 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Pemasok</h3>
-                            <a href="{{ route('pemasok.create') }}" class="btn btn-success float-right">Tambah Data Pemasok</a>
+                            <h3 class="card-title mt-2">Pemasok</h3>
+                            <div class="float-right">
+                                <a href="{{ route('pemasok.create') }}" class="btn btn-success">Tambah Data Pemasok</a>
+                                <a href="{{ route('cetakPemasok') }}" class="btn btn-warning">Cetak PDF</a>
+                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <form class="form-right my-2" method="GET" action="{{ route('searchPemasok') }}">
                                 <div class="input-group">
-                                    <input type="text" name="searchPemasok" class="form-control" id="searchPemasok" placeholder="Masukkan Nama Pemasok">
+                                    <input type="text" name="searchPemasok" class="form-control" id="searchPemasok"
+                                        placeholder="Masukkan Nama Pemasok">
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-primary">Cari</button>
                                     </div>
@@ -51,21 +55,33 @@
                                                 <td>{{ $masok->namaPemasok }}</td>
                                                 <td>{{ $masok->alamatPemasok }}</td>
                                                 <td>{{ $masok->telpPemasok }}</td>
-                                                <td><img width="100px" src="{{ asset('storage/' . $masok->fotoPemasok) }}"></td>
+                                                <td><img width="100px"
+                                                        src="{{ asset('storage/' . $masok->fotoPemasok) }}"></td>
                                                 <td>
                                                     <div class="btn-group" role="group">
-                                                        <a class="btn btn-info btn-sm" href="{{ route('pemasok.show', $masok->idPemasok) }}">Show</a>
-                                                        <a class="btn btn-primary btn-sm" href="{{ route('pemasok.edit', $masok->idPemasok) }}">Edit</a>
-                                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteConfirmation{{ $masok->idPemasok }}">Delete</button>
+                                                        <a class="btn btn-info btn-sm"
+                                                            href="{{ route('pemasok.show', $masok->idPemasok) }}">Show</a>
+                                                        <a class="btn btn-primary btn-sm"
+                                                            href="{{ route('pemasok.edit', $masok->idPemasok) }}">Edit</a>
+                                                        <button type="button" class="btn btn-danger btn-sm"
+                                                            data-toggle="modal"
+                                                            data-target="#deleteConfirmation{{ $masok->idPemasok }}">Delete</button>
                                                     </div>
-                                                    
+
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="deleteConfirmation{{ $masok->idPemasok }}" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationLabel{{ $masok->idPemasok }}" aria-hidden="true">
+                                                    <div class="modal fade"
+                                                        id="deleteConfirmation{{ $masok->idPemasok }}" tabindex="-1"
+                                                        role="dialog"
+                                                        aria-labelledby="deleteConfirmationLabel{{ $masok->idPemasok }}"
+                                                        aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="deleteConfirmationLabel{{ $masok->idPemasok }}">Konfirmasi Hapus</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <h5 class="modal-title"
+                                                                        id="deleteConfirmationLabel{{ $masok->idPemasok }}">
+                                                                        Konfirmasi Hapus</h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
@@ -73,16 +89,20 @@
                                                                     Apakah Anda yakin ingin menghapus pemasok ini?
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                    <form action="{{ route('pemasok.destroy', $masok->idPemasok) }}" method="POST" class="d-inline">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Cancel</button>
+                                                                    <form
+                                                                        action="{{ route('pemasok.destroy', $masok->idPemasok) }}"
+                                                                        method="POST" class="d-inline">
                                                                         @csrf
                                                                         @method('DELETE')
-                                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-danger">Delete</button>
                                                                     </form>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>    
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
