@@ -23,7 +23,10 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Pegawai</h3>
-                            <a href="{{ route('pegawai.create') }}" class="btn btn-success float-right">Tambah Data Pegawai</a>
+                            <div class="float-right">
+                                <a href="{{ route('pegawai.create') }}" class="btn btn-success">Tambah Data Pegawai</a>
+                                <a href="{{ route('cetakPegawai') }}" class="btn btn-warning">Cetak PDF</a>
+                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
