@@ -21,7 +21,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title mt-2">Pemasok</h3>
+                            <h3 class="card-title">Pemasok</h3>
                             <div class="float-right">
                                 <a href="{{ route('pemasok.create') }}" class="btn btn-success">Tambah Data Pemasok</a>
                                 <a href="{{ route('cetakPemasok') }}" class="btn btn-warning">Cetak PDF</a>
