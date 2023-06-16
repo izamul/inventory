@@ -72,3 +72,4 @@ Route::get('/data-keluar', [TransaksiController::class, 'dataKeluar'])->name('da
 Route::get('/cetak-pdf-pegawai', [PdfController::class, 'cetakPegawai'])->name('cetakPegawai');
 
 Route::get('/cetak-pdf-pemasok', [PdfController::class, 'cetakPemasok'])->name('cetakPemasok');
+Route::get('/cetak-pdf-kategori', [PdfController::class, 'cetakKategori'])->name('cetakKategori');
