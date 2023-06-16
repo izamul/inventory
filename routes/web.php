@@ -70,7 +70,6 @@ Route::get('/data-masuk', [TransaksiController::class, 'dataMasuk'])->name('data
 Route::get('/data-keluar', [TransaksiController::class, 'dataKeluar'])->name('dataKeluar');
 
 Route::get('/cetak-pdf-pegawai', [PdfController::class, 'cetakPegawai'])->name('cetakPegawai');
-
 Route::get('/cetak-pdf-pemasok', [PdfController::class, 'cetakPemasok'])->name('cetakPemasok');
-
 Route::get('/cetak-pdf-barang', [PdfController::class, 'cetakBarang'])->name('cetakBarang');
+Route::get('/cetak-pdf-kategori', [PdfController::class, 'cetakKategori'])->name('cetakKategori');

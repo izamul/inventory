@@ -44,7 +44,23 @@ class PdfController extends Controller
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'attachment; filename=Pemasok.pdf');
     }
+  
+    public function cetakKategori()
+    {
+        $kategori = Kategori::all();
 
+        $pdf = new Dompdf();
+        $pdf->loadHtml(View::make('pdf.cetakKategori',  compact('kategori')));
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+
+        $output = $pdf->output();
+
+        return response($output, 200)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'attachment; filename=Kategori.pdf');
+    }
+    
     public function cetakBarang()
     {
         $barang = Barang::all();
@@ -60,5 +76,5 @@ class PdfController extends Controller
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'attachment; filename=Barang.pdf');
     }
-
 }
+
