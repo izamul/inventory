@@ -71,9 +71,9 @@
                                         </div>
 
                                         <div class="text-center pb-1">
-                                            <div class="form-check mb-2">
+                                            <div class="form-check mb-2 d-flex">
                                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                <label class="form-check-label" for="remember">
+                                                <label class="form-check-label" for="remember" style="margin-left: 5px;">
                                                     {{ __('Remember Me') }}
                                                 </label>
                                             </div>

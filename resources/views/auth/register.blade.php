@@ -31,7 +31,6 @@
                                 <form method="POST" action="{{ route('register') }}">
                                     @csrf                               
                                     <div class="form-outline mb-4">
-                                        {{-- <label for="namaPegawai" class="form-label">Name</label> --}}
                                         <input name="namaPegawai" type="text" class="form-control @error('namaPegawai') is-invalid @enderror" name="namaPegawai" value="{{ old('namaPegawai') }}" required autocomplete="namaPegawai" autofocus>
                                         <label class="form-label" for="namaPegawai">Nama Lengkap</label>
                                         @error('namaPegawai')
@@ -41,7 +40,6 @@
                                         @enderror
                                     </div>
                                     <div class="form-outline mb-4">
-                                        {{-- <label for="telpPegawai" class="form-label">Nomor Telepon Pegawai</label> --}}
                                         <input id="telpPegawai" type="number" class="form-control @error('telpPegawai') is-invalid @enderror" name="telpPegawai" value="{{ old('telpPegawai') }}" required autocomplete="telpPegawai">
                                         <label class="form-label" for="telpPegawai">Nomor Telepon</label>
                                         @error('telpPegawai')
@@ -51,7 +49,6 @@
                                         @enderror
                                     </div>
                                     <div class="form-outline mb-4">
-                                        {{-- <label for="email" class="form-label">Email Address</label> --}}
                                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                                         <label class="form-label" for="level">Email</label>
                                         @error('email')
@@ -61,8 +58,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-outline mb-4">
-                                        {{-- <label for="password" class="form-label">Password</label> --}}
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" minlength="8">
                                         <label class="form-label" for="level">Password</label>
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
@@ -71,7 +67,6 @@
                                         @enderror
                                     </div>
                                     <div class="form-outline mb-4">
-                                        {{-- <label for="password-confirm" class="form-label">Confirm Password</label> --}}
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                         <label class="form-label" for="level">Confirm Password</label>
                                     </div>
