@@ -28,4 +28,20 @@ class PdfController extends Controller
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'attachment; filename=Pegawai.pdf');
     }
+
+    public function cetakPemasok()
+    {
+        $pemasok = Pemasok::all();
+
+        $pdf = new Dompdf();
+        $pdf->loadHtml(View::make('pdf.cetakPemasok',  compact('pemasok')));
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+
+        $output = $pdf->output();
+
+        return response($output, 200)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'attachment; filename=Pemasok.pdf');
+    }
 }
