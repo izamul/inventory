@@ -1,28 +1,7 @@
-<style>
-    body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-
-    .main-footer {
-        margin-top: auto;
-        background-color: #f8f9fa;
-        padding: 10px;
-        text-align: center;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-</style>
-
 
 <footer class="main-footer">
-
-    <div class="float-left d-none d-sm-inline-block text-right">
         <b>Proyek</b> 1 - <strong class="text-info">Kelompok 1</strong>
         TI 2F
-    </div>
 </footer>
 
 
