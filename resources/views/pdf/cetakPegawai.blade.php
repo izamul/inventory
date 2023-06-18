@@ -124,6 +124,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Nama</th>
                             <th>Alamat</th>
                             <th>No Telepon</th>
@@ -133,6 +134,7 @@
                     <tbody>
                         @foreach ($pegawai as $pgw)
                             <tr>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $pgw->namaPegawai }}</td>
                                 <td>{{ $pgw->alamatPegawai }}</td>
                                 <td>{{ $pgw->telpPegawai }}</td>

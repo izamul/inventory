@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Cetak PDF</title>
     <link href="https://fonts.googleapis.com/css?family=Inter:400,700" rel="stylesheet">
@@ -11,7 +12,8 @@
                 border-collapse: collapse;
             }
 
-            th, td {
+            th,
+            td {
                 border: 1px solid #000;
                 padding: 8px;
             }
@@ -85,7 +87,8 @@
             margin-top: 15px;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #ccc;
             padding: 10px;
             text-align: left;
@@ -110,14 +113,17 @@
             color: #777;
         }
     </style>
-    <script>
-    </script>
+    <script></script>
 </head>
+
 <body>
+    @php
+        $counter = 1;
+    @endphp
     <div class="content-wrapper">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Daftar Pemasok</h3>
+                <h3 class="card-title">Daftar Transaksi Masuk</h3>
                 <p class="medium-text">Sahabat Tani</p>
             </div>
             <div class="table-wrapper">
@@ -125,20 +131,46 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
-                            <th>Alamat</th>
-                            <th>No Telepon</th>
+                            <th>Tanggal</th>
+                            <th>Total Harga</th>
+                            <th>Jumlah</th>
+                            <th>Nama Barang</th>
+                            <th>Pencatat</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($pemasok as $pmsk)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $pmsk->namaPemasok }}</td>
-                                <td>{{ $pmsk->alamatPemasok }}</td>
-                                <td>{{ $pmsk->telpPemasok }}</td>
-                            </tr>
+                        @foreach ($transaksi as $trx)
+                            @if (request()->is('cetak-pdf-TransaksiMasuk'))
+                                @if ($trx->status == 'in')
+                                    <tr>
+                                        <td>{{ $counter }}</td>
+                                        <td>{{ $trx->tanggal }}</td>
+                                        <td><span>Rp </span>{{ $trx->totalHarga }}</td>
+                                        <td>{{ $trx->jumlah }}</td>
+                                        <td>{{ $trx->barang->namaBarang }}</td>
+                                        <td>{{ $trx->pencatat }}</td>
+                                    </tr>
+                                    @php
+                                        $counter++;
+                                    @endphp
+                                @endif
+                            @elseif(request()->is('cetak-pdf-TransaksiKeluar'))
+                                @if ($trx->status == 'out')
+                                    <tr>
+                                        <td>{{ $counter }}</td>
+                                        <td>{{ $trx->tanggal }}</td>
+                                        <td><span>Rp </span>{{ $trx->totalHarga }}</td>
+                                        <td>{{ $trx->jumlah }}</td>
+                                        <td>{{ $trx->barang->namaBarang }}</td>
+                                        <td>{{ $trx->pencatat }}</td>
+                                    </tr>
+                                    @php
+                                        $counter++;
+                                    @endphp
+                                @endif
+                            @endif
                         @endforeach
+
                     </tbody>
                 </table>
             </div>
@@ -148,4 +180,5 @@
         </div>
     </div>
 </body>
+
 </html>

@@ -38,7 +38,7 @@
                                 <div class="card-body p-md-5 mx-md-4">
                                     <div class="text-center header-logo">
                                         <div class="container-logo">
-                                            <img src="{{ asset('AdminLTE/dist') }}/img/Group 1.png" alt="Logo" class="logo-atas" style="width: 80px; border-radius: 50%;">
+                                            <img src="{{ asset('AdminLTE/dist') }}/img/Group 1.png" alt="Logo" class="logo-atas" style="width: 70px; border-radius: 50%;">
                                         </div>
                                         <h4 class="mt-3 mb-3 pb-1">SAHABAT TANI</h4>
                                     </div>

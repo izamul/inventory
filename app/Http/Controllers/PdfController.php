@@ -13,6 +13,12 @@ use Illuminate\Http\Request;
 
 class PdfController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function cetakPegawai()
     {
         $pegawai = Pegawai::all();
@@ -44,7 +50,7 @@ class PdfController extends Controller
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'attachment; filename=Pemasok.pdf');
     }
-  
+
     public function cetakKategori()
     {
         $kategori = Kategori::all();
@@ -60,7 +66,7 @@ class PdfController extends Controller
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'attachment; filename=Kategori.pdf');
     }
-    
+
     public function cetakBarang()
     {
         $barang = Barang::all();
@@ -76,5 +82,36 @@ class PdfController extends Controller
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'attachment; filename=Barang.pdf');
     }
-}
 
+    public function cetakTransaksiMasuk()
+    {
+        $transaksi = Transaksi::all();
+
+        $pdf = new Dompdf();
+        $pdf->loadHtml(View::make('pdf.cetakTransaksi',  compact('transaksi')));
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+
+        $output = $pdf->output();
+
+        return response($output, 200)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'attachment; filename=Transaksi-Masuk.pdf');
+    }
+
+    public function cetakTransaksiKeluar()
+    {
+        $transaksi = Transaksi::all();
+
+        $pdf = new Dompdf();
+        $pdf->loadHtml(View::make('pdf.cetakTransaksi',  compact('transaksi')));
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+
+        $output = $pdf->output();
+
+        return response($output, 200)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'attachment; filename=Transaksi-Keluar.pdf');
+    }
+}

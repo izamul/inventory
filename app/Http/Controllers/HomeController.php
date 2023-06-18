@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Barang;
+use App\Models\Transaksi;
+use App\Models\Pegawai;
+use App\Models\Pemasok;
 
 use Illuminate\Http\Request;
 
@@ -18,6 +22,11 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('layouts.master');
+        $jumlahStokBarang = Barang::count();
+        $jumlahTransaksi = Transaksi::count();
+        $jumlahPegawai = Pegawai::where('level', '!=', 1)->count();
+        $jumlahPemasok = Pemasok::count();
+    
+        return view('layouts.master', compact('jumlahStokBarang', 'jumlahTransaksi', 'jumlahPegawai', 'jumlahPemasok'));
     }
 }

@@ -30,13 +30,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-// Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
-// Route::post('/login', 'Auth\LoginController@login');
-
 
 Route::get('/home',[HomeController::class,"index"])->name('home');
 Route::get('/login',[LoginController::class, "showLoginForm"])->name('login');
-Route::post('/profile/{id}', [ProfileController::class, 'show'])->name('profile');
+
 
 
 Route::group(['middleware' => 'level:1'], function () {
@@ -44,12 +41,6 @@ Route::group(['middleware' => 'level:1'], function () {
     Route::get('/searchPegawai',[PegawaiController::class, 'searchPegawai'])->name('searchPegawai');
 });
 
-
-
-// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/', function () {
-//     return view('layouts.master');
-// });
 
 Route::resource('kategori', KategoriController::class);
 Route::get('/searchKategori',[KategoriController::class, 'searchKategori'])->name('searchKategori');
@@ -73,3 +64,10 @@ Route::get('/cetak-pdf-pegawai', [PdfController::class, 'cetakPegawai'])->name('
 Route::get('/cetak-pdf-pemasok', [PdfController::class, 'cetakPemasok'])->name('cetakPemasok');
 Route::get('/cetak-pdf-barang', [PdfController::class, 'cetakBarang'])->name('cetakBarang');
 Route::get('/cetak-pdf-kategori', [PdfController::class, 'cetakKategori'])->name('cetakKategori');
+Route::get('/cetak-pdf-TransaksiMasuk', [PdfController::class, 'cetakTransaksiMasuk'])->name('cetakTransaksiMasuk');
+Route::get('/cetak-pdf-TransaksiKeluar', [PdfController::class, 'cetakTransaksiKeluar'])->name('cetakTransaksiKeluar');
+
+
+Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile');
+Route::post('/ganti-foto/{id}',[ProfileController::class, 'gantiFoto'])->name('gantiFoto');
+Route::put('/update-data/{id}',[ProfileController::class, 'updateData'])->name('updateData');

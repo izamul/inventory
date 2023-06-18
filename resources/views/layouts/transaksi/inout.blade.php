@@ -44,9 +44,15 @@
                                     <a href="{{ route('dataMasuk') }}" class="btn btn-success">Data Masuk</a>
                                     <a href="{{ route('dataKeluar') }}" class="btn btn-danger">Data Keluar</a>
                                 </div>
-                                <a href="{{ route('transaksi.create', ['type' => request()->is('data-keluar') ? 'data-keluar' : 'data-masuk']) }}" class="btn btn-success">
+                                <a href="{{ route('transaksi.create', ['type' => request()->is('data-keluar') ? 'data-keluar' : 'data-masuk']) }}"
+                                    class="btn btn-success">
                                     Tambah Data Transaksi
                                 </a>
+                                @if (request()->is('data-masuk'))
+                                    <a href="{{ route('cetakTransaksiMasuk') }}" class="btn btn-warning">Cetak PDF</a>
+                                @elseif(request()->is('data-keluar'))
+                                    <a href="{{ route('cetakTransaksiKeluar') }}" class="btn btn-warning">Cetak PDF</a>
+                                @endif
                             </div>
                         </div>
 
@@ -54,7 +60,8 @@
                             <form class="form-right my-2" method="GET" action="{{ route('searchTransaksiData') }}">
                                 <div class="tombol-cari mb-4">
                                     <div class="input-group">
-                                        <input type="text" name="searchTransaksi" class="form-control" id="searchTransaksi" placeholder="Masukkan Nama Barang">
+                                        <input type="text" name="searchTransaksi" class="form-control"
+                                            id="searchTransaksi" placeholder="Masukkan Nama Barang">
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-primary">Cari</button>
                                         </div>
@@ -86,16 +93,26 @@
                                                 <td>{{ $trx->pencatat }}</td>
                                                 <td>
                                                     <div class="btn-group" role="group">
-                                                        <a class="btn btn-info btn-sm" href="{{ route('transaksi.show', $trx->idTransaksi) }}">Show</a>
-                                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteConfirmation{{ $trx->idTransaksi }}">Delete</button>
+                                                        <a class="btn btn-info btn-sm"
+                                                            href="{{ route('transaksi.show', $trx->idTransaksi) }}">Show</a>
+                                                        <button type="button" class="btn btn-danger btn-sm"
+                                                            data-toggle="modal"
+                                                            data-target="#deleteConfirmation{{ $trx->idTransaksi }}">Delete</button>
                                                     </div>
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="deleteConfirmation{{ $trx->idTransaksi }}" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationLabel{{ $trx->idTransaksi }}" aria-hidden="true">
+                                                    <div class="modal fade"
+                                                        id="deleteConfirmation{{ $trx->idTransaksi }}" tabindex="-1"
+                                                        role="dialog"
+                                                        aria-labelledby="deleteConfirmationLabel{{ $trx->idTransaksi }}"
+                                                        aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="deleteConfirmationLabel{{ $trx->idTransaksi }}">Konfirmasi Hapus</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <h5 class="modal-title"
+                                                                        id="deleteConfirmationLabel{{ $trx->idTransaksi }}">
+                                                                        Konfirmasi Hapus</h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
@@ -103,11 +120,15 @@
                                                                     Apakah Anda yakin ingin menghapus transaksi ini?
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                    <form action="{{ route('transaksi.destroy', $trx->idTransaksi) }}" method="POST" class="d-inline">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Cancel</button>
+                                                                    <form
+                                                                        action="{{ route('transaksi.destroy', $trx->idTransaksi) }}"
+                                                                        method="POST" class="d-inline">
                                                                         @csrf
                                                                         @method('DELETE')
-                                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-danger">Delete</button>
                                                                     </form>
                                                                 </div>
                                                             </div>

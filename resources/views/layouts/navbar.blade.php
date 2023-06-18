@@ -24,10 +24,10 @@
                     ?>
                         <span class="dropdown-item dropdown-header">{{ $pangkat  }}</span>
                         <div class="dropdown-divider"></div>
-                        <form action="{{ route('profile', Auth::user()->idPegawai)}}" method="post">
+                        <form action="{{ route('profile', Auth::user()->idPegawai)}}" method="get">
                             @csrf
                             <button type="submit" class="dropdown-item">
-                                <i class="fas fa-info-circle mr-2"></i> Detail Profile
+                                <i class="fas fa-info-circle mr-2"></i> Lihat Profile
                             </button>                            
                         </form>    
                         <form action="{{ route('logout')}}" method="post">

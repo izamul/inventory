@@ -15,7 +15,6 @@ class Transaksi extends Model
     protected $primaryKey = 'idTransaksi'; // Memanggil isi DB Dengan primarykey
     public $timestamps = false;
     protected $fillable = [
-        'keterangan',
         'tanggal',
         'status',
         'totalHarga',
