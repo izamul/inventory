@@ -17,9 +17,10 @@ class BarangController extends Controller
 
     public function index()
     {
-        $barang = Barang::paginate(5);
+        $barang = Barang::orderBy('namaBarang')->paginate(5);
         return view('layouts.barang.master', compact('barang'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
+    
 
     public function create()
     {

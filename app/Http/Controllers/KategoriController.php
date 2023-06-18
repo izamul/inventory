@@ -22,10 +22,10 @@ class KategoriController extends Controller
     
     public function index()
     {
-        $kategori = Kategori::paginate(5); // Mengambil semua isi tabel
-        $posts = Kategori::orderBy('idKategori', 'desc')->paginate(5);
-        return view('layouts.kategori.master', compact('kategori'))->with('i', (request()->input('page', 1) - 1) * 5); 
+        $kategori = Kategori::orderBy('namaKategori')->paginate(5);
+        return view('layouts.kategori.master', compact('kategori'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
+    
 
     /**
      * Show the form for creating a new resource.

@@ -22,10 +22,11 @@ class PemasokController extends Controller
 
     public function index()
     {
-        $pemasok = Pemasok::paginate(5);
-        $posts = Pemasok::orderBy('namaPemasok', 'desc')->paginate(5);
+        $pemasok = Pemasok::orderBy('namaPemasok')->paginate(5);
         return view('layouts.pemasok.master', compact('pemasok'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
+    
+    
 
     /**
      * Show the form for creating a new resource.
