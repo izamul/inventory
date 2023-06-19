@@ -21,7 +21,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Transaksi</h3>
+                            <h3 class="card-title mt-2">Transaksi</h3>
                             <div class="float-right">
                                 <div class="btn-group mr-2">
                                     <a href="{{ route('dataMasuk') }}" class="btn btn-success">Data Masuk</a>
@@ -31,7 +31,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form class="form-right my-2" method="GET" action="{{ route('searchTransaksi') }}">
+                            <form class="form-right mt-1" method="GET" action="{{ route('searchTransaksi') }}">
                                 <div class="input-group">
                                     <input type="text" name="searchTransaksi" class="form-control" id="searchTransaksi" placeholder="Masukkan Nama Barang">
                                     <div class="input-group-append">
@@ -41,7 +41,7 @@
                             </form>
 
                             <div class="table-responsive">
-                                <table class="table table-striped table-hover">
+                                <table class="table table-striped mt-4">
                                     <thead>
                                         <tr>
                                             <th>Tanggal</th>

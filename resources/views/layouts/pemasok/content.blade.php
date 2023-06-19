@@ -21,7 +21,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Pemasok</h3>
+                            <h3 class="card-title mt-2">Pemasok</h3>
                             <div class="float-right">
                                 <a href="{{ route('pemasok.create') }}" class="btn btn-success">Tambah Data Pemasok</a>
                                 <a href="{{ route('cetakPemasok') }}" class="btn btn-warning">Cetak PDF</a>
@@ -29,7 +29,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form class="form-right my-2" method="GET" action="{{ route('searchPemasok') }}">
+                            <form class="form-right mt-1" method="GET" action="{{ route('searchPemasok') }}">
                                 <div class="input-group">
                                     <input type="text" name="searchPemasok" class="form-control" id="searchPemasok"
                                         placeholder="Masukkan Nama Pemasok">
@@ -39,7 +39,7 @@
                                 </div>
                             </form>
                             <div class="table-responsive">
-                                <table class="table table-striped table-hover">
+                                <table class="table table-striped mt-4">
                                     <thead>
                                         <tr>
                                             <th>Nama</th>
@@ -55,7 +55,7 @@
                                                 <td>{{ $masok->namaPemasok }}</td>
                                                 <td>{{ $masok->alamatPemasok }}</td>
                                                 <td>{{ $masok->telpPemasok }}</td>
-                                                <td><img width="100px"
+                                                <td><img width="110px"
                                                         src="{{ asset('storage/' . $masok->fotoPemasok) }}"></td>
                                                 <td>
                                                     <div class="btn-group" role="group">
