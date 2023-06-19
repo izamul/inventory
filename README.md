@@ -12,9 +12,13 @@
 3. Buka clonean barunya
 4. Copy file `.env` yang project lama, ke clone an yg baru
 5. Kemudian buka terminal dan jalankan query berikut secara berurutan:
+
     a. `composer install`
+    
     b. `composer require dompdf/dompdf`
+    
     c. `composer require kyslik/column-sortable`
+
 6. Setelah itu, jalankan `php artisan serve` untuk menjalankan aplikasinya.
 
 Untuk foto, bisa diunggah oleh masing-masing.
