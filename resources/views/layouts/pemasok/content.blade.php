@@ -42,7 +42,7 @@
                                 <table class="table table-striped mt-4">
                                     <thead>
                                         <tr>
-                                            <th>Nama</th>
+                                            <th>@sortablelink('namaPemasok', 'Nama', ['icon' => ''])</th>
                                             <th>Alamat</th>
                                             <th>No Telepon</th>
                                             <th>Foto Pemasok</th>
@@ -112,6 +112,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
+                            {{-- {!! $pemasok->appends(Request::except('page'))->links('pagination::bootstrap-5') !!} --}}
                             {!! $pemasok->withQueryString()->links('pagination::bootstrap-5') !!}
                         </div>
                     </div>
