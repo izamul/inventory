@@ -31,17 +31,19 @@ class Barang extends Model
     {
         return $this->belongsTo(Pemasok::class, 'pemasok_id', 'idPemasok');
     }
-    
-    public function kategori()
+
+    public function kategori() 
     {
         return $this->belongsTo(Kategori::class, 'kategori_id', 'idKategori');
     }
+
     public function transaksi()
     {
-        return $this->belongsToMany(Pegawai::class, 'transaksi', 'barang_id', 'pegawai_id')
-            ->withPivot('keterangan', 'tanggal', 'status', 'totalHarga', 'jumlah');
+        return $this->hasMany(Transaksi::class, 'barang_id', 'idBarang');
     }
     
+
+
     public $sortable = [
         'namaBarang',
     ];

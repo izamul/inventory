@@ -1,19 +1,18 @@
 <style>
     .print-icon {
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-}
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+    }
 
-.print-icon:hover .print-text {
-  color: blue;
-}
+    .print-icon:hover .print-text {
+        color: blue;
+    }
 
-.print-text {
-  margin-left: 5px;
-  transition: color 0.3s;
-}
-
+    .print-text {
+        margin-left: 5px;
+        transition: color 0.3s;
+    }
 </style>
 
 <div class="content-wrapper">
@@ -39,29 +38,29 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="card-title">Barang</h3>
-                                <div class="float-right">
-                                    <a href="{{ route('barang.create') }}" class="btn btn-success">Tambah Data Barang</a>
-                                    <a href="{{ route('cetakBarang') }}" class="btn btn-warning"><span class="print-icon">
+                            <h3 class="card-title mt-2">Barang</h3>
+                            <div class="float-right">
+                                <a href="{{ route('barang.create') }}" class="btn btn-success">Tambah Data Barang</a>
+                                <a href="{{ route('cetakBarang') }}" class="btn btn-warning"><span class="print-icon">
                                         <i class="fas fa-print"></i>
                                         <span class="print-text">Cetak PDF</span>
                                     </span></a>
-                                </div>
-                            </div>   
+                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <form class="form-right mt-1" method="GET" action="{{ route('searchBarang') }}">
                                 <div class="input-group">
-                                    <input type="text" name="searchBarang" class="form-control" id="searchBarang" placeholder="Masukkan Nama Kategori">
+                                    <input type="text" name="searchBarang" class="form-control" id="searchBarang"
+                                        placeholder="Masukkan Nama Kategori">
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                        <button type="submit" class="btn btn-primary"><i
+                                                class="fas fa-search"></i></button>
                                     </div>
                                 </div>
                             </form>
                             <div class="table-responsive">
-                                <table class="table table-striped mt-3">
+                                <table class="table table-striped mt-4">
                                     <thead>
                                         <tr>
                                             <th>@sortablelink('namaBarang', 'Nama', ['icon' => ''])</th>
@@ -83,31 +82,48 @@
                                                 <td>{{ $brg->harga }}</td>
                                                 <td>{{ $brg->pemasok->namaPemasok }}</td>
                                                 <td>{{ $brg->kategori->namaKategori }}</td>
-                                                <td><img src="{{ asset('storage/' . $brg->fotoBarang) }}" style="width: 120px; height: 100px; max-width: 100%; max-height: 100%;" class="img-fluid"></td>
+                                                <td><img src="{{ asset('storage/' . $brg->fotoBarang) }}"
+                                                        style="width: 120px; height: 100px; max-width: 100%; max-height: 100%;"
+                                                        class="img-fluid"></td>
                                                 <td>
                                                     <div class="btn-group" role="group">
-                                                        <a class="btn btn-info btn-sm" href="{{ route('barang.show', $brg->idBarang) }}">Show</a>
-                                                        <a class="btn btn-primary btn-sm" href="{{ route('barang.edit', $brg->idBarang) }}">Edit</a>
-                                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteConfirmation{{ $brg->idBarang }}">Delete</button>
+                                                        <a class="btn btn-info btn-sm"
+                                                            href="{{ route('barang.show', $brg->idBarang) }}">Show</a>
+                                                        <a class="btn btn-primary btn-sm"
+                                                            href="{{ route('barang.edit', $brg->idBarang) }}">Edit</a>
+                                                        <button type="button" class="btn btn-danger btn-sm"
+                                                            data-toggle="modal"
+                                                            data-target="#deleteConfirmation{{ $brg->idBarang }}">Delete</button>
                                                     </div>
-                                                    
+
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="deleteConfirmation{{ $brg->idBarang }}" tabindex="-1" aria-labelledby="deleteConfirmationLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="deleteConfirmation{{ $brg->idBarang }}"
+                                                        tabindex="-1" aria-labelledby="deleteConfirmationLabel"
+                                                        aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="deleteConfirmationLabel">Delete Barang</h5>
-                                                                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                                                    <h5 class="modal-title"
+                                                                        id="deleteConfirmationLabel">Konfirmasi Hapus
+                                                                    </h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>Anda yakin ingin menghapus barang ini?</p>
+                                                                    <p>Apakah Anda yakin ingin menghapus barang ini?</p>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                                                    <form action="{{ route('barang.destroy', $brg->idBarang) }}" method="POST">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Batal</button>
+                                                                    <form
+                                                                        action="{{ route('barang.destroy', $brg->idBarang) }}"
+                                                                        method="POST">
                                                                         @csrf
                                                                         @method('DELETE')
-                                                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-danger">Hapus</button>
                                                                     </form>
                                                                 </div>
                                                             </div>
@@ -121,6 +137,9 @@
                             </div>
                         </div>
                         <!-- /.card-body -->
+                        <div class="card-footer clearfix">
+                            {!! $barang->withQueryString()->links('pagination::bootstrap-5') !!}
+                        </div>
                     </div>
                     <!-- /.card -->
                 </div>

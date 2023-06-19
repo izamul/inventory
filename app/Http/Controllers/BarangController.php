@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\Kategori;
 use App\Models\Pemasok;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,7 +21,7 @@ class BarangController extends Controller
         $barang = Barang::sortable()->paginate(5);
         return view('layouts.barang.master', compact('barang'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
-    
+
 
     public function create()
     {
@@ -115,8 +116,24 @@ class BarangController extends Controller
     public function destroy($idBarang)
     {
         $barang = Barang::findOrFail($idBarang);
-        $barang->delete();
-        return redirect()->route('barang.index')->with('success', 'Barang Berhasil Dihapus');
+
+        if ($barang != null) {
+            // Periksa apakah terdapat data barang yang terkait dengan pemasok
+            if ($barang->transaksi()->count() > 0) {
+                return response()->view('deletefail', [], 403);
+            }
+
+            // Hapus pemasok jika tidak terdapat data barang terkait
+            $barang->delete();
+
+            return redirect()
+                ->route('barang.index')
+                ->with('success', 'Barang Berhasil Dihapus');
+        }
+
+        return redirect()
+            ->route('barang.index')
+            ->with(['message' => 'ID Salah!!']);
     }
 
     public function searchBarang(Request $request)

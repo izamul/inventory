@@ -1,19 +1,18 @@
 <style>
     .print-icon {
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-}
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+    }
 
-.print-icon:hover .print-text {
-  color: blue;
-}
+    .print-icon:hover .print-text {
+        color: blue;
+    }
 
-.print-text {
-  margin-left: 5px;
-  transition: color 0.3s;
-}
-
+    .print-text {
+        margin-left: 5px;
+        transition: color 0.3s;
+    }
 </style>
 
 <div class="content-wrapper">
@@ -33,7 +32,7 @@
     </div>
     <!-- /.content-header -->
 
-    
+
     <section class="content">
         <div class="container">
             <div class="row">
@@ -43,11 +42,13 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">Pegawai</h3>
                                 <div class="float-right">
-                                    <a href="{{ route('pegawai.create') }}" class="btn btn-success">Tambah Data Pegawai</a>
-                                    <a href="{{ route('cetakPegawai') }}" class="btn btn-warning"><span class="print-icon">
-  <i class="fas fa-print"></i>
-  <span class="print-text">Cetak PDF</span>
-</span></a>
+                                    <a href="{{ route('pegawai.create') }}" class="btn btn-success">Tambah Data
+                                        Pegawai</a>
+                                    <a href="{{ route('cetakPegawai') }}" class="btn btn-warning"><span
+                                            class="print-icon">
+                                            <i class="fas fa-print"></i>
+                                            <span class="print-text">Cetak PDF</span>
+                                        </span></a>
                                 </div>
                             </div>
                         </div>
@@ -55,9 +56,11 @@
                         <div class="card-body">
                             <form class="form-right mt-1" method="get" action="{{ route('searchPegawai') }}">
                                 <div class="input-group">
-                                    <input type="text" name="searchPegawai" class="form-control" id="searchPegawai" placeholder="Masukkan Nama Pegawai">
+                                    <input type="text" name="searchPegawai" class="form-control" id="searchPegawai"
+                                        placeholder="Masukkan Nama Pegawai">
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                        <button type="submit" class="btn btn-primary"><i
+                                                class="fas fa-search"></i></button>
                                     </div>
                                 </div>
                             </form>
@@ -78,23 +81,37 @@
                                                 <td>{{ $pgw->namaPegawai }}</td>
                                                 <td>{{ $pgw->alamatPegawai }}</td>
                                                 <td>{{ $pgw->telpPegawai }}</td>
-                                                <td><img src="{{ asset('storage/' . $pgw->fotoPegawai) }}" style="width: 120px; height: 120px; max-width: 100%; max-height: 100%;" class="img-fluid"></td>
+                                                <td><img src="{{ asset('storage/' . $pgw->fotoPegawai) }}"
+                                                        style="width: 120px; height: 120px; max-width: 100%; max-height: 100%;"
+                                                        class="img-fluid"></td>
                                                 <td>
-                                                    <form action="{{ route('pegawai.destroy', $pgw->idPegawai) }}" method="POST">
+                                                    <form action="{{ route('pegawai.destroy', $pgw->idPegawai) }}"
+                                                        method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <div class="btn-group" role="group">
-                                                            <a class="btn btn-info btn-sm" href="{{ route('pegawai.show', $pgw->idPegawai) }}">Show</a>
-                                                            <a class="btn btn-primary btn-sm" href="{{ route('pegawai.edit', $pgw->idPegawai) }}">Edit</a>
-                                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteConfirmation{{ $pgw->idPegawai }}">Delete</button>
+                                                            <a class="btn btn-info btn-sm"
+                                                                href="{{ route('pegawai.show', $pgw->idPegawai) }}">Show</a>
+                                                            <a class="btn btn-primary btn-sm"
+                                                                href="{{ route('pegawai.edit', $pgw->idPegawai) }}">Edit</a>
+                                                            <button type="button" class="btn btn-danger btn-sm"
+                                                                data-toggle="modal"
+                                                                data-target="#deleteConfirmation{{ $pgw->idPegawai }}">Delete</button>
                                                         </div>
                                                         <!-- Modal -->
-                                                        <div class="modal fade" id="deleteConfirmation{{ $pgw->idPegawai }}" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationLabel{{ $pgw->idPegawai }}" aria-hidden="true">
+                                                        <div class="modal fade"
+                                                            id="deleteConfirmation{{ $pgw->idPegawai }}" tabindex="-1"
+                                                            role="dialog"
+                                                            aria-labelledby="deleteConfirmationLabel{{ $pgw->idPegawai }}"
+                                                            aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title" id="deleteConfirmationLabel{{ $pgw->idPegawai }}">Konfirmasi Hapus</h5>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <h5 class="modal-title"
+                                                                            id="deleteConfirmationLabel{{ $pgw->idPegawai }}">
+                                                                            Konfirmasi Hapus</h5>
+                                                                        <button type="button" class="close"
+                                                                            data-dismiss="modal" aria-label="Close">
                                                                             <span aria-hidden="true">&times;</span>
                                                                         </button>
                                                                     </div>
@@ -102,8 +119,10 @@
                                                                         Apakah Anda yakin ingin menghapus Pegawai ini?
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Cancel</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-danger">Delete</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
