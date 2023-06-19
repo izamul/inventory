@@ -23,17 +23,17 @@ return [
     /*
     whether icons should be enabled
      */
-    'enable_icons'                  => true,
+    'enable_icons'                  => false,
 
     /*
     defines icon set to use when sorted data is none above (alpha nor amount nor numeric)
      */
-    'default_icon_set'              => 'fa fa-sort',
+    'default_icon_set'              => null,
 
     /*
     icon that shows when generating sortable link while column is not sorted
      */
-    'sortable_icon'                 => 'fa fa-sort',
+    'sortable_icon'                 => null,
 
     /*
     generated icon is clickable non-clickable (default)
