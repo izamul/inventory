@@ -1,3 +1,21 @@
+<style>
+    .print-icon {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.print-icon:hover .print-text {
+  color: blue;
+}
+
+.print-text {
+  margin-left: 5px;
+  transition: color 0.3s;
+}
+
+</style>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -33,11 +51,11 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form class="form-right my-2" method="GET" action="{{ route('searchTransaksi') }}">
+                            <form class="form-right mt-1" method="GET" action="{{ route('searchTransaksi') }}">
                                 <div class="input-group">
                                     <input type="text" name="searchTransaksi" class="form-control" id="searchTransaksi" placeholder="Masukkan Nama Barang">
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary">Cari</button>
+                                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
                                     </div>
                                 </div>
                             </form>
@@ -46,7 +64,7 @@
                                 <table class="table table-striped mt-3">
                                     <thead>
                                         <tr>
-                                            <th>Tanggal</th>
+                                            <th>@sortablelink('tanggal', 'Tanggal', ['icon' => ''])</th>
                                             <th>Status</th>
                                             <th>Total Harga</th>
                                             <th>Jumlah</th>

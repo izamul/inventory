@@ -1,3 +1,21 @@
+<style>
+    .print-icon {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.print-icon:hover .print-text {
+  color: blue;
+}
+
+.print-text {
+  margin-left: 5px;
+  transition: color 0.3s;
+}
+
+</style>
+
 <div class="content-wrapper">
 
     <!-- Content Header (Page header) -->
@@ -15,7 +33,7 @@
     </div>
     <!-- /.content-header -->
 
-
+    
     <section class="content">
         <div class="container">
             <div class="row">
@@ -26,25 +44,28 @@
                                 <h3 class="card-title">Pegawai</h3>
                                 <div class="float-right">
                                     <a href="{{ route('pegawai.create') }}" class="btn btn-success">Tambah Data Pegawai</a>
-                                    <a href="{{ route('cetakPegawai') }}" class="btn btn-warning">Cetak PDF</a>
+                                    <a href="{{ route('cetakPegawai') }}" class="btn btn-warning"><span class="print-icon">
+  <i class="fas fa-print"></i>
+  <span class="print-text">Cetak PDF</span>
+</span></a>
                                 </div>
                             </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form class="form-right my-2" method="get" action="{{ route('searchPegawai') }}">
+                            <form class="form-right mt-1" method="get" action="{{ route('searchPegawai') }}">
                                 <div class="input-group">
                                     <input type="text" name="searchPegawai" class="form-control" id="searchPegawai" placeholder="Masukkan Nama Pegawai">
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary">Cari</button>
+                                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
                                     </div>
                                 </div>
                             </form>
                             <div class="table-responsive">
-                                <table class="table table-striped mt-3">
+                                <table class="table table-striped mt-4">
                                     <thead>
                                         <tr>
-                                            <th>Nama</th>
+                                            <th>@sortablelink('namaPegawai', 'Nama', ['icon' => ''])</th>
                                             <th>Alamat</th>
                                             <th>No Telepon</th>
                                             <th>Foto</th>
@@ -57,7 +78,7 @@
                                                 <td>{{ $pgw->namaPegawai }}</td>
                                                 <td>{{ $pgw->alamatPegawai }}</td>
                                                 <td>{{ $pgw->telpPegawai }}</td>
-                                                <td><img width="100px" src="{{ asset('storage/' . $pgw->fotoPegawai) }}"></td>
+                                                <td><img src="{{ asset('storage/' . $pgw->fotoPegawai) }}" style="width: 120px; height: 120px; max-width: 100%; max-height: 100%;" class="img-fluid"></td>
                                                 <td>
                                                     <form action="{{ route('pegawai.destroy', $pgw->idPegawai) }}" method="POST">
                                                         @csrf

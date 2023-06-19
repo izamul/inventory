@@ -1,3 +1,21 @@
+<style>
+    .print-icon {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.print-icon:hover .print-text {
+  color: blue;
+}
+
+.print-text {
+  margin-left: 5px;
+  transition: color 0.3s;
+}
+
+</style>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -25,26 +43,29 @@
                                 <h3 class="card-title">Kategori</h3>
                                 <div class="float-right">
                                     <a href="{{ route('kategori.create') }}" class="btn btn-success">Tambah Data Kategori</a>
-                                    <a href="{{ route('cetakKategori') }}" class="btn btn-warning">Cetak PDF</a>
+                                    <a href="{{ route('cetakKategori') }}" class="btn btn-warning"><span class="print-icon">
+  <i class="fas fa-print"></i>
+  <span class="print-text">Cetak PDF</span>
+</span></a>
                                 </div>
                             </div>
                             
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form class="form-right my-2" method="GET" action="{{ route('searchKategori') }}">
+                            <form class="form-right mt-1" method="GET" action="{{ route('searchKategori') }}">
                                 <div class="input-group">
                                     <input type="text" name="searchKategori" class="form-control" id="searchKategori" placeholder="Masukkan Nama Kategori">
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary">Cari</button>
+                                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
                                     </div>
                                 </div>
                             </form>
                             <div class="table-responsive">
-                                <table class="table table-striped mt-3">
+                                <table class="table table-striped mt-4">
                                     <thead>
                                         <tr>
-                                            <th>Nama</th>
+                                            <th>@sortablelink('namaKategori', 'Nama', ['icon' => ''])</th>
                                             <th width="220px">Action</th>
                                         </tr>
                                     </thead>

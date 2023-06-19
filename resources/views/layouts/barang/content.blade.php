@@ -1,3 +1,21 @@
+<style>
+    .print-icon {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.print-icon:hover .print-text {
+  color: blue;
+}
+
+.print-text {
+  margin-left: 5px;
+  transition: color 0.3s;
+}
+
+</style>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -25,18 +43,20 @@
                                 <h3 class="card-title">Barang</h3>
                                 <div class="float-right">
                                     <a href="{{ route('barang.create') }}" class="btn btn-success">Tambah Data Barang</a>
-                                    <a href="{{ route('cetakBarang') }}" class="btn btn-warning">Cetak PDF</a>
-                                </div>    
-                            </div>
-                            
+                                    <a href="{{ route('cetakBarang') }}" class="btn btn-warning"><span class="print-icon">
+                                        <i class="fas fa-print"></i>
+                                        <span class="print-text">Cetak PDF</span>
+                                    </span></a>
+                                </div>
+                            </div>   
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form class="form-right my-2" method="GET" action="{{ route('searchBarang') }}">
+                            <form class="form-right mt-1" method="GET" action="{{ route('searchBarang') }}">
                                 <div class="input-group">
                                     <input type="text" name="searchBarang" class="form-control" id="searchBarang" placeholder="Masukkan Nama Kategori">
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary">Cari</button>
+                                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
                                     </div>
                                 </div>
                             </form>
@@ -44,7 +64,7 @@
                                 <table class="table table-striped mt-3">
                                     <thead>
                                         <tr>
-                                            <th>Nama</th>
+                                            <th>@sortablelink('namaBarang', 'Nama', ['icon' => ''])</th>
                                             <th>Satuan</th>
                                             <th>Stock</th>
                                             <th>Harga</th>
@@ -63,7 +83,7 @@
                                                 <td>{{ $brg->harga }}</td>
                                                 <td>{{ $brg->pemasok->namaPemasok }}</td>
                                                 <td>{{ $brg->kategori->namaKategori }}</td>
-                                                <td><img width="100px" src="{{ asset('storage/' . $brg->fotoBarang) }}"></td>
+                                                <td><img src="{{ asset('storage/' . $brg->fotoBarang) }}" style="width: 120px; height: 100px; max-width: 100%; max-height: 100%;" class="img-fluid"></td>
                                                 <td>
                                                     <div class="btn-group" role="group">
                                                         <a class="btn btn-info btn-sm" href="{{ route('barang.show', $brg->idBarang) }}">Show</a>

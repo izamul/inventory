@@ -1,3 +1,20 @@
+<style>
+    .print-icon {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .print-icon:hover .print-text {
+        color: blue;
+    }
+
+    .print-text {
+        margin-left: 5px;
+        transition: color 0.3s;
+    }
+</style>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -25,18 +42,22 @@
                                 <h3 class="card-title">Pemasok</h3>
                                 <div class="float-right">
                                     <a href="{{ route('pemasok.create') }}" class="btn btn-success">Tambah Data Pemasok</a>
-                                    <a href="{{ route('cetakPemasok') }}" class="btn btn-warning">Cetak PDF</a>
+                                    <a href="{{ route('cetakPemasok') }}" class="btn btn-warning"><span class="print-icon">
+                                        <i class="fas fa-print"></i>
+                                        <span class="print-text">Cetak PDF</span>
+                                    </span></a>
                                 </div>
                             </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form class="form-right my-2" method="GET" action="{{ route('searchPemasok') }}">
+                            <form class="form-right mt-1" method="GET" action="{{ route('searchPemasok') }}">
                                 <div class="input-group">
                                     <input type="text" name="searchPemasok" class="form-control" id="searchPemasok"
                                         placeholder="Masukkan Nama Pemasok">
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary">Cari</button>
+                                        <button type="submit" class="btn btn-primary"><i
+                                                class="fas fa-search"></i></button>
                                     </div>
                                 </div>
                             </form>
@@ -44,7 +65,7 @@
                                 <table class="table table-striped mt-3">
                                     <thead>
                                         <tr>
-                                            <th>Nama</th>
+                                            <th>@sortablelink('namaPemasok', 'Nama')</th>
                                             <th>Alamat</th>
                                             <th>No Telepon</th>
                                             <th>Foto Pemasok</th>
@@ -57,7 +78,7 @@
                                                 <td>{{ $masok->namaPemasok }}</td>
                                                 <td>{{ $masok->alamatPemasok }}</td>
                                                 <td>{{ $masok->telpPemasok }}</td>
-                                                <td><img width="100px"
+                                                <td><img width="110px"
                                                         src="{{ asset('storage/' . $masok->fotoPemasok) }}"></td>
                                                 <td>
                                                     <div class="btn-group" role="group">
@@ -114,6 +135,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
+                            {{-- {!! $pemasok->appends(Request::except('page'))->links('pagination::bootstrap-5') !!} --}}
                             {!! $pemasok->withQueryString()->links('pagination::bootstrap-5') !!}
                         </div>
                     </div>

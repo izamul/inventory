@@ -27,6 +27,10 @@
     <link rel="stylesheet" href="{{asset('AdminLTE/plugins')}}/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="{{asset('AdminLTE/plugins')}}/summernote/summernote-bs4.min.css">
+    <!-- Icon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="zoufarm/public/assets/img/favicons/zou-favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="zoufarm/public/assets/img/favicons/zou-favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="zoufarm/public/assets/img/favicons/zou-favicon.png">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

@@ -17,9 +17,7 @@ class TransaksiController extends Controller
 
     public function index()
     {
-        $transaksi = Transaksi::with('barang')
-            ->orderBy('tanggal', 'asc')
-            ->paginate(5);
+        $transaksi = Transaksi::with('barang')->sortable()->paginate(5);
 
         return view('layouts.transaksi.master', compact('transaksi'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -99,14 +97,14 @@ class TransaksiController extends Controller
 
     public function dataMasuk()
     {
-        $transaksiMasuk = Transaksi::where('status', 'in')->paginate(5);
+        $transaksiMasuk = Transaksi::where('status', 'in')->sortable()->paginate(5);
 
         return view('layouts.transaksi.inout', ['transaksi' => $transaksiMasuk]);
     }
 
     public function dataKeluar()
     {
-        $transaksiKeluar = Transaksi::where('status', 'out')->paginate(5);
+        $transaksiKeluar = Transaksi::where('status', 'out')->sortable()->paginate(5);
 
         return view('layouts.transaksi.inout', ['transaksi' => $transaksiKeluar]);
     }
