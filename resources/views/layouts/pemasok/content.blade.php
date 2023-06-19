@@ -80,8 +80,13 @@
                                                 <td>{{ $masok->namaPemasok }}</td>
                                                 <td>{{ $masok->alamatPemasok }}</td>
                                                 <td>{{ $masok->telpPemasok }}</td>
-                                                <td><img width="110px"
-                                                        src="{{ asset('storage/' . $masok->fotoPemasok) }}"></td>
+                                                <td>
+                                                    <div style="width: 120px; height: 120px;">
+                                                        <img src="{{ asset('storage/' . $pgw->fotoPemasok) }}"
+                                                            style="object-fit: cover; width: 100%; height: 100%;"
+                                                            class="img-fluid">
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <div class="btn-group" role="group">
                                                         <a class="btn btn-info btn-sm"

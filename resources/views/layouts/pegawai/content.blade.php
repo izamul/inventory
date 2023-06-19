@@ -81,9 +81,13 @@
                                                 <td>{{ $pgw->namaPegawai }}</td>
                                                 <td>{{ $pgw->alamatPegawai }}</td>
                                                 <td>{{ $pgw->telpPegawai }}</td>
-                                                <td><img src="{{ asset('storage/' . $pgw->fotoPegawai) }}"
-                                                        style="width: 120px; height: 120px; max-width: 100%; max-height: 100%;"
-                                                        class="img-fluid"></td>
+                                                <td>
+                                                    <div style="width: 120px; height: 120px;">
+                                                        <img src="{{ asset('storage/' . $pgw->fotoPegawai) }}"
+                                                            style="object-fit: cover; width: 100%; height: 100%;"
+                                                            class="img-fluid">
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <form action="{{ route('pegawai.destroy', $pgw->idPegawai) }}"
                                                         method="POST">

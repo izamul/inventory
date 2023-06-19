@@ -82,9 +82,13 @@
                                                 <td>{{ $brg->harga }}</td>
                                                 <td>{{ $brg->pemasok->namaPemasok }}</td>
                                                 <td>{{ $brg->kategori->namaKategori }}</td>
-                                                <td><img src="{{ asset('storage/' . $brg->fotoBarang) }}"
-                                                        style="width: 120px; height: 100px; max-width: 100%; max-height: 100%;"
-                                                        class="img-fluid"></td>
+                                                <td>
+                                                    <div style="width: 120px; height: 120px;">
+                                                        <img src="{{ asset('storage/' . $pgw->fotoBarang) }}"
+                                                            style="object-fit: cover; width: 100%; height: 100%;"
+                                                            class="img-fluid">
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <div class="btn-group" role="group">
                                                         <a class="btn btn-info btn-sm"
