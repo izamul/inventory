@@ -1,3 +1,21 @@
+<style>
+    .print-icon {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.print-icon:hover .print-text {
+  color: blue;
+}
+
+.print-text {
+  margin-left: 5px;
+  transition: color 0.3s;
+}
+
+</style>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -24,7 +42,10 @@
                             <h3 class="card-title mt-2">Pemasok</h3>
                             <div class="float-right">
                                 <a href="{{ route('pemasok.create') }}" class="btn btn-success">Tambah Data Pemasok</a>
-                                <a href="{{ route('cetakPemasok') }}" class="btn btn-warning">Cetak PDF</a>
+                                <a href="{{ route('cetakPemasok') }}" class="btn btn-warning"><span class="print-icon">
+  <i class="fas fa-print"></i>
+  <span class="print-text">Cetak PDF</span>
+</span></a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -34,7 +55,7 @@
                                     <input type="text" name="searchPemasok" class="form-control" id="searchPemasok"
                                         placeholder="Masukkan Nama Pemasok">
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary">Cari</button>
+                                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
                                     </div>
                                 </div>
                             </form>
