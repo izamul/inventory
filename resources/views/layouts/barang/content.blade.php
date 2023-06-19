@@ -21,11 +21,14 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Barang</h3>
-                            <div class="float-right">
-                                <a href="{{ route('barang.create') }}" class="btn btn-success">Tambah Data Barang</a>
-                                <a href="{{ route('cetakBarang') }}" class="btn btn-warning">Cetak PDF</a>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h3 class="card-title">Barang</h3>
+                                <div class="float-right">
+                                    <a href="{{ route('barang.create') }}" class="btn btn-success">Tambah Data Barang</a>
+                                    <a href="{{ route('cetakBarang') }}" class="btn btn-warning">Cetak PDF</a>
+                                </div>    
                             </div>
+                            
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -38,7 +41,7 @@
                                 </div>
                             </form>
                             <div class="table-responsive">
-                                <table class="table table-striped table-hover">
+                                <table class="table table-striped mt-3">
                                     <thead>
                                         <tr>
                                             <th>Nama</th>

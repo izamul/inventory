@@ -21,10 +21,12 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Pemasok</h3>
-                            <div class="float-right">
-                                <a href="{{ route('pemasok.create') }}" class="btn btn-success">Tambah Data Pemasok</a>
-                                <a href="{{ route('cetakPemasok') }}" class="btn btn-warning">Cetak PDF</a>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h3 class="card-title">Pemasok</h3>
+                                <div class="float-right">
+                                    <a href="{{ route('pemasok.create') }}" class="btn btn-success">Tambah Data Pemasok</a>
+                                    <a href="{{ route('cetakPemasok') }}" class="btn btn-warning">Cetak PDF</a>
+                                </div>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -39,7 +41,7 @@
                                 </div>
                             </form>
                             <div class="table-responsive">
-                                <table class="table table-striped table-hover">
+                                <table class="table table-striped mt-3">
                                     <thead>
                                         <tr>
                                             <th>Nama</th>

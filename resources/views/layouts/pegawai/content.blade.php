@@ -22,10 +22,12 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Pegawai</h3>
-                            <div class="float-right">
-                                <a href="{{ route('pegawai.create') }}" class="btn btn-success">Tambah Data Pegawai</a>
-                                <a href="{{ route('cetakPegawai') }}" class="btn btn-warning">Cetak PDF</a>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h3 class="card-title">Pegawai</h3>
+                                <div class="float-right">
+                                    <a href="{{ route('pegawai.create') }}" class="btn btn-success">Tambah Data Pegawai</a>
+                                    <a href="{{ route('cetakPegawai') }}" class="btn btn-warning">Cetak PDF</a>
+                                </div>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -81,7 +83,7 @@
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                                                         <button type="submit" class="btn btn-danger">Delete</button>
-                                                                    </div>qq
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
