@@ -34,8 +34,6 @@
     <!-- /.content-header -->
 
     
-
-
     <section class="content">
         <div class="container">
             <div class="row">
@@ -65,7 +63,7 @@
                                 <table class="table table-striped mt-4">
                                     <thead>
                                         <tr>
-                                            <th>Nama</th>
+                                            <th>@sortablelink('namaPegawai', 'Nama', ['icon' => ''])</th>
                                             <th>Alamat</th>
                                             <th>No Telepon</th>
                                             <th>Foto</th>

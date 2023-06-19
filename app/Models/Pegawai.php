@@ -7,10 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Kyslik\ColumnSortable\Sortable;
 
 class Pegawai extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use Sortable;
     protected $table = "users";
     protected $primaryKey = 'idPegawai';
     public $timestamps = false;
@@ -48,6 +50,10 @@ class Pegawai extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+    ];
+
+    public $sortable = [
+        'namaPegawai',
     ];
 }
 
