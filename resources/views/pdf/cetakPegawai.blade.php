@@ -128,7 +128,6 @@
                             <th>Nama</th>
                             <th>Alamat</th>
                             <th>No Telepon</th>
-                            <th>Foto</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -138,7 +137,6 @@
                                 <td>{{ $pgw->namaPegawai }}</td>
                                 <td>{{ $pgw->alamatPegawai }}</td>
                                 <td>{{ $pgw->telpPegawai }}</td>
-                                <td><img width="100px" src="{{ asset('storage/' . $pgw->fotoPegawai) }}"></td>
                             </tr>
                         @endforeach
                     </tbody>

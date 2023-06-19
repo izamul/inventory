@@ -71,7 +71,67 @@
                     </div>
                 </div>
             </div>
-            
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- Tabel Top 5 Barang Cepat Habis -->
+                    <div class="card">
+                        <div class="card-header bg-primary">
+                            <h3 class="card-title">Top 5 Barang Cepat Habis</h3>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Nama Barang</th>
+                                        <th>Jumlah Terjual</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($topBarangCepatHabis as $index => $transaksi)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $transaksi->barang->namaBarang }}</td>
+                                        <td>{{ $transaksi->totalTerjual }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <!-- Tabel Top 5 Barang Masuk -->
+                    <div class="card">
+                        <div class="card-header bg-primary">
+                            <h3 class="card-title">Top 5 Barang Masuk</h3>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Nama Barang</th>
+                                        <th>Jumlah Masuk</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($topBarangMasuk as $index => $transaksi)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $transaksi->barang->namaBarang }}</td>
+                                        <td>{{ $transaksi->totalMasuk }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
         </div>
     </section>
 </div>

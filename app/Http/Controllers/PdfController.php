@@ -21,19 +21,20 @@ class PdfController extends Controller
 
     public function cetakPegawai()
     {
-        $pegawai = Pegawai::all();
-
+        $pegawai = Pegawai::where('level', 2)->get();
+    
         $pdf = new Dompdf();
-        $pdf->loadHtml(View::make('pdf.cetakPegawai',  compact('pegawai')));
+        $pdf->loadHtml(View::make('pdf.cetakPegawai', compact('pegawai')));
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
-
+    
         $output = $pdf->output();
-
+    
         return response($output, 200)
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'attachment; filename=Pegawai.pdf');
     }
+    
 
     public function cetakPemasok()
     {

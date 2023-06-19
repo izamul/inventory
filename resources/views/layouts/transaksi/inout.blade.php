@@ -4,7 +4,7 @@
 
 @include('layouts.sidebar')
 
-@include('layouts.footer')
+
 
 <div class="content-wrapper">
     <div class="content-header">
@@ -150,3 +150,5 @@
         </div>
     </div>
 </div>
+
+@include('layouts.footer')
