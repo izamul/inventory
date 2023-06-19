@@ -25,6 +25,12 @@
 
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.css" rel="stylesheet">
+
+    <!-- Icon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="zoufarm/public/assets/img/favicons/zou-favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="zoufarm/public/assets/img/favicons/zou-favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="zoufarm/public/assets/img/favicons/zou-favicon.png">
+
 </head>
 
 <body>

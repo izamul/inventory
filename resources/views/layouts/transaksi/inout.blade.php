@@ -4,7 +4,23 @@
 
 @include('layouts.sidebar')
 
+<style>
+    .print-icon {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
 
+.print-icon:hover .print-text {
+  color: blue;
+}
+
+.print-text {
+  margin-left: 5px;
+  transition: color 0.3s;
+}
+
+</style>
 
 <div class="content-wrapper">
     <div class="content-header">
@@ -49,9 +65,15 @@
                                     Tambah Data Transaksi
                                 </a>
                                 @if (request()->is('data-masuk'))
-                                    <a href="{{ route('cetakTransaksiMasuk') }}" class="btn btn-warning">Cetak PDF</a>
+                                    <a href="{{ route('cetakTransaksiMasuk') }}" class="btn btn-warning"><span class="print-icon">
+  <i class="fas fa-print"></i>
+  <span class="print-text">Cetak PDF</span>
+</span></a>
                                 @elseif(request()->is('data-keluar'))
-                                    <a href="{{ route('cetakTransaksiKeluar') }}" class="btn btn-warning">Cetak PDF</a>
+                                    <a href="{{ route('cetakTransaksiKeluar') }}" class="btn btn-warning"><span class="print-icon">
+  <i class="fas fa-print"></i>
+  <span class="print-text">Cetak PDF</span>
+</span></a>
                                 @endif
                             </div>
                         </div>
@@ -63,7 +85,7 @@
                                         <input type="text" name="searchTransaksi" class="form-control"
                                             id="searchTransaksi" placeholder="Masukkan Nama Barang">
                                         <div class="input-group-append">
-                                            <button type="submit" class="btn btn-primary">Cari</button>
+                                            <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
                                         </div>
                                     </div>
                                 </div>
