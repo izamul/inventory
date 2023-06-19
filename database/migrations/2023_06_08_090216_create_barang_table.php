@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('satuan');
             $table->integer('stock');
             $table->bigInteger('harga');
-            $table->string('fotoBarang', 255);
+            $table->string('fotoBarang');
 
             $table->unsignedBigInteger('pemasok_id'); // Foreign key column
             $table->unsignedBigInteger('kategori_id'); // Foreign key column

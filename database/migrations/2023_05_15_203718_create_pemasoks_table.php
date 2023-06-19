@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('namaPemasok');
             $table->string('alamatPemasok');
             $table->string('telpPemasok');
+            $table->string('fotoPemasok');
         });
     }
 

@@ -16,12 +16,13 @@ class KategoriSeeder extends Seeder
     public function run()
     {
         $data = [
-            [
-                'namaKategori' => 'Pupuk',
-            ],
-            [
-                'namaKategori' => 'Bibit',
-            ]
+            ['namaKategori' => 'pupuk'],
+            ['namaKategori' => 'bibit'],
+            ['namaKategori' => 'pokok'],
+            ['namaKategori' => 'cabai'],
+            ['namaKategori' => 'bawang'],
+            ['namaKategori' => 'pestisida'],
+            ['namaKategori' => 'buah'],
         ];
         Kategori::insert($data);
     }

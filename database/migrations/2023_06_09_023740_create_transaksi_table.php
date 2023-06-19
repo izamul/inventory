@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('transaksi', function (Blueprint $table) {
-            $table->unsignedBigInteger('idTransaksi',false)->primary();
-            $table->string('keterangan');
-            $table->string('tanggal');
-            $table->enum('status',['in','out']);
+            $table->bigIncrements('idTransaksi');
+            $table->date('tanggal');
+            $table->enum('status', ['in', 'out']);
             $table->bigInteger('totalHarga');
             $table->integer('jumlah');
+            $table->string('pencatat');
             $table->unsignedBigInteger('barang_id'); // Foreign key column
             $table->foreign('barang_id')->references('idBarang')->on('barang');
         });

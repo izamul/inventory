@@ -19,49 +19,58 @@ class UserSeeder extends Seeder
         $data = [
             [
                 'namaPegawai' => 'Mohammad Izamul Fikri Fahmi',
-                'alamatPegawai' => 'Lowokwaru, Malang',
-                'telpPegawai' => '085234001234',
+                'alamatPegawai' => 'Jatimulyo, Lowokwaru, Malang',
+                'telpPegawai' => '+628980418610',
                 'fotoPegawai' => 'tes',
                 'level' => 1,
-                'Email' => 'izam@gmail.com',
-                'password' => Hash::make('izamul123')
+                'email' => 'izamul@gmail.com',
+                'password' => Hash::make('izamul123'),
             ],
             [
                 'namaPegawai' => 'Muhammad Endar Darmawan',
-                'alamatPegawai' => 'Dinoyo, Malang',
-                'telpPegawai' => '089516824205',
+                'alamatPegawai' => 'Dinoyo, Lowokwaru, Malang',
+                'telpPegawai' => '+6289516824205',
                 'fotoPegawai' => 'tes',
                 'level' => 2,
-                'Email' => 'endar@gmail.com',
-                'password' => Hash::make('endar123')
-            ],
-            [
-                'namaPegawai' => 'Naresh Pratista',
-                'alamatPegawai' => 'Lowokwaru, Malang',
-                'telpPegawai' => '087873083096',
-                'fotoPegawai' => 'tes',
-                'level' => 2,
-                'Email' => 'naresh@gmail.com',
-                'password' => Hash::make('naresh123')
+                'email' => 'endar@gmail.com',
+                'password' => Hash::make('endar123'),
             ],
             [
                 'namaPegawai' => 'Hakan Alif Pramudya',
-                'alamatPegawai' => 'Klojen, Malang',
-                'telpPegawai' => '08983586416',
+                'alamatPegawai' => 'Ijen, Klojen, Malang',
+                'telpPegawai' => '+628983586416',
                 'fotoPegawai' => 'tes',
                 'level' => 2,
-                'Email' => 'hakan@gmail.com',
-                'password' => Hash::make('alif123')
+                'email' => 'hakan@gmail.com',
+                'password' => Hash::make('hakan123'),
+            ],
+            [
+                'namaPegawai' => 'Naresh Pratista',
+                'alamatPegawai' => 'Jatimulyo, Lowokwaru, Malang',
+                'telpPegawai' => '+6287873083096',
+                'fotoPegawai' => 'tes',
+                'level' => 2,
+                'email' => 'naresh@gmail.com',
+                'password' => Hash::make('naresh123'),
             ],
             [
                 'namaPegawai' => 'Dimitri Abdullah',
-                'alamatPegawai' => 'Lowokwaru, Malang',
-                'telpPegawai' => '08888090576',
+                'alamatPegawai' => 'Sudimoro, Lowokwaru, Malang',
+                'telpPegawai' => '+628888090576',
                 'fotoPegawai' => 'tes',
                 'level' => 2,
-                'Email' => 'dimit@gmail.com',
-                'password' => Hash::make('dimit123')
-            ]
+                'email' => 'dimit@gmail.com',
+                'password' => Hash::make('dimit123'),
+            ],
+            [
+                'namaPegawai' => 'Jamal Valentine',
+                'alamatPegawai' => 'Dau, Malang',
+                'telpPegawai' => '+628521234422',
+                'fotoPegawai' => 'tes',
+                'level' => 2,
+                'email' => 'jamal@gmail.com',
+                'password' => Hash::make('jamal123'),
+            ],
         ];
         Pegawai::insert($data);
     }

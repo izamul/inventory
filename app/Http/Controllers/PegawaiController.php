@@ -167,10 +167,6 @@ class PegawaiController extends Controller
 
     public function searchPegawai(Request $request)
     {
-        // $keyword = $request->searchKategori;
-        // $kategori = Kategori::where('namaKategori', 'like', "%" . $keyword . "%")->paginate(5);
-        // return view('layouts.kategori.master', compact('kategori'))->with('i', (request()->input('page', 1) - 1) * 5);
-
         $keyword = $request->searchPegawai;
         $pegawai = Pegawai::where('namaPegawai', 'like', '%' . $keyword . '%')->paginate(5);
         return view('layouts.pegawai.master', compact('pegawai'))->with('i', (request()->input('page', 1) - 1) * 5);

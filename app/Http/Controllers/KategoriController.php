@@ -22,7 +22,6 @@ class KategoriController extends Controller
     
     public function index()
     {
-        // orderBy('namaKategori')
         $kategori = Kategori::sortable()->paginate(5);
         return view('layouts.kategori.master', compact('kategori'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
