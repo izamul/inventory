@@ -52,12 +52,12 @@
                                 <label for="fotoPemasok" class="col-md-3 col-form-label">Foto Pemasok</label>
                                 <div class="col-md-9">
                                     <div class="d-flex flex-column align-items-start">
-                                        <img src="{{ asset('storage/' . $pemasok->fotoPemasok) }}" alt="Foto Pegawai"
+                                        <img src="{{ asset('storage/' . $pemasok->fotoPemasok) }}" alt="Foto Pemasok"
                                             width="200px" class="mr-3">
                                         <div class="custom-file mt-4">
                                             <input type="file" name="fotoPemasok" class="custom-file-input"
                                                 id="fotoPemasok">
-                                            <label class="custom-file-label" for="fotoPegawai">Pilih Foto</label>
+                                            <label class="custom-file-label" for="fotoPemasok">Pilih Foto</label>
                                         </div>
                                     </div>
                                 </div>
