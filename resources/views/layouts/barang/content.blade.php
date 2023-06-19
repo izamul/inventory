@@ -84,7 +84,7 @@
                                                 <td>{{ $brg->kategori->namaKategori }}</td>
                                                 <td>
                                                     <div style="width: 120px; height: 120px;">
-                                                        <img src="{{ asset('storage/' . $pgw->fotoBarang) }}"
+                                                        <img src="{{ asset('storage/' . $brg->fotoBarang) }}"
                                                             style="object-fit: cover; width: 100%; height: 100%;"
                                                             class="img-fluid">
                                                     </div>
