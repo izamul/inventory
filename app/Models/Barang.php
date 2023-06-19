@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Kategori;
 use App\Models\Pemasok;
 use App\Models\Transaksi;
+use Kyslik\ColumnSortable\Sortable;
 
 class Barang extends Model
 {
     use HasFactory;
+    use Sortable;
     protected $table = 'barang';
     public $timestamps = false;
     public $primaryKey = 'idBarang';
@@ -40,5 +42,7 @@ class Barang extends Model
             ->withPivot('keterangan', 'tanggal', 'status', 'totalHarga', 'jumlah');
     }
     
-
+    public $sortable = [
+        'namaBarang',
+    ];
 }

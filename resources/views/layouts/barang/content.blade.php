@@ -62,7 +62,7 @@
                                 <table class="table table-striped mt-4">
                                     <thead>
                                         <tr>
-                                            <th>Nama</th>
+                                            <th>@sortablelink('namaBarang', 'Nama', ['icon' => ''])</th>
                                             <th>Satuan</th>
                                             <th>Stock</th>
                                             <th>Harga</th>
