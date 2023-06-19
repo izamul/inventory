@@ -47,7 +47,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">
+                            <h3 class="card-title mt-2">
                                 @if (request()->is('data-masuk'))
                                     Data Masuk
                                 @elseif(request()->is('data-keluar'))
@@ -80,7 +80,7 @@
                         </div>
 
                         <div class="card-body">
-                            <form class="form-right my-2" method="GET" action="{{ route('searchTransaksiData') }}">
+                            <form class="form-right mt-1" method="GET" action="{{ route('searchTransaksiData') }}">
                                 <div class="tombol-cari mb-4">
                                     <div class="input-group">
                                         <input type="text" name="searchTransaksi" class="form-control"
