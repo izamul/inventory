@@ -63,16 +63,13 @@
         .card-title {
             font-size: 24px;
             margin: 0;
+            color: #333;
         }
 
-        .small-text {
-            font-size: 9px;
-            margin-top: 10px;
-        }
-
-        .Medium-text {
+        .medium-text {
             font-size: 12px;
             margin-top: 10px;
+            color: #777;
         }
 
         .table-wrapper {
@@ -90,6 +87,7 @@
             padding: 10px;
             text-align: left;
             font-size: 12px;
+            color: #333;
         }
 
         th {

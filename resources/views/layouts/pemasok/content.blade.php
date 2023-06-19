@@ -38,13 +38,15 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title mt-2">Pemasok</h3>
-                            <div class="float-right">
-                                <a href="{{ route('pemasok.create') }}" class="btn btn-success">Tambah Data Pemasok</a>
-                                <a href="{{ route('cetakPemasok') }}" class="btn btn-warning"><span class="print-icon">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h3 class="card-title">Pemasok</h3>
+                                <div class="float-right">
+                                    <a href="{{ route('pemasok.create') }}" class="btn btn-success">Tambah Data Pemasok</a>
+                                    <a href="{{ route('cetakPemasok') }}" class="btn btn-warning"><span class="print-icon">
                                         <i class="fas fa-print"></i>
                                         <span class="print-text">Cetak PDF</span>
                                     </span></a>
+                                </div>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -60,7 +62,7 @@
                                 </div>
                             </form>
                             <div class="table-responsive">
-                                <table class="table table-striped mt-4">
+                                <table class="table table-striped mt-3">
                                     <thead>
                                         <tr>
                                             <th>@sortablelink('namaPemasok', 'Nama')</th>

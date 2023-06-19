@@ -2,6 +2,12 @@
 <html>
 
 <head>
+    <title>Detail Profile</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="zoufarm/public/assets/img/favicons/zou-favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="zoufarm/public/assets/img/favicons/zou-favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="zoufarm/public/assets/img/favicons/zou-favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="zoufarm/public/assets/img/favicons/zou-favicon.png">
+    <link rel="manifest" href="zoufarm/public/assets/img/favicons/manifest.json">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
@@ -17,7 +23,7 @@
 
     <style>
         .full-height-section {
-            height: 100vp;
+            height: 100vh;
         }
 
         .small-font {
@@ -31,7 +37,9 @@
         .home {
             text-decoration: none;
         }
+        
     </style>
+    
 </head>
 
 <body>
@@ -117,7 +125,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-end mt-3">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="button" class="btn btn-success medium-font" onclick="Home()">
+                            Kembali
+                        </button>
                         <button type="button" class="btn btn-primary medium-font" onclick="showFloatingFormEdit()">
                             Edit Profile
                         </button>
@@ -225,6 +236,20 @@
         function showFloatingFormEdit() {
             var modal = new bootstrap.Modal(document.getElementById('editDataPegawaiModal'));
             modal.show();
+        }
+    </script>
+
+    {{-- Back to previous page --}}
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+    {{-- Direct To Home --}}
+    <script>
+        function Home() {
+            window.location.href = "/home"; 
         }
     </script>
 

@@ -39,12 +39,14 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title mt-2">Transaksi</h3>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h3 class="card-title">Transaksi</h3>
                             <div class="float-right">
-                                <div class="btn-group mr-2">
+                                <div class="d-grid gap-2 d-md-block">
                                     <a href="{{ route('dataMasuk') }}" class="btn btn-success">Data Masuk</a>
                                     <a href="{{ route('dataKeluar') }}" class="btn btn-danger">Data Keluar</a>
                                 </div>
+                            </div>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -59,7 +61,7 @@
                             </form>
 
                             <div class="table-responsive">
-                                <table class="table table-striped mt-4">
+                                <table class="table table-striped mt-3">
                                     <thead>
                                         <tr>
                                             <th>@sortablelink('tanggal', 'Tanggal', ['icon' => ''])</th>

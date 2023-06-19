@@ -35,44 +35,43 @@
             font-family: 'Inter', Arial, sans-serif;
             margin: 0;
             padding: 20px;
+            background-color: #f2f2f2;
         }
 
         .content-wrapper {
             margin: 0 auto;
             max-width: 800px;
             text-align: center;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 30px;
         }
 
         .card {
-            border: 1px solid #cccccc;
-            border-radius: 4px;
+            border: none;
             margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .card-header {
-            background-color: #d0d0d0;
+            background-color: #f2f2f2;
             border-bottom: 1px solid #ccc;
             padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 14px;
+            font-size: 18px;
         }
 
         .card-title {
             font-size: 24px;
             margin: 0;
+            color: #333;
         }
 
-        .small-text {
-            font-size: 9px;
+        .medium-text {
+            font-size: 14px;
             margin-top: 10px;
-        }
-
-        .Medium-text {
-            font-size: 12px;
-            margin-top: 10px;
+            color: #888;
         }
 
         .table-wrapper {
@@ -89,7 +88,8 @@
             border: 1px solid #ccc;
             padding: 10px;
             text-align: left;
-            font-size: 12px;
+            font-size: 14px;
+            color: #333;
         }
 
         th {
@@ -106,7 +106,7 @@
 
         .footer {
             margin-top: 30px;
-            font-size: 10px;
+            font-size: 12px;
             color: #777;
         }
     </style>

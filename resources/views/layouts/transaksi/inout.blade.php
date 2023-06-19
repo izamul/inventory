@@ -47,48 +47,46 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title mt-2">
-                                @if (request()->is('data-masuk'))
-                                    Data Masuk
-                                @elseif(request()->is('data-keluar'))
-                                    Data Keluar
-                                @endif
-                            </h3>
-                            <div class="float-right">
-                                <div class="btn-group mr-2">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h3 class="card-title">
+                                    @if (request()->is('data-masuk'))
+                                        Data Masuk
+                                    @elseif(request()->is('data-keluar'))
+                                        Data Keluar
+                                    @endif
+                                </h3>
+                                <div class="btn-group">
                                     <a href="{{ route('dataMasuk') }}" class="btn btn-success">Data Masuk</a>
-                                    <a href="{{ route('dataKeluar') }}" class="btn btn-danger">Data Keluar</a>
+                                    <a href="{{ route('dataKeluar') }}" class="btn btn-danger mr-3">Data Keluar</a>
+                                    <a href="{{ route('transaksi.create', ['type' => request()->is('data-keluar') ? 'data-keluar' : 'data-masuk']) }}"
+                                        class="btn btn-primary">
+                                        Tambah Data Transaksi
+                                    </a>
+                                    @if (request()->is('data-masuk'))
+                                        <a href="{{ route('cetakTransaksiMasuk') }}" class="btn btn-warning"><span
+                                            class="print-icon">
+                                            <i class="fas fa-print"></i>
+                                            <span class="print-text">Cetak PDF</span>
+                                        </span></a>
+                                    @elseif(request()->is('data-keluar'))
+                                        <a href="{{ route('cetakTransaksiKeluar') }}" class="btn btn-warning"><span
+                                            class="print-icon">
+                                            <i class="fas fa-print"></i>
+                                            <span class="print-text">Cetak PDF</span>
+                                        </span></a>
+                                    @endif
                                 </div>
-                                <a href="{{ route('transaksi.create', ['type' => request()->is('data-keluar') ? 'data-keluar' : 'data-masuk']) }}"
-                                    class="btn btn-success">
-                                    Tambah Data Transaksi
-                                </a>
-                                @if (request()->is('data-masuk'))
-                                    <a href="{{ route('cetakTransaksiMasuk') }}" class="btn btn-warning"><span
-                                            class="print-icon">
-                                            <i class="fas fa-print"></i>
-                                            <span class="print-text">Cetak PDF</span>
-                                        </span></a>
-                                @elseif(request()->is('data-keluar'))
-                                    <a href="{{ route('cetakTransaksiKeluar') }}" class="btn btn-warning"><span
-                                            class="print-icon">
-                                            <i class="fas fa-print"></i>
-                                            <span class="print-text">Cetak PDF</span>
-                                        </span></a>
-                                @endif
                             </div>
                         </div>
 
                         <div class="card-body">
-                            <form class="form-right mt-1" method="GET" action="{{ route('searchTransaksiData') }}">
-                                <div class="tombol-cari mb-4">
-                                    <div class="input-group">
-                                        <input type="text" name="searchTransaksi" class="form-control"
-                                            id="searchTransaksi" placeholder="Masukkan Nama Barang">
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-primary"><i
+                            <form class="form-right my-2" method="GET" action="{{ route('searchTransaksiData') }}">
+                                <div class="input-group mb-4">
+                                    <input type="text" name="searchTransaksi" class="form-control"
+                                        id="searchTransaksi" placeholder="Masukkan Nama Barang">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-primary"><i
                                                     class="fas fa-search"></i></button>
-                                        </div>
                                     </div>
                                 </div>
                             </form>
