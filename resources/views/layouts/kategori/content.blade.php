@@ -1,19 +1,18 @@
 <style>
     .print-icon {
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-}
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+    }
 
-.print-icon:hover .print-text {
-  color: blue;
-}
+    .print-icon:hover .print-text {
+        color: blue;
+    }
 
-.print-text {
-  margin-left: 5px;
-  transition: color 0.3s;
-}
-
+    .print-text {
+        margin-left: 5px;
+        transition: color 0.3s;
+    }
 </style>
 
 <div class="content-wrapper">
@@ -42,22 +41,26 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">Kategori</h3>
                                 <div class="float-right">
-                                    <a href="{{ route('kategori.create') }}" class="btn btn-success">Tambah Data Kategori</a>
-                                    <a href="{{ route('cetakKategori') }}" class="btn btn-warning"><span class="print-icon">
-  <i class="fas fa-print"></i>
-  <span class="print-text">Cetak PDF</span>
-</span></a>
+                                    <a href="{{ route('kategori.create') }}" class="btn btn-success">Tambah Data
+                                        Kategori</a>
+                                    <a href="{{ route('cetakKategori') }}" class="btn btn-warning"><span
+                                            class="print-icon">
+                                            <i class="fas fa-print"></i>
+                                            <span class="print-text">Cetak PDF</span>
+                                        </span></a>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <form class="form-right mt-1" method="GET" action="{{ route('searchKategori') }}">
                                 <div class="input-group">
-                                    <input type="text" name="searchKategori" class="form-control" id="searchKategori" placeholder="Masukkan Nama Kategori">
+                                    <input type="text" name="searchKategori" class="form-control" id="searchKategori"
+                                        placeholder="Masukkan Nama Kategori">
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                        <button type="submit" class="btn btn-primary"><i
+                                                class="fas fa-search"></i></button>
                                     </div>
                                 </div>
                             </form>
@@ -74,21 +77,33 @@
                                             <tr>
                                                 <td>{{ $ktg->namaKategori }}</td>
                                                 <td>
-                                                    <form action="{{ route('kategori.destroy', $ktg->idKategori) }}" method="POST">
+                                                    <form action="{{ route('kategori.destroy', $ktg->idKategori) }}"
+                                                        method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <div class="btn-group" role="group">
-                                                            <a class="btn btn-info btn-sm" href="{{ route('kategori.show', $ktg->idKategori) }}">Show</a>
-                                                            <a class="btn btn-primary btn-sm" href="{{ route('kategori.edit', $ktg->idKategori) }}">Edit</a>
-                                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteConfirmation{{ $ktg->idKategori }}">Delete</button>
+                                                            <a class="btn btn-info btn-sm"
+                                                                href="{{ route('kategori.show', $ktg->idKategori) }}">Show</a>
+                                                            <a class="btn btn-primary btn-sm"
+                                                                href="{{ route('kategori.edit', $ktg->idKategori) }}">Edit</a>
+                                                            <button type="button" class="btn btn-danger btn-sm"
+                                                                data-toggle="modal"
+                                                                data-target="#deleteConfirmation{{ $ktg->idKategori }}">Delete</button>
                                                         </div>
                                                         <!-- Modal -->
-                                                        <div class="modal fade" id="deleteConfirmation{{ $ktg->idKategori }}" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationLabel{{ $ktg->idKategori }}" aria-hidden="true">
+                                                        <div class="modal fade"
+                                                            id="deleteConfirmation{{ $ktg->idKategori }}" tabindex="-1"
+                                                            role="dialog"
+                                                            aria-labelledby="deleteConfirmationLabel{{ $ktg->idKategori }}"
+                                                            aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title" id="deleteConfirmationLabel{{ $ktg->idKategori }}">Konfirmasi Hapus</h5>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <h5 class="modal-title"
+                                                                            id="deleteConfirmationLabel{{ $ktg->idKategori }}">
+                                                                            Konfirmasi Hapus</h5>
+                                                                        <button type="button" class="close"
+                                                                            data-dismiss="modal" aria-label="Close">
                                                                             <span aria-hidden="true">&times;</span>
                                                                         </button>
                                                                     </div>
@@ -96,8 +111,10 @@
                                                                         Apakah Anda yakin ingin menghapus kategori ini?
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Cancel</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-danger">Delete</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
