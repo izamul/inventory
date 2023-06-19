@@ -1,19 +1,18 @@
 <style>
     .print-icon {
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-}
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+    }
 
-.print-icon:hover .print-text {
-  color: blue;
-}
+    .print-icon:hover .print-text {
+        color: blue;
+    }
 
-.print-text {
-  margin-left: 5px;
-  transition: color 0.3s;
-}
-
+    .print-text {
+        margin-left: 5px;
+        transition: color 0.3s;
+    }
 </style>
 
 <div class="content-wrapper">
@@ -43,9 +42,9 @@
                             <div class="float-right">
                                 <a href="{{ route('pemasok.create') }}" class="btn btn-success">Tambah Data Pemasok</a>
                                 <a href="{{ route('cetakPemasok') }}" class="btn btn-warning"><span class="print-icon">
-  <i class="fas fa-print"></i>
-  <span class="print-text">Cetak PDF</span>
-</span></a>
+                                        <i class="fas fa-print"></i>
+                                        <span class="print-text">Cetak PDF</span>
+                                    </span></a>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -55,7 +54,8 @@
                                     <input type="text" name="searchPemasok" class="form-control" id="searchPemasok"
                                         placeholder="Masukkan Nama Pemasok">
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                        <button type="submit" class="btn btn-primary"><i
+                                                class="fas fa-search"></i></button>
                                     </div>
                                 </div>
                             </form>
@@ -63,7 +63,7 @@
                                 <table class="table table-striped mt-4">
                                     <thead>
                                         <tr>
-                                            <th>@sortablelink('namaPemasok', 'Nama', ['icon' => ''])</th>
+                                            <th>@sortablelink('namaPemasok', 'Nama')</th>
                                             <th>Alamat</th>
                                             <th>No Telepon</th>
                                             <th>Foto Pemasok</th>

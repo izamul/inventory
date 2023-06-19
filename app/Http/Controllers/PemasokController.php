@@ -22,7 +22,6 @@ class PemasokController extends Controller
 
     public function index()
     {
-        // orderBy('namaPemasok')
         $pemasok = Pemasok::sortable()->paginate(5);
         return view('layouts.pemasok.master', compact('pemasok'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -165,7 +164,7 @@ class PemasokController extends Controller
 
     public function searchPemasok(Request $request)
     {
-        $keyword = $request->search;
+        $keyword = $request->searchPemasok;
         $pemasok = Pemasok::where('namaPemasok', 'like', '%' . $keyword . '%')->paginate(5);
 
         return view('layouts.pemasok.master', compact('pemasok'))->with('i', (request()->input('page', 1) - 1) * 5);

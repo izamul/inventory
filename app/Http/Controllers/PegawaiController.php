@@ -24,11 +24,9 @@ class PegawaiController extends Controller
 
     public function index()
     {
-        $pegawai = Pegawai::where('level', '!=', 1)->orderBy('namaPegawai')->paginate(5);
+        $pegawai = Pegawai::where('level', '!=', 1)->sortable()->paginate(5);
         return view('layouts.pegawai.master', compact('pegawai'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
-    
-    
 
     /**
      * Show the form for creating a new resource.
@@ -57,7 +55,7 @@ class PegawaiController extends Controller
             'fotoPegawai' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         $image_name = $request->file('fotoPegawai')->store('images', 'public');
-        $pegawai = new Pegawai;
+        $pegawai = new Pegawai();
         $pegawai->namaPegawai = $request->get('namaPegawai');
         $pegawai->alamatPegawai = $request->get('alamatPegawai');
         $pegawai->telpPegawai = $request->get('telpPegawai');
@@ -66,7 +64,9 @@ class PegawaiController extends Controller
         $pegawai->level = $request->get('level');
         $pegawai->fotoPegawai = $image_name;
         $pegawai->save();
-        return redirect()->route('pegawai.index')->with('success', 'Pegawai Berhasil Ditambahkan');
+        return redirect()
+            ->route('pegawai.index')
+            ->with('success', 'Pegawai Berhasil Ditambahkan');
     }
 
     /**
@@ -138,10 +138,10 @@ class PegawaiController extends Controller
 
         $pegawai->save();
 
-        return redirect()->route('pegawai.index')->with('success', 'Pegawai Berhasil Diedit');
+        return redirect()
+            ->route('pegawai.index')
+            ->with('success', 'Pegawai Berhasil Diedit');
     }
-
-
 
     /**
      * Remove the specified resource from storage.
@@ -155,13 +155,15 @@ class PegawaiController extends Controller
 
         if ($pegawai != null) {
             $pegawai->delete();
-            return redirect()->route('pegawai.index')->with('success', 'Pegawai Berhasil Dihapus');
+            return redirect()
+                ->route('pegawai.index')
+                ->with('success', 'Pegawai Berhasil Dihapus');
         }
 
-        return redirect()->route('pegawai.index')->with(['message' => 'ID Salah!!']);
+        return redirect()
+            ->route('pegawai.index')
+            ->with(['message' => 'ID Salah!!']);
     }
-
-
 
     public function searchPegawai(Request $request)
     {
