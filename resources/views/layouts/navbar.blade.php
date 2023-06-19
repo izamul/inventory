@@ -33,7 +33,7 @@
                         <form action="{{ route('logout')}}" method="post">
                             @csrf
                             <button type="submit" class="dropdown-item">
-                            <i class="fas fa-user mr-2"></i> Logout
+                            <i class="fas fa-sign-out-alt mr-2"></i> Logout
                             </button>
                         </form>    
                         </a>
