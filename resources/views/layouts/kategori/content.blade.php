@@ -21,7 +21,7 @@
                 <div class="col-md-12">
                     <div class="card mt">
                         <div class="card-header">
-                            <h3 class="card-title">Kategori</h3>
+                            <h3 class="card-title mt-2">Kategori</h3>
                             <div class="float-right">
                                 <a href="{{ route('kategori.create') }}" class="btn btn-success">Tambah Data Kategori</a>
                                 <a href="{{ route('cetakKategori') }}" class="btn btn-warning">Cetak PDF</a>
@@ -29,7 +29,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form class="form-right my-2" method="GET" action="{{ route('searchKategori') }}">
+                            <form class="form-right mt-1" method="GET" action="{{ route('searchKategori') }}">
                                 <div class="input-group">
                                     <input type="text" name="searchKategori" class="form-control" id="searchKategori" placeholder="Masukkan Nama Kategori">
                                     <div class="input-group-append">
@@ -38,7 +38,7 @@
                                 </div>
                             </form>
                             <div class="table-responsive">
-                                <table class="table table-striped mt-3">
+                                <table class="table table-striped mt-4">
                                     <thead>
                                         <tr>
                                             <th>Nama</th>

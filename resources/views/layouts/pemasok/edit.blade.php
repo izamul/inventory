@@ -53,7 +53,7 @@
                                 <div class="col-md-9">
                                     <div class="d-flex flex-column align-items-start">
                                         <img src="{{ asset('storage/' . $pemasok->fotoPemasok) }}" alt="Foto Pegawai"
-                                            width="100px" class="mr-3">
+                                            width="200px" class="mr-3">
                                         <div class="custom-file mt-4">
                                             <input type="file" name="fotoPemasok" class="custom-file-input"
                                                 id="fotoPemasok">
