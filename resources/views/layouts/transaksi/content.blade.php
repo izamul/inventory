@@ -62,7 +62,7 @@
                                 <table class="table table-striped mt-4">
                                     <thead>
                                         <tr>
-                                            <th>Tanggal</th>
+                                            <th>@sortablelink('tanggal', 'Tanggal', ['icon' => ''])</th>
                                             <th>Status</th>
                                             <th>Total Harga</th>
                                             <th>Jumlah</th>

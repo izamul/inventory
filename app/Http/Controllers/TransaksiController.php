@@ -17,9 +17,7 @@ class TransaksiController extends Controller
 
     public function index()
     {
-        $transaksi = Transaksi::with('barang')
-            ->orderBy('tanggal', 'asc')
-            ->paginate(5);
+        $transaksi = Transaksi::with('barang')->sortable()->paginate(5);
 
         return view('layouts.transaksi.master', compact('transaksi'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
