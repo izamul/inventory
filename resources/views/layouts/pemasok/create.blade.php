@@ -5,9 +5,9 @@
 @include('layouts.sidebar')
 
 <div class="content-wrapper">
-    <div class="container mt-5">
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-6 mt-5">
                 <div class="card shadow">
                     <div class="card-header bg-primary text-white">
                         Tambah Data Pemasok
