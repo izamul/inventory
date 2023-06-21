@@ -1,26 +1,28 @@
-* Catatan Proyekan kelompok 1
+# Catatan Proyekan kelompok 1
 
-* Aturan
-> 1. Tolong untuk proses isi database ubah dll, menggunakan migration, jangan langsung dari database, agar semua anggota memiliki data database yang sama ketika clone
-> 2. Tolong segera dikerjakan, jobdesknya, karena ini cukup sulit, jadi perlu percobaan terus menerus agar berhasil
-> 3. Dan untuk seeder, tolong jangan diubah, jika memang ingin membuat seeder baru silahkan, agar data tetap sama
-> 3. Semangat wes, aturan lain menyusul
+## Aturan
+1. Tolong untuk proses isi database ubah dll, menggunakan migration, jangan langsung dari database, agar semua anggota memiliki data database yang sama ketika clone
+2. Tolong segera dikerjakan, jobdesknya, karena ini cukup sulit, jadi perlu percobaan terus menerus agar berhasil
+3. Dan untuk seeder, tolong jangan diubah, jika memang ingin membuat seeder baru silahkan, agar data tetap sama
+4. Semangat wes, aturan lain menyusul
 
+## Setup yang perlu dilakukan setelah melakukan clone
+1. Buka Fork an kalian, pastikan sudah up to date
+2. Clone ulang fork annya ke folder baru
+3. Buka clonean barunya
+4. Copy file `.env` yang project lama, ke clone an yg baru
+5. Kemudian buka terminal dan jalankan query berikut secara berurutan:
 
-* Setup yang perlu dilakukan setelah melakukan clone
-> 1. Untuk mendapatkan vendor file run "composer install" on your terminal sir
-> 2. Untuk men-setup Anda .env, silakan gandakan .env.example file Anda dan ganti nama file duplikat menjadi .env
-> 3. Lihat isi file .env, pastikan nama database, dan password serta lainnya udah sesuai dengan local db kalian
-> 4. Selanjutnya tinggal ketikkan
->> a. php artisan key:generate
->>  
->> b. php artisan migrate
->>  
->> c. php artisan db:seed
->>  
->> d. tinggal "php artisan serve" wes
+    a. `composer install`
+    
+    b. `composer require dompdf/dompdf`
+    
+    c. `composer require kyslik/column-sortable`
 
+6. Setelah itu, jalankan `php artisan serve` untuk menjalankan aplikasinya.
 
-* Ohiya
-terpenting pastikan fork kalian up to date, tutorial fork up to date
-https://gist.github.com/JeffCost/3843711
+Untuk foto, bisa diunggah oleh masing-masing.
+
+Untuk akun manager, gunakan akun `izamul@gmail.com` (password: `izamul123`) saja. Yang lainnya adalah akun pegawai.
+
+Ohiya, yang terpenting pastikan fork kalian up to date. Berikut adalah tutorial fork up to date: [Tutorial Fork Up to Date](https://gist.github.com/JeffCost/3843711)
