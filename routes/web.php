@@ -39,6 +39,7 @@ Route::get('/login',[LoginController::class, "showLoginForm"])->name('login');
 Route::group(['middleware' => 'level:1'], function () {
     Route::resource('pegawai', PegawaiController::class);
     Route::get('/searchPegawai',[PegawaiController::class, 'searchPegawai'])->name('searchPegawai');
+    Route::get('/cetak-pdf-pegawai', [PdfController::class, 'cetakPegawai'])->name('cetakPegawai');
 });
 
 
@@ -60,7 +61,7 @@ Route::get('/searchTransaksiData',[TransaksiController::class, 'searchTransaksiD
 Route::get('/data-masuk', [TransaksiController::class, 'dataMasuk'])->name('dataMasuk');
 Route::get('/data-keluar', [TransaksiController::class, 'dataKeluar'])->name('dataKeluar');
 
-Route::get('/cetak-pdf-pegawai', [PdfController::class, 'cetakPegawai'])->name('cetakPegawai');
+
 Route::get('/cetak-pdf-pemasok', [PdfController::class, 'cetakPemasok'])->name('cetakPemasok');
 Route::get('/cetak-pdf-barang', [PdfController::class, 'cetakBarang'])->name('cetakBarang');
 Route::get('/cetak-pdf-kategori', [PdfController::class, 'cetakKategori'])->name('cetakKategori');

@@ -52,7 +52,7 @@
                             <form class="form-right mt-1" method="GET" action="{{ route('searchBarang') }}">
                                 <div class="input-group">
                                     <input type="text" name="searchBarang" class="form-control" id="searchBarang"
-                                        placeholder="Masukkan Nama Kategori">
+                                        placeholder="Masukkan Nama Barang">
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-primary"><i
                                                 class="fas fa-search"></i></button>

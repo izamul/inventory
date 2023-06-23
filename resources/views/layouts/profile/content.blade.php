@@ -107,7 +107,7 @@
                                     <p class="mb-0">Jabatan</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    @if ($pegawai->status != 2)
+                                    @if ($pegawai->level != 2)
                                         <p class="text-muted mb-0">Manager</p>
                                     @else
                                         <p class="text-muted mb-0">Pegawai</p>

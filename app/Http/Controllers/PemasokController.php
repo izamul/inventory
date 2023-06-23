@@ -104,8 +104,7 @@ class PemasokController extends Controller
             'telpPemasok' => 'required',
             'fotoPemasok' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        $pemasok = Pemasok::find($idPemasok);
-        
+        $pemasok = Pemasok::findOrFail($idPemasok);
         if ($request->hasFile('fotoPemasok')) {
             if ($pemasok->fotoPemasok && file_exists(storage_path('app/public/' . $pemasok->fotoPemasok))) {
                 Storage::delete('public/' . $pemasok->fotoPemasok);
@@ -114,8 +113,7 @@ class PemasokController extends Controller
         } else {
             $image_name = $pemasok->fotoPemasok;
         }
-        
-        $image_name = $request->file('fotoPemasok')->store('images', 'public');
+
         $pemasok = Pemasok::where('idPemasok', $idPemasok)->first();
         $pemasok->namaPemasok = $request->get('namaPemasok');
         $pemasok->alamatPemasok = $request->get('alamatPemasok');
