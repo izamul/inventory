@@ -1,6 +1,6 @@
 
 <footer class="main-footer">
-        <b>Proyek</b> 1 - <strong class="text-info">Kelompok 1</strong>
+        <b>Proyek</b> 1 - <strong class="text-info">Kelompok 1 - Semester 4</strong>
         TI 2F
 </footer>
 

@@ -54,7 +54,7 @@
                                             <p>Please login to your account</p>
                                         </div>
 
-                                        <div class="form-outline mb-4">
+                                        <div class="form-outline mb-5">
                                             <input name="email" type="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus />
                                             <label class="form-label" for="email">{{ __('Email') }}</label>
                                             @error('email')

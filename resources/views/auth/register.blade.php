@@ -34,7 +34,7 @@
                                 </div>
                                 <form method="POST" action="{{ route('register') }}">
                                     @csrf                               
-                                    <div class="form-outline mb-4">
+                                    <div class="form-outline mb-5">
                                         <input name="namaPegawai" type="text" class="form-control @error('namaPegawai') is-invalid @enderror" name="namaPegawai" value="{{ old('namaPegawai') }}" required autocomplete="namaPegawai" autofocus>
                                         <label class="form-label" for="namaPegawai">Nama Lengkap</label>
                                         @error('namaPegawai')
@@ -43,7 +43,7 @@
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="form-outline mb-4">
+                                    <div class="form-outline mb-5">
                                         <input id="telpPegawai" type="number" class="form-control @error('telpPegawai') is-invalid @enderror" name="telpPegawai" value="{{ old('telpPegawai') }}" required autocomplete="telpPegawai">
                                         <label class="form-label" for="telpPegawai">Nomor Telepon</label>
                                         @error('telpPegawai')
