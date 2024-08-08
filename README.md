@@ -1,5 +1,5 @@
 # Catatan Proyekan kelompok 1
-
+Hai
 ## Aturan
 1. Tolong untuk proses isi database ubah dll, menggunakan migration, jangan langsung dari database, agar semua anggota memiliki data database yang sama ketika clone
 2. Tolong segera dikerjakan, jobdesknya, karena ini cukup sulit, jadi perlu percobaan terus menerus agar berhasil
